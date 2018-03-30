@@ -319,7 +319,7 @@ public abstract class GameEngine extends PApplet {
      * Draws the view.
      * 
      * (non-Javadoc) This method is used by Processing to draw on the canvas.
-     * @see processing.core.PApplet#draw()
+     * @see PApplet#draw()
      */
     public void draw() {
     	view.draw(g, tileMap, gameObjects, dashboards);
@@ -329,7 +329,7 @@ public abstract class GameEngine extends PApplet {
 	 * Fires a keyPressed event to every GameObject inside the GameEngine.
 	 * 
 	 * (non-Javadoc) This event is fired by Processing when registers key input.
-	 * @see processing.core.PApplet#keyPressed()
+	 * @see PApplet#keyPressed()
 	 */
     public void keyPressed() {
     	for (int i = 0; i < gameObjects.size(); i++) {
@@ -344,7 +344,7 @@ public abstract class GameEngine extends PApplet {
 	 * Fires a keyReleased event to every GameObject inside the GameEngine.
 	 * 
 	 * (non-Javadoc) This event is fired by Processing when registers key release.
- 	 * @see processing.core.PApplet#keyReleased()
+ 	 * @see PApplet#keyReleased()
 	 */
     public void keyReleased() {
         for (int i = 0; i < gameObjects.size(); i++) {
@@ -359,7 +359,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mousePressed event to every GameObject inside the GameEngine.
      * 
      * (non-Javadoc)
-     * @see processing.core.PApplet#mousePressed()
+     * @see PApplet#mousePressed()
      */
     public void mousePressed() {
     	
@@ -378,7 +378,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mouseReleased event to every GameObject inside the GameEngine.
      *     
      * (non-Javadoc)
-     * @see processing.core.PApplet#mouseReleased()
+     * @see PApplet#mouseReleased()
      */
     public void mouseReleased() {
     	
@@ -397,7 +397,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mouseClicked event to every GameObject inside the GameEngine.
      * 
      * (non-Javadoc)
-     * @see processing.core.PApplet#mouseClicked()
+     * @see PApplet#mouseClicked()
      */
     public void mouseClicked() {
     	
@@ -416,7 +416,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mouseMoved event to every GameObject inside the GameEngine.
      * 
      * (non-Javadoc)
-     * @see processing.core.PApplet#mouseMoved()
+     * @see PApplet#mouseMoved()
      */
     public void mouseMoved() {
     	
@@ -435,7 +435,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mouseDragged event to every GameObject inside the GameEngine.
      * 
      * (non-Javadoc)
-     * @see processing.core.PApplet#mouseDragged()
+     * @see PApplet#mouseDragged()
      */
     public void mouseDragged() {
     	
@@ -454,7 +454,7 @@ public abstract class GameEngine extends PApplet {
      * Fires a mouseWheel event to every GameObject inside the GameEngine.
      * 
      * (non-Javadoc)
-     * @see processing.core.PApplet#mouseWheel(processing.event.MouseEvent)
+     * @see PApplet#mouseWheel(MouseEvent)
      */
     public void mouseWheel(MouseEvent event) {
     	
