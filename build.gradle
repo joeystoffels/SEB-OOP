@@ -22,6 +22,6 @@ dependencies {
 
     // https://mvnrepository.com/artifact/ddf.minim/ddf.minim
     compile group: 'ddf.minim', name: 'ddf.minim', version: '2.2.0'
-    
-    compile 'com.github.nickhartjes:GifAnimation:master-SNAPSHOT'
+
+    compile 'com.github.nickhartjes:gifanimation:1.0'
 }
