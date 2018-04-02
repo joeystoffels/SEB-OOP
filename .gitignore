@@ -136,3 +136,4 @@ fabric.properties
 .project
 *.DS_Store
 /build/
+/Log.txt
