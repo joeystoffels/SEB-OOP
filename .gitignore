@@ -130,3 +130,8 @@ fabric.properties
 
 .idea
 
+/.gradle/
+
+.classpath
+.project
+*.DS_Store
