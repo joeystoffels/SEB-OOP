@@ -1,10 +1,10 @@
-package nl.han.NoScope360.airwolf;
+package nl.han.noScope360.airwolf;
 
-import nl.han.NoScope360.airwolf.Logger.FileLogHandler;
+import nl.han.noScope360.airwolf.Logger.FileLogHandler;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.*;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.NoScope360.airwolf.Logger.ConsoleLogHandler;
+import nl.han.noScope360.airwolf.Logger.ConsoleLogHandler;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -19,11 +19,12 @@ public class Game extends GameEngine {
 	
 
     public static void main(String[] args) {
-        PApplet.main(new String[]{"nl.han.NoScope360.airwolf.Game"});
+        PApplet.main(new String[]{"nl.han.noScope360.airwolf.Game"});
     }
 
     @Override
     public void update() {
+        // TODO: Needs implementation
     }
 
     @Override

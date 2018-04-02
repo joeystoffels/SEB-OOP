@@ -1,4 +1,4 @@
-package nl.han.NoScope360.airwolf;
+package nl.han.noScope360.airwolf;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
@@ -10,9 +10,6 @@ import java.util.Properties;
 
 public class GameProperties {
 
-    private final int keyWidth = 20;
-    private final static String PROPERTIES_FILE = "game.properties";
-
     /**
      * This logger is used to output information to a console or file.
      */
@@ -22,11 +19,13 @@ public class GameProperties {
 
     private static GameProperties instance = null;
 
+    private final static int KEY_WIDTH = 20;
+
     /**
      *
      * @throws IOException
      */
-    protected GameProperties() {
+    public GameProperties() {
         this.properties = new Properties();
     }
 
@@ -48,13 +47,19 @@ public class GameProperties {
                 this.logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
                 // Display all the values in the form of key value
                 for (String key : properties.stringPropertyNames()) {
-                    String value = properties.getProperty(key);
-                    int amountOfSpaces = keyWidth - key.length();
-                    String whitespace = "";
+
+                    StringBuilder message = new StringBuilder();
+                    message.append("Key: ");
+                    message.append(key);
+
+                    int amountOfSpaces = KEY_WIDTH - key.length();
                     for (int index = 0; index < amountOfSpaces; index++) {
-                        whitespace = whitespace + " ";
+                        message.append(" ");
                     }
-                    this.logger.logln(DefaultLogger.LOG_DEBUG, "Key: " + key + whitespace + ": " + value);
+                    message.append(": ");
+                    message.append(properties.getProperty(key));
+
+                    this.logger.logln(DefaultLogger.LOG_DEBUG, message.toString());
                 }
                 this.logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
             }

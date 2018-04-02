@@ -1,4 +1,4 @@
-package nl.han.NoScope360.airwolf.Logger;
+package nl.han.noScope360.airwolf.Logger;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.LoggerRuntimeException;
 
@@ -6,8 +6,6 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FileLogHandler extends nl.han.ica.OOPDProcessingEngineHAN.Logger.FileLogHandler {
 

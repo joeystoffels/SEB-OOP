@@ -1,9 +1,6 @@
-package nl.han.NoScope360.airwolf.Logger;
+package nl.han.noScope360.airwolf.Logger;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogHandler;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class ConsoleLogHandler implements LogHandler {
 
