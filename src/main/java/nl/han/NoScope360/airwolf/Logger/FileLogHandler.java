@@ -1,4 +1,4 @@
-package nl.han.noScope360.airwolf.Logger;
+package nl.han.NoScope360.airwolf.Logger;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Exceptions.LoggerRuntimeException;
 

@@ -1,4 +1,4 @@
-package nl.han.noScope360.airwolf;
+package nl.han.NoScope360.airwolf;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
