@@ -1,5 +1,6 @@
 package nl.han.no_scope360.airwolf;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
@@ -7,6 +8,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+
+import static java.lang.Integer.parseInt;
 
 public class GameProperties {
 
@@ -22,7 +25,6 @@ public class GameProperties {
     private final static int KEY_WIDTH = 20;
 
     /**
-     *
      * @throws IOException
      */
     public GameProperties() {
@@ -36,7 +38,7 @@ public class GameProperties {
         return instance;
     }
 
-    public void loadProperties(String fileName){
+    public void loadProperties(String fileName) {
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         try (InputStream resourceStream = loader.getResourceAsStream(fileName)) {
@@ -63,17 +65,25 @@ public class GameProperties {
                 }
                 this.logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
             }
-        } catch (IOException e){
+        } catch (IOException e) {
             this.logger.logln(DefaultLogger.LOG_FAILURE, "Properties file could't be loaded");
         }
     }
 
     /**
      * Get a specific value from the properties file
+     *
      * @param key
      * @return String
      */
     public String getValue(String key) {
         return properties.getProperty(key);
+    }
+
+    public Integer getValue(String key, Boolean isInteger) {
+        if (!isInteger) {
+            this.getValue(key);
+        }
+        return parseInt(properties.getProperty(key));
     }
 }

@@ -1,5 +1,7 @@
 package nl.han.no_scope360.airwolf;
 
+import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
+import nl.han.no_scope360.airwolf.Assets.AssetLoader;
 import nl.han.no_scope360.airwolf.Logger.FileLogHandler;
 
 import java.io.BufferedReader;
@@ -29,9 +31,11 @@ public class Game extends GameEngine {
      * This logger is used to output information to a console or file.
      */
     private Logger logger = LogFactory.getLogger();
-	
-	private GameProperties gameProperties =  new GameProperties();
-	
+
+    private GameProperties gameProperties = new GameProperties();
+
+    private Player player;
+
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.no_scope360.airwolf.Game"});
@@ -45,78 +49,67 @@ public class Game extends GameEngine {
     @Override
     public void setupGame() {
 
+        // Load properties
+        gameProperties.loadProperties("properties/game.properties");
+        int worldWidth = gameProperties.getValue("worldWidth", true);
+        int worldHeight = gameProperties.getValue("worldHeight", true);
+
+        player = new Player(this);
+        addGameObject(player, 100, worldHeight);
+
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
-        // Load properties
-        gameProperties.loadProperties("properties/game.properties");
 
-        int worldWidth = parseInt(gameProperties.getValue("worldWidth"));
-        int worldHeight = parseInt(gameProperties.getValue("worldHeight"));
-        
         this.initializeTileMap();
 
-        View view = new View(worldWidth,worldHeight);
+        createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
 
-        setView(view);
-        size(worldWidth, worldHeight);
     }
-    
-    private void initializeTileMap() {
-    	
-    	String[] spriteNames = {"Grass", "Grass1", "Grass2", "GrassRock", "RockSand", "RockStone", "Sand", "Soil", "SoilRock", "SoilSand", "Stone", "Water"};
-    	Sprite[] sprites = new Sprite[spriteNames.length];
-    	TileType[] tileTypes = new TileType[spriteNames.length];
-    	
-    	ClassLoader loader = Thread.currentThread().getContextClassLoader();
-    	
-    	for(int index = 0; index < spriteNames.length; index++ ) {
-    		
-    		// Build url to image
-    		StringBuilder url = new StringBuilder();
-    		url.append("images/terrain/60/");
-    		url.append(spriteNames[index]);
-    		url.append(".jpg");
-    		
-    		// Add the sprite
-    		sprites[index] = new Sprite(loader.getResource(url.toString()).toString());
-    		tileTypes[index] =  new TileType<>(BoardsTile.class, sprites[index]);
-    	}
 
-         
-    	InputStream inputStream = loader.getResourceAsStream("levels/level1.csv");
-    	InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
-    	BufferedReader reader = new BufferedReader(streamReader);
-    	
-    
-    	ArrayList<String[]> container = new ArrayList<String[]>(); 
-    	try {
-    		int lines = 0;
-			for (String line; (line = reader.readLine()) != null;) {
-			    // Process line
-				container.add(line.split(","));
-				lines++;
-			}
-		} catch (IOException e) {
-			this.logger.logln(DefaultLogger.LOG_FAILURE, e.toString());
-		}
-    	
-    	
-    	int[][] tilesMap = new int[container.size()][container.get(0).length];
-    	int lineIndex = 0;
-    	for(String[] line: container) {
-    		for(int rowIndex = 0; rowIndex < line.length; rowIndex++) {
-    			tilesMap[lineIndex][rowIndex] = parseInt(line[rowIndex]);
-    			
-    		}
-    		lineIndex++;
-    	}
-    	
-    	
-       
-        int tileSize= parseInt(gameProperties.getValue("tileSize"));
-        
-        tileMap = new TileMap(tileSize, tileTypes, tilesMap);
+    private void initializeTileMap() {
+
+        String[] spriteNames = {"Grass", "Grass1", "Grass2", "GrassRock", "RockSand", "RockStone", "Sand", "Soil", "SoilRock", "SoilSand", "Stone", "Water"};
+        Sprite[] sprites = new Sprite[spriteNames.length];
+        TileType[] tileTypes = new TileType[spriteNames.length];
+
+        for (int index = 0; index < spriteNames.length; index++) {
+
+            // Build url to image
+            StringBuilder url = new StringBuilder();
+            url.append("terrain/60/");
+            url.append(spriteNames[index]);
+            url.append(".jpg");
+
+            // Add the sprite
+            sprites[index] = AssetLoader.getSprite(url.toString());
+            tileTypes[index] = new TileType<>(BoardsTile.class, sprites[index]);
+        }
+
+        int tileSize = gameProperties.getValue("tileSize", true);
+
+        tileMap = new TileMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
+    }
+
+
+    /**
+     * Creeërt de view met viewport
+     *
+     * @param worldWidth   Totale breedte van de wereld
+     * @param worldHeight  Totale hoogte van de wereld
+     * @param screenWidth  Breedte van het scherm
+     * @param screenHeight Hoogte van het scherm
+     * @param zoomFactor   Factor waarmee wordt ingezoomd
+     */
+    private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
+
+        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int) Math.ceil(screenWidth / zoomFactor), (int) Math.ceil(screenHeight / zoomFactor), -100, -100);
+        viewPort.setTolerance(50, 50, 0, 0);
+
+        View view = new View(viewPort, worldWidth, worldHeight);
+        setView(view);
+        size(screenWidth, screenHeight);
+//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
     }
 }
