@@ -22,7 +22,6 @@ public class GameProperties {
 
     private static GameProperties instance = null;
 
-    private final static int KEY_WIDTH = 20;
 
     /**
      * @throws IOException
@@ -39,6 +38,7 @@ public class GameProperties {
     }
 
     public void loadProperties(String fileName) {
+        int keyWidth = 20;
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
         try (InputStream resourceStream = loader.getResourceAsStream(fileName)) {
@@ -54,7 +54,7 @@ public class GameProperties {
                     message.append("Key: ");
                     message.append(key);
 
-                    int amountOfSpaces = KEY_WIDTH - key.length();
+                    int amountOfSpaces = keyWidth - key.length();
                     for (int index = 0; index < amountOfSpaces; index++) {
                         message.append(" ");
                     }
