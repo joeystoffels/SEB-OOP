@@ -25,7 +25,7 @@ public class View {
 
 
     /**
-     * Basic constructor of the View which creates its own viewPort which shows the entire world.
+     * Basic constructor of the view which creates its own viewPort which shows the entire world.
      *
      * @param worldWidth The width of the world in which all the objects will be drawn.
      * @param worldHeight The height of the world in which all the objects will be drawn.
@@ -36,7 +36,7 @@ public class View {
     }
 
     /**
-     * Create a new View object with an exsisting Viewport.
+     * Create a new view object with an exsisting Viewport.
      * @param viewport The instance of viewPort which generates what is shown of the world
      * @param worldWidth The width of the world in which all the objects will be drawn.
      * @param worldHeight The height of the world in which all the objects will be drawn.
@@ -118,7 +118,7 @@ public class View {
 	}
 
     /**
-     * Draws all the Dashboard objects on the given canvas.
+     * Draws all the dashboard objects on the given canvas.
      * @param g
      * @param dashboards
      */

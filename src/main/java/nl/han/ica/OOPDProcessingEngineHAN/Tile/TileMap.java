@@ -124,7 +124,7 @@ public class TileMap {
     }
 
     /**
-     * The method the View calls to draw the tiles of the TileMap.
+     * The method the view calls to draw the tiles of the TileMap.
      * @param pGraphics The canvas on which the tiles will be drawn.
      */
     public void draw(PGraphics pGraphics) {

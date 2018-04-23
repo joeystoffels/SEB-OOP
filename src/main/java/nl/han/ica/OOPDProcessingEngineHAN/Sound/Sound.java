@@ -11,7 +11,7 @@ public class Sound {
     private AudioPlayer audio;
 
     /**
-     * Create a new Sound object to play music files.
+     * Create a new sound object to play music files.
      * @param engine
      * @param soundFileLocation
      */

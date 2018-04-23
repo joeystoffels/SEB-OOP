@@ -1,7 +1,7 @@
 package nl.han.ica.OOPDProcessingEngineHAN.Logger;
 
 /**
- * The LogFactory holds the current Logger object.
+ * The LogFactory holds the current logger object.
  */
 public class LogFactory {
 	
@@ -13,7 +13,7 @@ public class LogFactory {
     private LogFactory() {}
 
     /**
-     * Gets the current Logger.
+     * Gets the current logger.
      * @return
      */
     public static synchronized Logger getLogger() {

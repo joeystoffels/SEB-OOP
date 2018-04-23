@@ -1,7 +1,7 @@
 package nl.han.ica.OOPDProcessingEngineHAN.Exceptions;
 
 /**
- * Used by the Logger object.
+ * Used by the logger object.
  */
 public class LoggerRuntimeException extends RuntimeException {
 	

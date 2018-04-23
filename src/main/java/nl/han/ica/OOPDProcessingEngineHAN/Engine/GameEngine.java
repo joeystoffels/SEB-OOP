@@ -48,12 +48,12 @@ public abstract class GameEngine extends PApplet {
     private GameThread gameThread = new GameThread(this);
  
     /**
-     * Creates an instance of minim that helps with loading music in the Sound class.
+     * Creates an instance of minim that helps with loading music in the sound class.
      */
     public Minim soundLibrary = new Minim(this);
     
     /**
-     * The View is the main canvas that is been drawn by the GameEngine.
+     * The view is the main canvas that is been drawn by the GameEngine.
      */
     private View view;
 
@@ -89,7 +89,7 @@ public abstract class GameEngine extends PApplet {
     public abstract void setupGame();
 
     /**
-     * Sets the View which will be drawn by the GameEngine.
+     * Sets the view which will be drawn by the GameEngine.
      * @param view
      */
     public void setView(View view) {
@@ -97,7 +97,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Gets the View which is drawn by the GameEngine.
+     * Gets the view which is drawn by the GameEngine.
      * @return
      */
     public View getView() {
@@ -115,7 +115,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a Dashboard to the GameEngine.
+     * Add a dashboard to the GameEngine.
      * @param dashboard
      */
     public void addDashboard(Dashboard dashboard) {
@@ -136,7 +136,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a Dashboard to te GameEngine.
+     * Add a dashboard to te GameEngine.
      * @param dashboard
      * @param x
      * @param y
@@ -164,7 +164,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a Dashboard to the GameEngine.
+     * Add a dashboard to the GameEngine.
      * @param dashboard
      * @param x
      * @param y
@@ -190,7 +190,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a Dashboard to the GameEngine.
+     * Add a dashboard to the GameEngine.
      * @param dashboard
      * @param layerposition
      */
@@ -210,7 +210,7 @@ public abstract class GameEngine extends PApplet {
     
     /**
      * Get a list of all the Dashboards inside the GameEngine.
-     *  @return Vector<Dashboard>
+     *  @return Vector<dashboard>
      */
     public Vector<Dashboard> getDashboards() {
         return dashboards;
@@ -225,7 +225,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Delete a Dashboard from the GameEngine.
+     * Delete a dashboard from the GameEngine.
      * @param dashboard
      */
     public void deleteDashboard(Dashboard dashboard) {
@@ -289,7 +289,7 @@ public abstract class GameEngine extends PApplet {
     }
 
     /**
-     * Updates every Dashboard inside the GameEngine.
+     * Updates every dashboard inside the GameEngine.
      */
     private void updateDashboards() {
     	
@@ -504,14 +504,14 @@ public abstract class GameEngine extends PApplet {
     }
 
     /**
-     * Pauses the Game.
+     * Pauses the AirspaceInvadersGame.
      */
     public void pauseGame() {
         gameThread.pauseGame();
     }
 
     /**
-     * Resumes the Game.
+     * Resumes the AirspaceInvadersGame.
      */
     public void resumeGame() {
         gameThread.resumeGame();
@@ -527,7 +527,7 @@ public abstract class GameEngine extends PApplet {
     }
 
     /**
-     * Sets the TileMap which will be drawn by the View.
+     * Sets the TileMap which will be drawn by the view.
      * @param tileMap
      */
     public void setTileMap(TileMap tileMap) {
@@ -535,7 +535,7 @@ public abstract class GameEngine extends PApplet {
     }
 
     /**
-     * Gets the TileMap which is drawn by the View.
+     * Gets the TileMap which is drawn by the view.
      * @return TileMap
      */
     public TileMap getTileMap() {

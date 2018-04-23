@@ -1,7 +1,7 @@
 package nl.han.ica.OOPDProcessingEngineHAN.Logger;
 
 /**
- * Indicates if the object is a Logger.
+ * Indicates if the object is a logger.
  */
 public interface Logger {
 	

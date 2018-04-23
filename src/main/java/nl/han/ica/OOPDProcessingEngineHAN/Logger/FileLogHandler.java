@@ -16,12 +16,12 @@ public class FileLogHandler implements LogHandler {
     OutputStreamWriter osw;
     
     /**
-     * Create a new Logger which outputs to a file.
+     * Create a new logger which outputs to a file.
      */
     public FileLogHandler()
     {
         try {
-            file = new File("src/main/java/nl/han/ica/OOPDProcessingEngineHAN/Logger/Log.log");
+            file = new File("src/main/java/nl/han/ica/OOPDProcessingEngineHAN/logger/Log.log");
             if(!file.exists()){
                 file.createNewFile();
             }
