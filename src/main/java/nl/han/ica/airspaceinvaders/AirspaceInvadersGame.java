@@ -1,7 +1,6 @@
 package nl.han.ica.airspaceinvaders;
 
 import nl.han.ica.airspaceinvaders.objects.player.Player;
-import nl.han.ica.OOPDProcessingEngineHAN.View.EdgeFollowingViewport;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
 
@@ -45,8 +44,7 @@ public class AirspaceInvadersGame extends GameEngine {
         int worldWidth = gameProperties.getValue("worldWidth", true);
         int worldHeight = gameProperties.getValue("worldHeight", true);
 
-        player = new Player(this);
-        addGameObject(player, 100, worldHeight);
+
 
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
@@ -55,7 +53,10 @@ public class AirspaceInvadersGame extends GameEngine {
 
         this.initializeTileMap();
 
-        createViewWithViewport(worldWidth, worldHeight, 800, 800, 1.1f);
+        this.player = new Player(this);
+        addGameObject(player, worldWidth/2 - (player.getWidth()/2) , 2000);
+
+        createView(worldWidth, worldHeight, 800, 800, 1.0f);
 
     }
 
@@ -93,14 +94,9 @@ public class AirspaceInvadersGame extends GameEngine {
      * @param screenHeight Hoogte van het scherm
      * @param zoomFactor   Factor waarmee wordt ingezoomd
      */
-    private void createViewWithViewport(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
-
-        EdgeFollowingViewport viewPort = new EdgeFollowingViewport(player, (int) Math.ceil(screenWidth / zoomFactor), (int) Math.ceil(screenHeight / zoomFactor), -100, -100);
-        viewPort.setTolerance(50, 50, 0, 0);
-
-        View view = new View(viewPort, worldWidth, worldHeight);
+    private void createView(int worldWidth, int worldHeight, int screenWidth, int screenHeight, float zoomFactor) {
+        View view = new View(worldWidth, worldHeight);
         setView(view);
         size(screenWidth, screenHeight);
-//        view.setBackground(loadImage("src/main/java/nl/han/ica/waterworld/media/background.jpg"));
     }
 }

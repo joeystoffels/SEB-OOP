@@ -1,5 +1,8 @@
 package nl.han.ica.airspaceinvaders.objects.player;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
@@ -15,6 +18,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
     final int size=25;
     private final AirspaceInvadersGame world;
 
+    private Logger logger = LogFactory.getLogger();
+
     public Player(AirspaceInvadersGame game) {
 
         super(AssetLoader.getSprite("player/A10.png", 8),1);
@@ -23,12 +28,15 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
         setFriction(0.05f);
     }
 
+
+
     /**
      *
      */
     @Override
     public void update() {
-        setySpeed(-1);
+
+        setySpeed(0);
         if (getX()<=0) {
             setxSpeed(0);
             setX(0);
