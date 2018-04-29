@@ -29,15 +29,10 @@ public class AirspaceInvadersGame extends GameEngine {
      * This logger is used to output information to a console or file.
      */
     private Logger logger = LogFactory.getLogger();
-
     private GameProperties gameProperties = new GameProperties();
-
     private Player player;
-
     private List<IEnemy> enemies = new ArrayList<>();
-
-    private TextObject dashboardText = new TextObject("Tekst");
-
+    private TextObject dashboardText = new TextObject("Health: ");
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.airspaceinvaders.AirspaceInvadersGame"});
@@ -89,7 +84,6 @@ public class AirspaceInvadersGame extends GameEngine {
     }
 
     private void initializeTileMap() {
-
         String[] spriteNames = {"Grass", "Grass1", "Grass2", "GrassRock", "RockSand", "RockStone", "Sand", "Soil", "SoilRock", "SoilSand", "Stone", "Water"};
         Sprite[] sprites = new Sprite[spriteNames.length];
         TileType[] tileTypes = new TileType[spriteNames.length];
@@ -108,10 +102,9 @@ public class AirspaceInvadersGame extends GameEngine {
         }
 
         int tileSize = gameProperties.getValue("tileSize", true);
-
+        
         tileMap = new TileMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
     }
-
 
     /**
      * Creeërt de view met viewport
@@ -130,9 +123,5 @@ public class AirspaceInvadersGame extends GameEngine {
 
     public TextObject getDashboardText() {
         return dashboardText;
-    }
-
-    public void setDashboardText(TextObject dashboardText) {
-        this.dashboardText = dashboardText;
     }
 }

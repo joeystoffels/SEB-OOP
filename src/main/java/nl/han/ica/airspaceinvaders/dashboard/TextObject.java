@@ -30,4 +30,9 @@ public class TextObject extends GameObject {
         g.textSize(50);
         g.text(text,getX(),getY());
     }
+
+    @Override
+    public String toString() {
+        return this.text;
+    }
 }

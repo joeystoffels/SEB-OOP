@@ -9,28 +9,22 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.dashboard.TextObject;
 import processing.core.PConstants;
-
 import java.util.List;
-
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects {
 
-    private int health = 250;
-
-    final int size=25;
     private final AirspaceInvadersGame world;
-
     private Logger logger = LogFactory.getLogger();
+    private int health = 250;
+    final int size=25;
 
     public Player(AirspaceInvadersGame game) {
-
         super(AssetLoader.getSprite("player/A10.png", 8),1);
         this.world=game;
+        world.getDashboardText().setText("Health: " + this.getHealth());
         setCurrentFrameIndex(0);
         setFriction(0.05f);
     }
-
-
 
     /**
      *
@@ -55,7 +49,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setySpeed(0);
             setY(world.getHeight() - size);
         }
-
     }
 
     /**
@@ -79,7 +72,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
-
     /**
      * @param collidedGameObjects
      */
@@ -87,7 +79,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         setHealth(getHealth() - 50);
         TextObject textObject = new TextObject("test" + getHealth());
-        world.setDashboardText(textObject);
+        world.getDashboardText().setText("Health:" + getHealth());
+        System.out.println(world.getDashboardText().toString());
         if (getHealth() <= 0) {
             System.out.println("ENDGAME");
         }
