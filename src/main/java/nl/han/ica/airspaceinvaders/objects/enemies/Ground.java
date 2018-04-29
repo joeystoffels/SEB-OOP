@@ -2,6 +2,7 @@ package nl.han.ica.airspaceinvaders.objects.enemies;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PGraphics;
@@ -49,5 +50,20 @@ public class Ground extends SpriteObject implements IEnemy {
 
     public void setShield(int shield) {
         this.shield = shield;
+    }
+
+    @Override
+    public float getCenterXPos() {
+        return 0;
+    }
+
+    @Override
+    public float getCenterYPos() {
+        return 0;
+    }
+
+    @Override
+    public AirspaceInvadersGame getWorld() {
+        return null;
     }
 }

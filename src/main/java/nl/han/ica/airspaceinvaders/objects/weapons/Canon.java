@@ -22,7 +22,7 @@ public class Canon extends Weapon {
         super.setDamage(15);
         super.setIntervalTime(1);
         this.enemy = enemy;
-        this.world = ((Air)enemy).getWorld();
+        this.world = enemy.getWorld();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -40,7 +40,7 @@ public class Canon extends Weapon {
 
     //@Override
     public void shoot() {
-        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), ((Air)enemy).getCenterX(), ((Air)enemy).getCenterY());
+        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), enemy.getCenterXPos(), enemy.getCenterYPos());
     }
 
     /**

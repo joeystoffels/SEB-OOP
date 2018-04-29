@@ -40,7 +40,7 @@ public class Air extends SpriteObject implements IEnemy {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        world.deleteGameObject(this);
+        //world.deleteGameObject(this);
     }
 
     @Override
@@ -72,7 +72,18 @@ public class Air extends SpriteObject implements IEnemy {
         this.shield = shield;
     }
 
+    @Override
     public AirspaceInvadersGame getWorld() {
         return world;
+    }
+
+    @Override
+    public float getCenterXPos() {
+        return this.getCenterX();
+    }
+
+    @Override
+    public float getCenterYPos() {
+        return this.getCenterY();
     }
 }
