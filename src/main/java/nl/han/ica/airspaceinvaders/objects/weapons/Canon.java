@@ -5,10 +5,11 @@ import processing.core.PGraphics;
 public class Canon extends Weapon {
 
     /**
-     * @param weapon
+     *
      */
-    public Canon(Weapon weapon) {
-
+    public Canon() {
+        super.setDamage(15);
+        super.setIntervalTime(1);
     }
 
     /**

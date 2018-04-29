@@ -1,5 +1,8 @@
 package nl.han.ica.airspaceinvaders;
 
+import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
+import nl.han.ica.airspaceinvaders.objects.enemies.Air;
+import nl.han.ica.airspaceinvaders.objects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.objects.player.Player;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
@@ -14,6 +17,9 @@ import nl.han.ica.waterworld.tiles.BoardsTile;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import processing.core.PApplet;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @SuppressWarnings("serial")
 public class AirspaceInvadersGame extends GameEngine {
 
@@ -25,6 +31,8 @@ public class AirspaceInvadersGame extends GameEngine {
     private GameProperties gameProperties = new GameProperties();
 
     private Player player;
+
+    private List<IEnemy> enemies = new ArrayList<>();
 
 
     public static void main(String[] args) {
@@ -55,6 +63,18 @@ public class AirspaceInvadersGame extends GameEngine {
 
         this.player = new Player(this);
         addGameObject(player, worldWidth/2 - (player.getWidth()/2) , 2000);
+
+        enemies.add(new Air(AssetLoader.getSprite("enemy/A10.png", 8)));
+
+        for (IEnemy enemy : enemies) {
+            if (enemy instanceof Air) {
+                //((Air) enemy).setDirection(180);
+                addGameObject((Air) enemy, worldWidth / 3, 200);
+            }
+            if (enemy instanceof Ground) {
+                addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
+            }
+        }
 
         createView(worldWidth, worldHeight, 800, 800, 1.0f);
 
