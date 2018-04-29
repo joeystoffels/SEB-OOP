@@ -2,10 +2,11 @@ package nl.han.ica.airspaceinvaders.objects.enemies;
 
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import processing.core.PGraphics;
 
 import java.util.List;
 
-public class Air implements IEnemy {
+public class Air extends GameObject implements IEnemy {
 
     private int health;
     private int shield;
@@ -15,6 +16,16 @@ public class Air implements IEnemy {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+
+    }
+
+    @Override
+    public void update() {
+
+    }
+
+    @Override
+    public void draw(PGraphics g) {
 
     }
 
