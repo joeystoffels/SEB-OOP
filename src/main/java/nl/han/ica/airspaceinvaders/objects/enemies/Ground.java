@@ -31,11 +31,6 @@ public class Ground extends SpriteObject implements IEnemy {
     }
 
     @Override
-    public void shoot() {
-
-    }
-
-    @Override
     public void movement(boolean isDirectionLeft) {
 
     }

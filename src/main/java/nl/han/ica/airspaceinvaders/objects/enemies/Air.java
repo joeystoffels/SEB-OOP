@@ -2,6 +2,7 @@ package nl.han.ica.airspaceinvaders.objects.enemies;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
@@ -18,14 +19,14 @@ public class Air extends SpriteObject implements IEnemy {
     private int shield;
 
     private Weapon weapon;
-
+    private AirspaceInvadersGame world;
     private boolean isDirectionLeft;
-
     Timer timer = new Timer();
 
-    public Air(Sprite sprite) {
+    public Air(AirspaceInvadersGame game, Sprite sprite) {
         super(sprite);
-        this.weapon = new Canon();
+        this.world = game;
+        this.weapon = new Canon(this);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -39,17 +40,12 @@ public class Air extends SpriteObject implements IEnemy {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
+        world.deleteGameObject(this);
     }
 
     @Override
     public void update() {
         //movement();
-    }
-
-    @Override
-    public void shoot() {
-
     }
 
     @Override
@@ -74,5 +70,9 @@ public class Air extends SpriteObject implements IEnemy {
 
     public void setShield(int shield) {
         this.shield = shield;
+    }
+
+    public AirspaceInvadersGame getWorld() {
+        return world;
     }
 }

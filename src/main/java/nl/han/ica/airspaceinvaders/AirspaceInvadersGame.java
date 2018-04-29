@@ -52,23 +52,19 @@ public class AirspaceInvadersGame extends GameEngine {
         int worldWidth = gameProperties.getValue("worldWidth", true);
         int worldHeight = gameProperties.getValue("worldHeight", true);
 
-
-
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
-
 
         this.initializeTileMap();
 
         this.player = new Player(this);
         addGameObject(player, worldWidth/2 - (player.getWidth()/2) , 2000);
 
-        enemies.add(new Air(AssetLoader.getSprite("enemy/A10.png", 8)));
+        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 8)));
 
         for (IEnemy enemy : enemies) {
             if (enemy instanceof Air) {
-                //((Air) enemy).setDirection(180);
                 addGameObject((Air) enemy, worldWidth / 3, 200);
             }
             if (enemy instanceof Ground) {
