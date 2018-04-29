@@ -1,6 +1,9 @@
 package nl.han.ica.airspaceinvaders;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
+import nl.han.ica.airspaceinvaders.level.BoardsTile;
 import nl.han.ica.airspaceinvaders.objects.enemies.Air;
 import nl.han.ica.airspaceinvaders.objects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.objects.player.Player;
@@ -13,7 +16,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.waterworld.tiles.BoardsTile;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import processing.core.PApplet;
 
@@ -33,6 +35,8 @@ public class AirspaceInvadersGame extends GameEngine {
     private Player player;
 
     private List<IEnemy> enemies = new ArrayList<>();
+
+    private TextObject dashboardText = new TextObject("Tekst", 20);
 
 
     public static void main(String[] args) {
@@ -56,11 +60,14 @@ public class AirspaceInvadersGame extends GameEngine {
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
-        this.initializeTileMap();
+        // Generate background
+        //this.initializeTileMap();
 
+        // Add player
         this.player = new Player(this);
         addGameObject(player, worldWidth/2 - (player.getWidth()/2) , 2000);
 
+        // Add enemies
         enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 8)));
 
         for (IEnemy enemy : enemies) {
@@ -71,6 +78,11 @@ public class AirspaceInvadersGame extends GameEngine {
                 addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
             }
         }
+
+        // Add dashboard
+        Dashboard dashboard = new Dashboard(5, 300, 500, 1000);
+        dashboard.addGameObject(dashboardText);
+        addDashboard(dashboard);
 
         createView(worldWidth, worldHeight, 800, 800, 1.0f);
 
@@ -114,5 +126,13 @@ public class AirspaceInvadersGame extends GameEngine {
         View view = new View(worldWidth, worldHeight);
         setView(view);
         size(screenWidth, screenHeight);
+    }
+
+    public TextObject getDashboardText() {
+        return dashboardText;
+    }
+
+    public void setDashboardText(TextObject dashboardText) {
+        this.dashboardText = dashboardText;
     }
 }

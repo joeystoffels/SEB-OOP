@@ -23,11 +23,19 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
+        world.deleteGameObject(this);
     }
 
     @Override
     public void update() {
+        checkIfOutsideView();
+    }
 
+    private void checkIfOutsideView() {
+        if (this.getX() > world.getWidth() |
+                this.getY() > world.getHeight()) {
+            System.out.println("Projectile removed");
+            world.deleteGameObject(this);
+        }
     }
 }

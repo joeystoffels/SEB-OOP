@@ -1,8 +1,11 @@
 package nl.han.ica.airspaceinvaders.objects.player;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.CollidedTile;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithTiles;
@@ -13,7 +16,9 @@ import processing.core.PConstants;
 import java.util.List;
 
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithTiles {
+public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects {
+
+    private int health = 250;
 
     final int size=25;
     private final AirspaceInvadersGame world;
@@ -79,10 +84,23 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithTiles
 
 
     /**
-     * @param collidedTiles
+     * @param collidedGameObjects
      */
     @Override
-    public void tileCollisionOccurred(List<CollidedTile> collidedTiles)  {
+    public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+        setHealth(getHealth() - 50);
+        TextObject textObject = new TextObject("test" + getHealth(), 20);
+        world.setDashboardText(textObject);
+        if (getHealth() <= 0) {
+            System.out.println("ENDGAME");
+        }
+    }
 
+    public int getHealth() {
+        return this.health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }
