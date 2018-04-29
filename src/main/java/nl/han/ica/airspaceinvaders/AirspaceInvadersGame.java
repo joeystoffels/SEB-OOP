@@ -1,7 +1,7 @@
 package nl.han.ica.airspaceinvaders;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
+import nl.han.ica.airspaceinvaders.dashboard.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
 import nl.han.ica.airspaceinvaders.level.BoardsTile;
 import nl.han.ica.airspaceinvaders.objects.enemies.Air;
@@ -36,7 +36,7 @@ public class AirspaceInvadersGame extends GameEngine {
 
     private List<IEnemy> enemies = new ArrayList<>();
 
-    private TextObject dashboardText = new TextObject("Tekst", 20);
+    private TextObject dashboardText = new TextObject("Tekst");
 
 
     public static void main(String[] args) {
@@ -80,7 +80,7 @@ public class AirspaceInvadersGame extends GameEngine {
         }
 
         // Add dashboard
-        Dashboard dashboard = new Dashboard(5, 300, 500, 1000);
+        Dashboard dashboard = new Dashboard(0, 0, 500, 1000);
         dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
 
