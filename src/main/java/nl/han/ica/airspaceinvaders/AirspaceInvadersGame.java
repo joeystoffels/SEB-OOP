@@ -4,22 +4,17 @@ import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
 import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
-import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.config.GameProperties;
 import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
 import nl.han.ica.airspaceinvaders.level.Level;
-import nl.han.ica.airspaceinvaders.level.LevelMap;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
 import nl.han.ica.airspaceinvaders.objects.TextObject;
 import nl.han.ica.airspaceinvaders.objects.enemies.Air;
 import nl.han.ica.airspaceinvaders.objects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.objects.player.Player;
-import nl.han.ica.waterworld.tiles.BoardsTile;
 import processing.core.PApplet;
 
 import java.util.ArrayList;
@@ -36,10 +31,8 @@ public class AirspaceInvadersGame extends GameEngine {
 
     private Player player;
     private List<IEnemy> enemies = new ArrayList<>();
+
     private TextObject dashboardText = new TextObject("Health: ");
-
-    private TextObject dashboardText;
-
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.airspaceinvaders.AirspaceInvadersGame"});
@@ -81,10 +74,6 @@ public class AirspaceInvadersGame extends GameEngine {
 
         Level test = new Level();
         tileMap = test.loadLevel("level1.csv");
-
-        int tileSize = gameProperties.getValue("tileSize", true);
-
-        tileMap = new TileMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
     }
 
     /**
@@ -108,4 +97,13 @@ public class AirspaceInvadersGame extends GameEngine {
         dashboard.addGameObject(dashboardText);
         addDashboard(dashboard);
     }
+
+    public TextObject getDashboardText() {
+        return dashboardText;
+    }
+
+    public void setDashboardText(TextObject dashboardText) {
+        this.dashboardText = dashboardText;
+    }
+
 }
