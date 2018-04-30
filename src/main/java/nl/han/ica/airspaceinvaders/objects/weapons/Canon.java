@@ -40,7 +40,8 @@ public class Canon extends Weapon {
 
     //@Override
     public void shoot() {
-        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), enemy.getCenterXPos(), enemy.getCenterYPos());
+        // TODO remove offset from this line
+        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), enemy.getCenterXPos() - 10, enemy.getCenterYPos() + 50);
     }
 
     /**

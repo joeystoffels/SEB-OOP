@@ -32,10 +32,11 @@ public class AirspaceInvadersGame extends GameEngine {
      * This logger is used to output information to a console or file.
      */
     private Logger logger = LogFactory.getLogger();
+    private GameProperties gameProperties = new GameProperties();
 
     private Player player;
-
     private List<IEnemy> enemies = new ArrayList<>();
+    private TextObject dashboardText = new TextObject("Health: ");
 
     private TextObject dashboardText;
 
@@ -59,10 +60,11 @@ public class AirspaceInvadersGame extends GameEngine {
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
-        
+
         this.player = new Player(this);
         addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 2000);
 
+        // Add enemies
         enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 8)));
 
         for (IEnemy enemy : enemies) {
@@ -80,7 +82,9 @@ public class AirspaceInvadersGame extends GameEngine {
         Level test = new Level();
         tileMap = test.loadLevel("level1.csv");
 
+        int tileSize = gameProperties.getValue("tileSize", true);
 
+        tileMap = new TileMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
     }
 
     /**
