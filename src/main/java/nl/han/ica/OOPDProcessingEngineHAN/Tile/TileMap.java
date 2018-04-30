@@ -119,8 +119,12 @@ public class TileMap {
      * Gets the TileMap.
      * @return The two dimensional int array which contains the indexes of the tileTypes.
      */
-    public int[][] getTileMap() {
-        return indexMap;
+    public int[][] indexMap() {
+        return this.indexMap;
+    }
+
+    public Tile[][] getTileMap(){
+        return this.tileMap;
     }
 
     /**

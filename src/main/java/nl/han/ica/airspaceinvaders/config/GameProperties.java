@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders;
+package nl.han.ica.airspaceinvaders.config;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
@@ -14,38 +14,23 @@ public class GameProperties {
 
     /**
      * This logger is used to output information to a console or file.
+     * //
      */
-    private Logger logger = LogFactory.getLogger();
+//    private Logger logger = LogFactory.getLogger();
 
-    private Properties properties;
+    private static Properties properties = new Properties();
 
-    private static GameProperties instance = null;
-
-
-    /**
-     * @throws IOException
-     */
-    public GameProperties() {
-        this.properties = new Properties();
-    }
-
-    public static GameProperties getInstance() {
-        if (instance == null) {
-            instance = new GameProperties();
-        }
-        return instance;
-    }
-
-    public void loadProperties(String fileName) {
+    static {
         int keyWidth = 20;
+        Logger logger = LogFactory.getLogger();
         ClassLoader loader = Thread.currentThread().getContextClassLoader();
 
-        try (InputStream resourceStream = loader.getResourceAsStream(fileName)) {
+        try (InputStream resourceStream = loader.getResourceAsStream("properties/game.properties")) {
             properties.load(resourceStream);
 
-            if (Boolean.valueOf(this.getValue("debug"))) {
+            if (Boolean.valueOf(GameProperties.getValue("debug"))) {
 
-                this.logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
+                logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
                 // Display all the values in the form of key value
                 for (String key : properties.stringPropertyNames()) {
 
@@ -60,28 +45,24 @@ public class GameProperties {
                     message.append(": ");
                     message.append(properties.getProperty(key));
 
-                    this.logger.logln(DefaultLogger.LOG_DEBUG, message.toString());
+                    logger.logln(DefaultLogger.LOG_DEBUG, message.toString());
                 }
-                this.logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
+                logger.logln(DefaultLogger.LOG_DEBUG, "**********************************************");
             }
         } catch (IOException e) {
-            this.logger.logln(DefaultLogger.LOG_FAILURE, "Properties file could't be loaded");
+            logger.logln(DefaultLogger.LOG_FAILURE, "Properties file could't be loaded");
         }
+
     }
 
-    /**
-     * Get a specific value from the properties file
-     *
-     * @param key
-     * @return String
-     */
-    public String getValue(String key) {
+
+    public static String getValue(String key) {
         return properties.getProperty(key);
     }
 
-    public Integer getValue(String key, Boolean isInteger) {
+    public static Integer getValue(String key, Boolean isInteger) {
         if (!isInteger) {
-            this.getValue(key);
+            GameProperties.getValue(key);
         }
         return parseInt(properties.getProperty(key));
     }
