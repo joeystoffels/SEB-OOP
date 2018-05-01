@@ -13,7 +13,7 @@ public class LevelMap extends TileMap {
 
     private int travelHeight = 0;
     private int travelWidth = 0;
-    private int scrollSpeed = 6 ;
+    private int scrollSpeed = 10 ;
 
     private int visibleTiles;
     private int visibleTilesOffset;

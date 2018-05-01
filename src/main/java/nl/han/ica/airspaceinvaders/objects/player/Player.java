@@ -17,10 +17,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
     private int health = 250;
+    private final float horizontalRecovery = 0.5f;
+    private final float verticalRecovery = 1.0f;
 
     public Player(AirspaceInvadersGame game) {
 
-        super(AssetLoader.getSprite("player/A10.png", 20), 1);
+        super(AssetLoader.getSprite("player/A10.png", 30), 6);
         this.world = game;
         world.getDashboardText().setText("Health: " + this.getHealth());
         setCurrentFrameIndex(0);
@@ -49,6 +51,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setySpeed(0);
             setY(world.getHeight() - super.getWidth());
         }
+
+
+        if (getySpeed() < this.verticalRecovery && getySpeed() > (this.verticalRecovery * -1)) {
+            if (getxSpeed() < this.horizontalRecovery && getxSpeed() > (this.horizontalRecovery * -1)) {
+                setCurrentFrameIndex(1);
+            }
+        }
     }
 
     /**
@@ -59,15 +68,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public void keyPressed(int keyCode, char key) {
         final int speed = 10;
         if (keyCode == PConstants.LEFT) {
+            setCurrentFrameIndex(5);
             setDirectionSpeed(270, speed);
         }
         if (keyCode == PConstants.UP) {
+            setCurrentFrameIndex(2);
             setDirectionSpeed(0, speed);
         }
         if (keyCode == PConstants.RIGHT) {
+            setCurrentFrameIndex(4);
             setDirectionSpeed(90, speed);
         }
         if (keyCode == PConstants.DOWN) {
+            setCurrentFrameIndex(3);
             setDirectionSpeed(180, speed);
         }
     }
