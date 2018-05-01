@@ -35,7 +35,7 @@ public class Level {
 
         for (int index = 0; index < listOfFiles.length; index++) {
             if (listOfFiles[index].isFile()) {
-                logger.logln(DefaultLogger.LOG_DEBUG, "File " + listOfFiles[index].getName());
+                logger.logln(DefaultLogger.LOG_DEBUG, "File " + index + ": " + listOfFiles[index].getName());
 
                 StringBuilder url2 = new StringBuilder();
                 url2.append("terrain/60/");
@@ -51,8 +51,8 @@ public class Level {
         }
     }
 
-    public TileMap loadLevel(String fileName){
-      return new LevelMap(GameProperties.getValue("tileSize", true), this.tileTypes, AssetLoader.getLevel(fileName));
+    public TileMap loadLevel(String fileName) {
+        return new LevelMap(GameProperties.getValue("tileSize", true), this.tileTypes, AssetLoader.getLevel(fileName));
     }
 
 }
