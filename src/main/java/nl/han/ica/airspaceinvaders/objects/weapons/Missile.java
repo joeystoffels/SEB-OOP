@@ -1,6 +1,7 @@
 package nl.han.ica.airspaceinvaders.objects.weapons;
 
 import nl.han.ica.airspaceinvaders.enums.MissileType;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import processing.core.PGraphics;
 
 public class Missile extends Weapon {
@@ -32,5 +33,10 @@ public class Missile extends Weapon {
 
     public MissileType getMissileType() {
         return missileType;
+    }
+
+    @Override
+    public IFlyingObject getIFlyingObject() {
+        return null;
     }
 }

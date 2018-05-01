@@ -2,8 +2,8 @@ package nl.han.ica.airspaceinvaders.objects.weapons;
 
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
-import nl.han.ica.airspaceinvaders.objects.enemies.Air;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.objects.player.Player;
 import processing.core.PGraphics;
 
 import java.util.Timer;
@@ -13,22 +13,22 @@ public class Canon extends Weapon {
 
     Timer timer = new Timer();
     private AirspaceInvadersGame world;
-    private IEnemy enemy;
+    private IFlyingObject iFlyingObject;
 
     /**
      *
      */
-    public Canon(IEnemy enemy) {
+    public Canon(IFlyingObject iFlyingObject) {
         super.setDamage(15);
         super.setIntervalTime(1);
-        this.enemy = enemy;
-        this.world = enemy.getWorld();
+        this.iFlyingObject = iFlyingObject;
+        this.world = iFlyingObject.getWorld();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
                 shoot();
             }
-        }, 1000, 400);
+        }, 1000, this.getIFlyingObject() instanceof Player ? 200 : 800);
     }
 
     /**
@@ -40,8 +40,7 @@ public class Canon extends Weapon {
 
     //@Override
     public void shoot() {
-        // TODO remove offset from this line
-        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), enemy.getCenterXPos() - 10, enemy.getCenterYPos() + 50);
+        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), iFlyingObject.getCenterXPos(), iFlyingObject.getCenterYPos(), iFlyingObject.getObjectDirection());
     }
 
     /**
@@ -50,5 +49,10 @@ public class Canon extends Weapon {
     @Override
     public void draw(PGraphics g) {
 
+    }
+
+    @Override
+    public IFlyingObject getIFlyingObject() {
+        return iFlyingObject;
     }
 }

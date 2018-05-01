@@ -3,17 +3,16 @@ package nl.han.ica.airspaceinvaders.objects.enemies;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
-import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
-import processing.core.PGraphics;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Air extends SpriteObject implements IEnemy {
+public class Air extends SpriteObject implements IFlyingObject {
 
     private int health;
     private int shield;
@@ -85,5 +84,10 @@ public class Air extends SpriteObject implements IEnemy {
     @Override
     public float getCenterYPos() {
         return this.getCenterY();
+    }
+
+    @Override
+    public float getObjectDirection() {
+        return 0;
     }
 }

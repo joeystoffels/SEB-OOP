@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.config.GameProperties;
-import nl.han.ica.airspaceinvaders.interfaces.IEnemy;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.level.Level;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
@@ -30,7 +30,7 @@ public class AirspaceInvadersGame extends GameEngine {
     private GameProperties gameProperties = new GameProperties();
 
     private Player player;
-    private List<IEnemy> enemies = new ArrayList<>();
+    private List<IFlyingObject> enemies = new ArrayList<>();
 
     private TextObject dashboardText = new TextObject("Health: ");
 
@@ -60,7 +60,7 @@ public class AirspaceInvadersGame extends GameEngine {
         // Add enemies
         enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 15)));
 
-        for (IEnemy enemy : enemies) {
+        for (IFlyingObject enemy : enemies) {
             if (enemy instanceof Air) {
                 addGameObject((Air) enemy, worldWidth / 3, 200);
             }

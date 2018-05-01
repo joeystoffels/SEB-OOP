@@ -8,11 +8,14 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.dashboard.TextObject;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
+import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
 import processing.core.PConstants;
 
 import java.util.List;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects {
+public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IFlyingObject {
 
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
@@ -20,11 +23,16 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final float horizontalRecovery = 0.5f;
     private final float verticalRecovery = 1.0f;
 
+    private Weapon canon;
+    private Weapon missile;
+
+
     public Player(AirspaceInvadersGame game) {
 
-        super(AssetLoader.getSprite("player/A10.png", 30), 6);
+        super(AssetLoader.getSprite("player/A10.png", 20), 6);
         this.world = game;
         world.getDashboardText().setText("Health: " + this.getHealth());
+        this.canon = new Canon(this);
         setCurrentFrameIndex(0);
         setFriction(0.02f);
     }
@@ -66,7 +74,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      */
     @Override
     public void keyPressed(int keyCode, char key) {
-        final int speed = 10;
+        final int speed = 6;
         if (keyCode == PConstants.LEFT) {
             setCurrentFrameIndex(5);
             setDirectionSpeed(270, speed);
@@ -83,6 +91,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setCurrentFrameIndex(3);
             setDirectionSpeed(180, speed);
         }
+        if (keyCode == PConstants.CONTROL) {
+
+        }
     }
 
     /**
@@ -97,6 +108,31 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         if (getHealth() <= 0) {
             System.out.println("ENDGAME");
         }
+    }
+
+    @Override
+    public void movement(boolean isDirectionLeft) {
+
+    }
+
+    @Override
+    public float getCenterXPos() {
+        return this.getCenterX();
+    }
+
+    @Override
+    public float getCenterYPos() {
+        return this.getCenterY();
+    }
+
+    @Override
+    public float getObjectDirection() {
+        return this.getDirection();
+    }
+
+    @Override
+    public AirspaceInvadersGame getWorld() {
+        return this.world;
     }
 
     public int getHealth() {

@@ -1,5 +1,6 @@
 package nl.han.ica.airspaceinvaders.objects.weapons;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 
 public abstract class Weapon extends GameObject {
 
@@ -21,4 +22,6 @@ public abstract class Weapon extends GameObject {
     public void setDamage(int damage) {
         this.damage = damage;
     }
+
+    public abstract IFlyingObject getIFlyingObject();
 }
