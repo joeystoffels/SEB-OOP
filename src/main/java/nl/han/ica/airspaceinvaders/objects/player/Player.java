@@ -19,7 +19,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     final int size=25;
 
     public Player(AirspaceInvadersGame game) {
-        super(AssetLoader.getSprite("player/A10.png", 8),1);
+        super(AssetLoader.getSprite("player/A10.png", 15),1);
         this.world=game;
         world.getDashboardText().setText("Health: " + this.getHealth());
         setCurrentFrameIndex(0);

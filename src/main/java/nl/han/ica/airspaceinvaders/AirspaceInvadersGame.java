@@ -55,10 +55,10 @@ public class AirspaceInvadersGame extends GameEngine {
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
         this.player = new Player(this);
-        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 2000);
+        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
 
         // Add enemies
-        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 8)));
+        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 15)));
 
         for (IEnemy enemy : enemies) {
             if (enemy instanceof Air) {
@@ -70,7 +70,7 @@ public class AirspaceInvadersGame extends GameEngine {
         }
         createDashboard(worldWidth, 100);
 
-        createView(worldWidth, worldHeight, 800, 800, 1.0f);
+        createView(worldWidth, worldHeight, worldWidth, worldHeight, 1.0f);
 
         Level test = new Level();
         tileMap = test.loadLevel("level1.csv");

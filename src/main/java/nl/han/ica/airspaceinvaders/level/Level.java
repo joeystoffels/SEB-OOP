@@ -52,32 +52,7 @@ public class Level {
     }
 
     public TileMap loadLevel(String fileName){
-//        this.logger.logln(DefaultLogger.LOG_DEBUG, GameProperties.getValue("tileSize", true).toString());
       return new LevelMap(GameProperties.getValue("tileSize", true), this.tileTypes, AssetLoader.getLevel(fileName));
-//        return new TileMap(GameProperties.getValue("tileSize", true), this.tileTypes, AssetLoader.getLevel(fileName));
     }
-
-    //
-//
-//    Sprite[] sprites = new Sprite[spriteNames.length];
-//    TileType[] tileTypes = new TileType[spriteNames.length];
-//
-//        for (int index = 0; index < spriteNames.length; index++) {
-//
-//        // Build url to image
-//        StringBuilder url = new StringBuilder();
-//        url.append("terrain/60/");
-//        url.append(spriteNames[index]);
-//        url.append(".jpg");
-//
-//        // Add the sprite
-//        sprites[index] = AssetLoader.getSprite(url.toString());
-//        tileTypes[index] = new TileType<>(BoardsTile.class, sprites[index]);
-//    }
-//
-//    int tileSize = gameProperties.getValue("tileSize", true);
-//
-////        tileMap = new TileMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
-//    tileMap = new LevelMap(tileSize, tileTypes, AssetLoader.getLevel("level1.csv"));
 
 }
