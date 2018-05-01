@@ -3,12 +3,13 @@ package nl.han.ica.airspaceinvaders.objects.player;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.dashboard.TextObject;
 import processing.core.PConstants;
+
 import java.util.List;
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects {
@@ -16,14 +17,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
     private int health = 250;
-    final int size=25;
 
     public Player(AirspaceInvadersGame game) {
-        super(AssetLoader.getSprite("player/A10.png", 15),1);
-        this.world=game;
+
+        super(AssetLoader.getSprite("player/A10.png", 20), 1);
+        this.world = game;
         world.getDashboardText().setText("Health: " + this.getHealth());
         setCurrentFrameIndex(0);
-        setFriction(0.05f);
+        setFriction(0.02f);
     }
 
     /**
@@ -32,22 +33,21 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     @Override
     public void update() {
 
-        setySpeed(0);
-        if (getX()<=0) {
+        if (getX() <= 0) {
             setxSpeed(0);
             setX(0);
         }
-        if (getY()<=0) {
+        if (getY() <= 0) {
             setySpeed(0);
             setY(0);
         }
-        if (getX()>=world.getWidth()-size) {
+        if (getX() >= world.getWidth() - super.getWidth()) {
             setxSpeed(0);
-            setX(world.getWidth() - size);
+            setX(world.getWidth() - super.getWidth());
         }
-        if (getY()>=world.getHeight()-size) {
+        if (getY() >= world.getHeight() - super.getWidth()) {
             setySpeed(0);
-            setY(world.getHeight() - size);
+            setY(world.getHeight() - super.getWidth());
         }
     }
 
