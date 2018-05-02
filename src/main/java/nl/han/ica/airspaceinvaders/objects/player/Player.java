@@ -10,6 +10,7 @@ import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.dashboard.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
+import nl.han.ica.airspaceinvaders.objects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
 import processing.core.PConstants;
 
@@ -101,13 +102,21 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        setHealth(getHealth() - 50);
-        TextObject textObject = new TextObject("test" + getHealth());
-        world.getDashboardText().setText("Health:" + getHealth());
-        System.out.println(world.getDashboardText().toString());
-        if (getHealth() <= 0) {
-            System.out.println("ENDGAME");
+
+        for (GameObject gameObject : collidedGameObjects) {
+            if (gameObject instanceof Projectile) {
+                setHealth(getHealth() - ((Projectile) gameObject).getDamage());
+                updateDashboard();
+                if (getHealth() <= 0) {
+                    System.out.println("ENDGAME");
+                }
+                break; // break out of for loop so it only passes once when collided with multiple projectiles at once
+            }
         }
+    }
+
+    public void updateDashboard() {
+        world.getDashboardText().setText("Health:" + getHealth());
     }
 
     @Override

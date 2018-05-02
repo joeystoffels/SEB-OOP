@@ -30,9 +30,12 @@ public class AirspaceInvadersGame extends GameEngine {
     private GameProperties gameProperties = new GameProperties();
 
     private Player player;
-    private List<IFlyingObject> enemies = new ArrayList<>();
+    public List<IFlyingObject> enemies = new ArrayList<>();
 
     private TextObject dashboardText = new TextObject("Health: ");
+
+    protected int worldWidth;
+    protected int worldHeight;
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.airspaceinvaders.AirspaceInvadersGame"});
@@ -40,15 +43,16 @@ public class AirspaceInvadersGame extends GameEngine {
 
     @Override
     public void update() {
-        // TODO: Needs implementation
+        if (this.enemies.isEmpty()) {
+            generateEnemies();
+        }
     }
 
     @Override
     public void setupGame() {
 
-
-        int worldWidth = GameProperties.getValue("worldWidth", true);
-        int worldHeight = GameProperties.getValue("worldHeight", true);
+        this.worldWidth = GameProperties.getValue("worldWidth", true);
+        this.worldHeight = GameProperties.getValue("worldHeight", true);
 
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
@@ -57,23 +61,23 @@ public class AirspaceInvadersGame extends GameEngine {
         this.player = new Player(this);
         addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
 
-        // Add enemies
-        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 15)));
+        // Add enemies // TODO move to generateEnemies() ?
+//        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 15)));
+//
+//        for (IFlyingObject enemy : enemies) {
+//            if (enemy instanceof Air) {
+//                addGameObject((Air) enemy, worldWidth / 3, 200);
+//            }
+//            if (enemy instanceof Ground) {
+//                addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
+//            }
+//        }
 
-        for (IFlyingObject enemy : enemies) {
-            if (enemy instanceof Air) {
-                addGameObject((Air) enemy, worldWidth / 3, 200);
-            }
-            if (enemy instanceof Ground) {
-                addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
-            }
-        }
         createDashboard(worldWidth, 100);
-
         createView(worldWidth, worldHeight, worldWidth, worldHeight, 1.0f);
 
-        Level test = new Level();
-        tileMap = test.loadLevel("level1.csv");
+        // Level test = new Level();
+        // tileMap = test.loadLevel("level1.csv");
     }
 
     /**
@@ -106,4 +110,14 @@ public class AirspaceInvadersGame extends GameEngine {
         this.dashboardText = dashboardText;
     }
 
+    public void generateEnemies() {
+        int nrEnemies = (int)Math.ceil(Math.random() * 3);
+        float xPos = ((float)((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
+
+        for (int x = 0 ; x < nrEnemies ; x++) {
+            Air enemy = new Air(this, AssetLoader.getSprite("enemy/A10.png", 15));
+            enemies.add(enemy);
+            addGameObject((Air) enemy, (float)(xPos + (x * enemy.getWidth())), 200);
+        }
+    }
 }

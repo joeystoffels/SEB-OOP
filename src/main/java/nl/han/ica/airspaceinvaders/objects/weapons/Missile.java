@@ -39,4 +39,14 @@ public class Missile extends Weapon {
     public IFlyingObject getIFlyingObject() {
         return null;
     }
+
+    @Override
+    public void stopTimer() {
+
+    }
+
+    @Override
+    public void destroy() {
+
+    }
 }

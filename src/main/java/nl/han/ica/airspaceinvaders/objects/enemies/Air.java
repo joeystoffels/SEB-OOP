@@ -6,6 +6,7 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
+import nl.han.ica.airspaceinvaders.objects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
 
 import java.util.List;
@@ -25,6 +26,8 @@ public class Air extends SpriteObject implements IFlyingObject {
     public Air(AirspaceInvadersGame game, Sprite sprite) {
         super(sprite);
         this.world = game;
+        this.health = 250;
+        this.shield = 0;
         this.weapon = new Canon(this);
         timer.schedule(new TimerTask() {
             @Override
@@ -39,12 +42,24 @@ public class Air extends SpriteObject implements IFlyingObject {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        //world.deleteGameObject(this);
+
+        for (GameObject gameObject : collidedGameObjects) {
+            if (gameObject instanceof Projectile) {
+                this.health = health - ((Projectile) gameObject).getDamage();
+                break; // break out of for loop so it only passes once when collided with multiple projectiles at once
+            }
+        }
+
+        if (this.health <= 0) {
+            this.weapon.destroy();
+            world.deleteGameObject(this);
+            world.enemies.remove(this);
+        }
     }
 
     @Override
     public void update() {
-        //movement();
+        // TODO ??
     }
 
     @Override

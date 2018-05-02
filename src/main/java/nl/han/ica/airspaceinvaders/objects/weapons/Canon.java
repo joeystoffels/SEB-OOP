@@ -55,4 +55,14 @@ public class Canon extends Weapon {
     public IFlyingObject getIFlyingObject() {
         return iFlyingObject;
     }
+
+    public void stopTimer() {
+        this.timer.cancel();
+    }
+
+    @Override
+    public void destroy() {
+        stopTimer();
+        world.deleteGameObject(this);
+    }
 }

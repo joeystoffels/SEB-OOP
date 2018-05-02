@@ -24,4 +24,8 @@ public abstract class Weapon extends GameObject {
     }
 
     public abstract IFlyingObject getIFlyingObject();
+
+    public abstract void stopTimer();
+
+    public abstract void destroy();
 }
