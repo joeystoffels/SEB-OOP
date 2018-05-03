@@ -7,11 +7,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.dashboard.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
-import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.objects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
+import nl.han.ica.airspaceinvaders.state.GameView;
 import processing.core.PConstants;
 
 import java.util.List;
@@ -28,14 +27,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private Weapon missile;
 
 
-    public Player(AirspaceInvadersGame game) {
+    public Player(GameView game) {
 
         super(AssetLoader.getSprite("player/A10.png", 20), 6);
-        this.world = game;
-        world.getDashboardText().setText("Health: " + this.getHealth());
-        this.canon = new Canon(this);
-        setCurrentFrameIndex(0);
-        setFriction(0.02f);
+        this.world = AirspaceInvadersGame.getInstance();
+//        world.getDashboardText().setText("Health: " + this.getHealth());
+//        this.canon = new Canon(this);
+//        setCurrentFrameIndex(0);
+//        setFriction(0.02f);
     }
 
     /**
@@ -116,7 +115,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     }
 
     public void updateDashboard() {
-        world.getDashboardText().setText("Health:" + getHealth());
+//        world.getDashboardText().setText("Health:" + getHealth());
     }
 
     @Override
@@ -137,11 +136,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     @Override
     public float getObjectDirection() {
         return this.getDirection();
-    }
-
-    @Override
-    public AirspaceInvadersGame getWorld() {
-        return this.world;
     }
 
     public int getHealth() {

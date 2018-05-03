@@ -62,11 +62,6 @@ public class Ground extends SpriteObject implements IFlyingObject {
     }
 
     @Override
-    public AirspaceInvadersGame getWorld() {
-        return null;
-    }
-
-    @Override
     public float getObjectDirection() {
         return 0;
     }

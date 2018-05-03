@@ -8,6 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.objects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
+import nl.han.ica.airspaceinvaders.state.GameView;
 
 import java.util.List;
 import java.util.Timer;
@@ -19,13 +20,15 @@ public class Air extends SpriteObject implements IFlyingObject {
     private int shield;
 
     private Weapon weapon;
-    private AirspaceInvadersGame world;
+    private GameView gameState;
+    private AirspaceInvadersGame airspaceInvadersGame;
     private boolean isDirectionLeft;
     Timer timer = new Timer();
 
-    public Air(AirspaceInvadersGame game, Sprite sprite) {
+    public Air(GameView game, Sprite sprite) {
         super(sprite);
-        this.world = game;
+        this.gameState = game;
+        this.airspaceInvadersGame = AirspaceInvadersGame.getInstance();
         this.health = 250;
         this.shield = 0;
         this.weapon = new Canon(this);
@@ -52,8 +55,8 @@ public class Air extends SpriteObject implements IFlyingObject {
 
         if (this.health <= 0) {
             this.weapon.destroy();
-            world.deleteGameObject(this);
-            world.enemies.remove(this);
+            this.airspaceInvadersGame.deleteGameObject(this);
+            this.gameState.enemies.remove(this);
         }
     }
 
@@ -86,10 +89,10 @@ public class Air extends SpriteObject implements IFlyingObject {
         this.shield = shield;
     }
 
-    @Override
-    public AirspaceInvadersGame getWorld() {
-        return world;
-    }
+//    @Override
+//    public AirspaceInvadersGame getWorld() {
+//        return world;
+//    }
 
     @Override
     public float getCenterXPos() {

@@ -22,7 +22,7 @@ public class Canon extends Weapon {
         super.setDamage(15);
         super.setIntervalTime(1);
         this.iFlyingObject = iFlyingObject;
-        this.world = iFlyingObject.getWorld();
+        this.world = AirspaceInvadersGame.getInstance();
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
