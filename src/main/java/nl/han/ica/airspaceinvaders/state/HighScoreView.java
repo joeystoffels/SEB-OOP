@@ -6,11 +6,13 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.highscores.Score;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
+import nl.han.ica.airspaceinvaders.objects.TextObject;
 import nl.han.ica.airspaceinvaders.objects.buttons.ButtonChangeView;
 
 public class HighScoreView extends View implements IState {
 
     private AirspaceInvadersGame game;
+    private final int margin = 100;
 
     private String[] highscoreList;
 
@@ -27,11 +29,20 @@ public class HighScoreView extends View implements IState {
         HighScores list = new HighScores("highscores.csv");
         Score[] highScoresList = list.loadScores();
 
-        list.saveScore("Nick", 10);
-        list.saveScore("Nick", 20);
-        list.saveScore("Nick", 30);
+        int verticalStep = (this.game.getWorldHeight() - (2 * margin)) / highScoresList.length;
+        int horizontalWidth = this.game.getWorldWidth() / 100 * 40;
 
+        for( int index = 0; index < highScoresList.length; index++){
+            if(index < HighScores.amountOfHighScores ) {
+                TextObject name = new TextObject(highScoresList[index].getName());
+                this.game.addGameObject(name, horizontalWidth, index * verticalStep + this.margin, 1);
 
+                TextObject score = new TextObject(Integer.toString(highScoresList[index].getScore()));
+                this.game.addGameObject(score, horizontalWidth + 200, index * verticalStep + this.margin, 1);
+            }
+        }
+
+//        list.saveScore("Nick", 10);
     }
 
     @Override

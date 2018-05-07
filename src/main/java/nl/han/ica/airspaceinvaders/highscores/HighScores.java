@@ -6,7 +6,7 @@ public class HighScores extends FilePersistence {
 
     private static final String STRING_SEPERATOR = ";";
     private static final String SCORE_SEPERATOR = "/";
-    private static int amountOfHighScores = 10;
+    public static int amountOfHighScores = 10;
 
     /**
      * The constructor allows you to specify the filename the internal storage
