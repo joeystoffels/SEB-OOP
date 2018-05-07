@@ -3,6 +3,7 @@ package nl.han.ica.airspaceinvaders.state;
 import nl.han.ica.OOPDProcessingEngineHAN.Persistence.FilePersistence;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.highscores.Score;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
@@ -23,6 +24,8 @@ public class HighScoreView extends View implements IState {
 
     @Override
     public void start() {
+        this.setBackground(this.game.loadImage(AssetLoader.getImage("background/a10-fade.jpg")));
+
         ButtonChangeView buttonStart = new ButtonChangeView(new MenuView(this.game), this.game,"Back", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
 

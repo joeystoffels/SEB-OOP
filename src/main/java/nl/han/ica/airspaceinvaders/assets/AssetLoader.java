@@ -1,6 +1,8 @@
 package nl.han.ica.airspaceinvaders.assets;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import processing.core.PFont;
+import processing.core.PImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -15,6 +17,10 @@ public class AssetLoader {
 
     public static String getImage(String name) {
         return Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString();
+    }
+
+    public static String getFont(String name) {
+        return Thread.currentThread().getContextClassLoader().getResource("font/" + name).toString();
     }
 
     public static Sprite getSprite(String name) {

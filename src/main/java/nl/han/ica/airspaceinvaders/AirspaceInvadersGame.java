@@ -15,6 +15,7 @@ public class AirspaceInvadersGame extends GameEngine {
 
     private int worldWidth;
     private int worldHeight;
+    private Boolean startUp = true;
 
     private AirspaceInvadersStateMachine stateMachine;
     private Logger logger = LogFactory.getLogger();
@@ -65,6 +66,14 @@ public class AirspaceInvadersGame extends GameEngine {
 
     public void setWorldHeight(int worldHeight) {
         this.worldHeight = worldHeight;
+    }
+
+    public Boolean getStartUp() {
+        return startUp;
+    }
+
+    public void setStartUp(Boolean startUp) {
+        this.startUp = startUp;
     }
 
 }

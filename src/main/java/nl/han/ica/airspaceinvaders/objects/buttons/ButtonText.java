@@ -4,11 +4,14 @@ package nl.han.ica.airspaceinvaders.objects.buttons;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IMouseInput;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import processing.core.PFont;
 import processing.core.PGraphics;
 
 public class ButtonText extends TextObject implements IMouseInput {
 
     protected AirspaceInvadersGame game;
+    private PFont font;
 
     /**
      * Create a new TextObject.
@@ -21,6 +24,7 @@ public class ButtonText extends TextObject implements IMouseInput {
         this.setWidth(width);
         this.setHeight(height);
         this.game = game;
+        this.font = this.game.createFont(AssetLoader.getFont("sprayme.ttf"), 30, true);
     }
 
 
@@ -34,6 +38,8 @@ public class ButtonText extends TextObject implements IMouseInput {
 
     @Override
     public void draw(PGraphics g) {
+        g.textFont(this.font);
+        g.fill(0);
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(getFontSize());
         g.text(getText(),getX(),getY());
