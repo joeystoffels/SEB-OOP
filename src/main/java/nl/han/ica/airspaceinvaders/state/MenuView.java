@@ -2,6 +2,7 @@ package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.interfaces.IState;
 import nl.han.ica.airspaceinvaders.objects.buttons.ButtonChangeView;
 
 public class MenuView extends View implements IState {

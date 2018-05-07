@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.state;
+package nl.han.ica.airspaceinvaders.interfaces;
 
 public interface IState {
 

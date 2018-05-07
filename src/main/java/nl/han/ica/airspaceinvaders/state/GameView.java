@@ -5,6 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IState;
 import nl.han.ica.airspaceinvaders.level.Level;
 import nl.han.ica.airspaceinvaders.objects.TextObject;
 import nl.han.ica.airspaceinvaders.objects.enemies.Air;
