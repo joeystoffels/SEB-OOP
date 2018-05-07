@@ -5,6 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.level.Level;
 import nl.han.ica.airspaceinvaders.objects.TextObject;
 import nl.han.ica.airspaceinvaders.objects.enemies.Air;
 import nl.han.ica.airspaceinvaders.objects.player.Player;
@@ -17,13 +18,17 @@ public class GameView extends View implements IState {
     private TextObject dashboardText = new TextObject("Health: ");
     private Player player;
     public List<IFlyingObject> enemies = new ArrayList<>();
+    private AirspaceInvadersGame game;
+
 
     public GameView(int worldWidth, int worldHeight) {
         super(worldWidth, worldHeight);
+        this.game = AirspaceInvadersGame.getInstance();
     }
 
     @Override
     public void update() {
+        System.out.println("Game view update");
 //        if (this.enemies.isEmpty()) {
 //            generateEnemies();
 //        }
@@ -32,8 +37,9 @@ public class GameView extends View implements IState {
 
     @Override
     public void start() {
-//        this.player = new Player(this);
-//        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
+        System.out.println("Game view start");
+        this.player = new Player();
+        game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
 //
 //        createDashboard(worldWidth, 100);
 
@@ -49,8 +55,8 @@ public class GameView extends View implements IState {
 //            }
 //        }
 
-        // Level test = new Level();
-        // tileMap = test.loadLevel("level1.csv");
+         Level test = new Level();
+         game.setTileMap(test.loadLevel("level1.csv"));
 
     }
 

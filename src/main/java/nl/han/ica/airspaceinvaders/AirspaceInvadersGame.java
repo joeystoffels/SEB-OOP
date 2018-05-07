@@ -5,9 +5,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.config.GameProperties;
-import nl.han.ica.airspaceinvaders.level.Level;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
+import nl.han.ica.airspaceinvaders.objects.player.Player;
 import nl.han.ica.airspaceinvaders.state.*;
 import processing.core.PApplet;
 
@@ -39,22 +39,32 @@ public class AirspaceInvadersGame extends GameEngine {
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
-        View view = new View(worldWidth, worldHeight);
-        setView(view);
-        size(worldWidth, worldHeight);
+//        View view = new View(worldWidth, worldHeight);
+//        setView(view);
 
 
 //         Level test = new Level();
 //         tileMap = test.loadLevel("level1.csv");
 
-         this.stateMachine = new AirspaceInvadersStateMachine(this.worldWidth, this.worldHeight);
+        this.stateMachine = new AirspaceInvadersStateMachine(this.worldWidth, this.worldHeight);
+        size(worldWidth, worldHeight);
 
-        this.stateMachine.setView(new HighScoreView(worldWidth, worldHeight));
+        this.changeView(new GameView(this.worldWidth, this.worldHeight));
+//        Player player = new Player();
+//        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
+//
 
     }
 
     @Override
     public void update() {
+        Player player = new Player();
+        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
+//
         this.stateMachine.getState().update();
+    }
+
+    public void changeView(View view){
+        this.stateMachine.changeView(view);
     }
 }

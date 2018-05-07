@@ -27,7 +27,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private Weapon missile;
 
 
-    public Player(GameView game) {
+    public Player() {
 
         super(AssetLoader.getSprite("player/A10.png", 20), 6);
         this.world = AirspaceInvadersGame.getInstance();
