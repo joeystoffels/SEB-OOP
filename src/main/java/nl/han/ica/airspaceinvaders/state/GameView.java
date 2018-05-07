@@ -16,14 +16,13 @@ import java.util.List;
 
 public class GameView extends View implements IState {
 
+    public List<IFlyingObject> enemies = new ArrayList<>();
     private TextObject dashboardText = new TextObject("Health: ");
     private Player player;
-    public List<IFlyingObject> enemies = new ArrayList<>();
     private AirspaceInvadersGame game;
 
-
-    public GameView(AirspaceInvadersGame game, int worldWidth, int worldHeight) {
-        super(worldWidth, worldHeight);
+    public GameView(AirspaceInvadersGame game) {
+        super(game.getWorldWidth(), game.getWorldHeight());
         this.game = game;
     }
 
@@ -40,7 +39,7 @@ public class GameView extends View implements IState {
     public void start() {
         System.out.println("Game view start");
         this.player = new Player();
-        this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
+        this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 200);
 
         createDashboard(worldWidth, 100);
 
@@ -56,8 +55,8 @@ public class GameView extends View implements IState {
             }
         }
 
-         Level test = new Level();
-         game.setTileMap(test.loadLevel("level1.csv"));
+        Level test = new Level();
+        game.setTileMap(test.loadLevel("level1.csv"));
 
 
     }
@@ -67,8 +66,8 @@ public class GameView extends View implements IState {
 
     }
 
-    private void createDashboard(int dashboardWidth,int dashboardHeight) {
-        Dashboard dashboard = new Dashboard(0,0, dashboardWidth, dashboardHeight);
+    private void createDashboard(int dashboardWidth, int dashboardHeight) {
+        Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
         dashboardText = new TextObject("test");
         dashboard.addGameObject(dashboardText);
         this.game.addDashboard(dashboard);
@@ -83,13 +82,13 @@ public class GameView extends View implements IState {
     }
 
     public void generateEnemies() {
-        int nrEnemies = (int)Math.ceil(Math.random() * 3);
-        float xPos = ((float)((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
+        int nrEnemies = (int) Math.ceil(Math.random() * 3);
+        float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
-        for (int x = 0 ; x < nrEnemies ; x++) {
+        for (int x = 0; x < nrEnemies; x++) {
             Air enemy = new Air(this, AssetLoader.getSprite("enemy/A10.png", 15));
             enemies.add(enemy);
-            this.game.addGameObject((Air) enemy, (float)(xPos + (x * enemy.getWidth())), 200);
+            this.game.addGameObject((Air) enemy, (float) (xPos + (x * enemy.getWidth())), 200);
         }
     }
 }

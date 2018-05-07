@@ -3,11 +3,12 @@ package nl.han.ica.airspaceinvaders.objects.buttons;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IMouseInput;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import processing.core.PGraphics;
 
 public class ButtonText extends TextObject implements IMouseInput {
 
-
+    protected AirspaceInvadersGame game;
 
     /**
      * Create a new TextObject.
@@ -15,10 +16,11 @@ public class ButtonText extends TextObject implements IMouseInput {
      * @param text
      * @param fontSize
      */
-    public ButtonText(String text, int fontSize, int width, int height) {
+    public ButtonText(AirspaceInvadersGame game, String text, int fontSize, int width, int height) {
         super(text, fontSize);
         this.setWidth(width);
         this.setHeight(height);
+        this.game = game;
     }
 
 
@@ -26,6 +28,7 @@ public class ButtonText extends TextObject implements IMouseInput {
     public void mousePressed(int x, int y, int button) {
         if(x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
             System.out.println("  Clicked button text");
+            execute();
         }
     }
 
@@ -36,5 +39,7 @@ public class ButtonText extends TextObject implements IMouseInput {
         g.text(getText(),getX(),getY());
     }
 
+    public void execute(){
 
+    }
 }

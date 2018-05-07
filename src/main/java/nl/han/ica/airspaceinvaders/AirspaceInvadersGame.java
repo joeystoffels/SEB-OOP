@@ -13,8 +13,9 @@ import processing.core.PApplet;
 @SuppressWarnings("serial")
 public class AirspaceInvadersGame extends GameEngine {
 
-    protected int worldWidth;
-    protected int worldHeight;
+    private int worldWidth;
+    private int worldHeight;
+
     private AirspaceInvadersStateMachine stateMachine;
     private Logger logger = LogFactory.getLogger();
 
@@ -30,19 +31,15 @@ public class AirspaceInvadersGame extends GameEngine {
 
     @Override
     public void setupGame() {
-
-        this.worldWidth = GameProperties.getValue("worldWidth", true);
-        this.worldHeight = GameProperties.getValue("worldHeight", true);
+        this.setWorldWidth(GameProperties.getValue("worldWidth", true));
+        this.setWorldHeight(GameProperties.getValue("worldHeight", true));
 
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
-        this.stateMachine = new AirspaceInvadersStateMachine(this, this.worldWidth, this.worldHeight);
+        this.stateMachine = new AirspaceInvadersStateMachine(this);
         size(worldWidth, worldHeight);
-
-//        this.changeView(new GameView(this, this.worldWidth, this.worldHeight));
-
     }
 
     @Override
@@ -53,4 +50,21 @@ public class AirspaceInvadersGame extends GameEngine {
     public void changeView(View view){
         this.stateMachine.changeView(view);
     }
+
+    public int getWorldWidth() {
+        return worldWidth;
+    }
+
+    public void setWorldWidth(int worldWidth) {
+        this.worldWidth = worldWidth;
+    }
+
+    public int getWorldHeight() {
+        return worldHeight;
+    }
+
+    public void setWorldHeight(int worldHeight) {
+        this.worldHeight = worldHeight;
+    }
+
 }
