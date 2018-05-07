@@ -39,28 +39,15 @@ public class AirspaceInvadersGame extends GameEngine {
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
-//        View view = new View(worldWidth, worldHeight);
-//        setView(view);
-
-
-//         Level test = new Level();
-//         tileMap = test.loadLevel("level1.csv");
-
-        this.stateMachine = new AirspaceInvadersStateMachine(this.worldWidth, this.worldHeight);
+        this.stateMachine = new AirspaceInvadersStateMachine(this, this.worldWidth, this.worldHeight);
         size(worldWidth, worldHeight);
 
-        this.changeView(new GameView(this.worldWidth, this.worldHeight));
-//        Player player = new Player();
-//        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
-//
+//        this.changeView(new GameView(this, this.worldWidth, this.worldHeight));
 
     }
 
     @Override
     public void update() {
-        Player player = new Player();
-        addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 1200);
-//
         this.stateMachine.getState().update();
     }
 

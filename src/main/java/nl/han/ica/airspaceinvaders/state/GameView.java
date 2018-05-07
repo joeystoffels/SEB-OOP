@@ -21,9 +21,9 @@ public class GameView extends View implements IState {
     private AirspaceInvadersGame game;
 
 
-    public GameView(int worldWidth, int worldHeight) {
+    public GameView(AirspaceInvadersGame game, int worldWidth, int worldHeight) {
         super(worldWidth, worldHeight);
-        this.game = AirspaceInvadersGame.getInstance();
+        this.game = game;
     }
 
     @Override
@@ -57,6 +57,7 @@ public class GameView extends View implements IState {
 
          Level test = new Level();
          game.setTileMap(test.loadLevel("level1.csv"));
+
 
     }
 

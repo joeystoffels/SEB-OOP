@@ -6,17 +6,21 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 public class AirspaceInvadersStateMachine {
 
     private View myGameView;
+    private AirspaceInvadersGame game;
 
-    public AirspaceInvadersStateMachine(int worldWidth, int worldHeight) {
+    public AirspaceInvadersStateMachine(AirspaceInvadersGame game, int worldWidth, int worldHeight) {
         // Set a default for menu
-        changeView(new MenuView(worldWidth, worldHeight));
+        this.game = game;
+        changeView(new MenuView(this.game, worldWidth, worldHeight));
 
     }
+
     public View getView() {
         return this.myGameView;
     }
+
     public IState getState() {
-        return (IState)this.myGameView;
+        return (IState) this.myGameView;
     }
 
 
@@ -28,11 +32,9 @@ public class AirspaceInvadersStateMachine {
      */
     public void changeView(final View gameView) {
         this.myGameView = gameView;
-        AirspaceInvadersGame game = AirspaceInvadersGame.getInstance();
-        IState state = (IState)this.myGameView;
-        game.setView(this.myGameView);
+        IState state = (IState) this.myGameView;
+        this.game.setView(this.myGameView);
         state.reset();
         state.start();
-
     }
 }

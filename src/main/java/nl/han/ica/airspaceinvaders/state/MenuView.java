@@ -1,11 +1,15 @@
 package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 
 public class MenuView extends View implements IState {
 
-    public MenuView(int worldWidth, int worldHeight) {
+    private AirspaceInvadersGame game;
+
+    public MenuView(AirspaceInvadersGame game,int worldWidth, int worldHeight) {
         super(worldWidth, worldHeight);
+        this.game = game;
     }
 
     @Override
