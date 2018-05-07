@@ -20,8 +20,11 @@ public class MenuView extends View implements IState {
         ButtonChangeView buttonStart = new ButtonChangeView(new GameView(this.game),this.game,"Start game", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 2);
 
+        ButtonChangeView buttonRules = new ButtonChangeView(new RulesView(this.game), this.game,"Rules", 50, 200, 100);
+        this.game.addGameObject(buttonRules, 100, 200, 2);
+
         ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreView(this.game), this.game,"Highscore", 50, 200, 100);
-        this.game.addGameObject(buttonHighscore, 100, 200, 2);
+        this.game.addGameObject(buttonHighscore, 100, 300, 2);
 
 //        ButtonImage button1 = new ButtonImage(AssetLoader.getSprite("enemy/A10.png", 100));
 //        this.game.addGameObject(button1, 100, 100, 3);
