@@ -18,9 +18,13 @@ import java.util.List;
 public class GameView extends View implements IState {
 
     public List<IFlyingObject> enemies = new ArrayList<>();
+
     private TextObject dashboardText = new TextObject("Health: ");
+    private TextObject loadingDashboardText = new TextObject("Loading ");
+
     private Player player;
     private AirspaceInvadersGame game;
+    private Level level = new Level();
 
     public GameView(AirspaceInvadersGame game) {
         super(game.getWorldWidth(), game.getWorldHeight());
@@ -29,16 +33,18 @@ public class GameView extends View implements IState {
 
     @Override
     public void update() {
-        System.out.println("Game view update");
+
         if (this.enemies.isEmpty()) {
             generateEnemies();
         }
     }
 
-
     @Override
     public void start() {
-        System.out.println("Game view start");
+
+        this.level.initialize();
+        game.setTileMap(level.loadLevel("level1.csv"));
+
         this.player = new Player();
         this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 200);
 
@@ -55,11 +61,6 @@ public class GameView extends View implements IState {
                 this.game.addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
             }
         }
-
-        Level test = new Level();
-        game.setTileMap(test.loadLevel("level1.csv"));
-
-
     }
 
     @Override
@@ -67,10 +68,15 @@ public class GameView extends View implements IState {
 
     }
 
+    private Dashboard createLoadingDashboard() {
+        Dashboard dashboard = new Dashboard(0, worldHeight / 2, 200, 100);
+        dashboard.addGameObject(loadingDashboardText);
+        return dashboard;
+    }
+
     private void createDashboard(int dashboardWidth, int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
-        dashboardText = new TextObject("test");
-        dashboard.addGameObject(dashboardText);
+        dashboard.addGameObject(this.dashboardText);
         this.game.addDashboard(dashboard);
     }
 
