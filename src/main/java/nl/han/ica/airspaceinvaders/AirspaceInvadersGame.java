@@ -7,7 +7,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.config.GameProperties;
 import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
-import nl.han.ica.airspaceinvaders.objects.player.Player;
 import nl.han.ica.airspaceinvaders.state.*;
 import processing.core.PApplet;
 
