@@ -45,7 +45,7 @@ public class GameView extends View implements IState {
         this.level.initialize();
         game.setTileMap(level.loadLevel("level1.csv"));
 
-        this.player = new Player();
+        this.player = new Player(this.game);
         this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 200);
 
         createDashboard(worldWidth, 100);
