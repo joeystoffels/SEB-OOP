@@ -4,76 +4,68 @@ import nl.han.ica.OOPDProcessingEngineHAN.Engine.GameEngine;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
-import nl.han.ica.airspaceinvaders.config.GameProperties;
-import nl.han.ica.airspaceinvaders.logger.ConsoleLogHandler;
-import nl.han.ica.airspaceinvaders.logger.FileLogHandler;
-import nl.han.ica.airspaceinvaders.state.*;
+import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler;
+import nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler;
+import nl.han.ica.airspaceinvaders.views.*;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
 public class AirspaceInvadersGame extends GameEngine {
 
-    private int worldWidth;
-    private int worldHeight;
     private Boolean startUp = true;
-
     private AirspaceInvadersStateMachine stateMachine;
     private Logger logger = LogFactory.getLogger();
-
-    private static AirspaceInvadersGame ourInstance = new AirspaceInvadersGame();
-
-    public static AirspaceInvadersGame getInstance() {
-        return ourInstance;
-    }
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.airspaceinvaders.AirspaceInvadersGame"});
     }
 
+    /**
+     * Initial game setup function
+     */
     @Override
     public void setupGame() {
-        this.setWorldWidth(GameProperties.getValue("worldWidth", true));
-        this.setWorldHeight(GameProperties.getValue("worldHeight", true));
-
         // Enable console and file logging
         logger.addLogHandler(new ConsoleLogHandler());
         logger.addLogHandler(new FileLogHandler("Log.txt"));
 
+        // Initialise the state machine
         this.stateMachine = new AirspaceInvadersStateMachine(this);
-        size(worldWidth, worldHeight);
+
+        // Set the size of the game
+        size(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
     }
 
+    /**
+     * This update method wil dispatch the update method in the views that is currently loaded
+     */
     @Override
     public void update() {
         this.stateMachine.getState().update();
     }
 
+    /**
+     * Change views of the game
+     * @param view View
+     */
     public void changeView(View view){
         this.stateMachine.changeView(view);
     }
 
-    public int getWorldWidth() {
-        return worldWidth;
-    }
-
-    public void setWorldWidth(int worldWidth) {
-        this.worldWidth = worldWidth;
-    }
-
-    public int getWorldHeight() {
-        return worldHeight;
-    }
-
-    public void setWorldHeight(int worldHeight) {
-        this.worldHeight = worldHeight;
-    }
-
+    /**
+     * Getter for  startUp
+     * @return Boolean
+     */
     public Boolean getStartUp() {
         return startUp;
     }
 
+    /**
+     * Setter for startup
+     * @param startUp Boolean
+     */
     public void setStartUp(Boolean startUp) {
         this.startUp = startUp;
     }
-
 }
