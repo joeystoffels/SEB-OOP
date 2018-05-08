@@ -25,13 +25,13 @@ public class Air extends SpriteObject implements IFlyingObject {
     private boolean isDirectionLeft;
     Timer timer = new Timer();
 
-    public Air(GameView game, Sprite sprite) {
+    public Air(AirspaceInvadersGame game, GameView view, Sprite sprite) {
         super(sprite);
-        this.gameState = game;
-        this.airspaceInvadersGame = AirspaceInvadersGame.getInstance();
+        this.gameState = view;
+        this.airspaceInvadersGame = game;
         this.health = 250;
         this.shield = 0;
-        this.weapon = new Canon(this);
+        this.weapon = new Canon(game, this);
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

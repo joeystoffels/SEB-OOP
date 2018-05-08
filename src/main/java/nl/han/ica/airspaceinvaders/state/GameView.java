@@ -51,7 +51,7 @@ public class GameView extends View implements IState {
         createDashboard(worldWidth, 100);
 
         // Add enemies // TODO move to generateEnemies() ?
-        enemies.add(new Air(this, AssetLoader.getSprite("enemy/A10.png", 15)));
+        enemies.add(new Air( this.game,this, AssetLoader.getSprite("enemy/A10.png", 15)));
 
         for (IFlyingObject enemy : enemies) {
             if (enemy instanceof Air) {
@@ -93,7 +93,7 @@ public class GameView extends View implements IState {
         float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
         for (int x = 0; x < nrEnemies; x++) {
-            Air enemy = new Air(this, AssetLoader.getSprite("enemy/A10.png", 15));
+            Air enemy = new Air(this.game, this, AssetLoader.getSprite("enemy/A10.png", 15));
             enemies.add(enemy);
             this.game.addGameObject((Air) enemy, (float) (xPos + (x * enemy.getWidth())), 200);
         }

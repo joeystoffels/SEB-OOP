@@ -18,11 +18,11 @@ public class Canon extends Weapon {
     /**
      *
      */
-    public Canon(IFlyingObject iFlyingObject) {
+    public Canon(AirspaceInvadersGame world, IFlyingObject iFlyingObject) {
         super.setDamage(15);
         super.setIntervalTime(1);
         this.iFlyingObject = iFlyingObject;
-        this.world = AirspaceInvadersGame.getInstance();
+        this.world = world;
         timer.schedule(new TimerTask() {
             @Override
             public void run() {
