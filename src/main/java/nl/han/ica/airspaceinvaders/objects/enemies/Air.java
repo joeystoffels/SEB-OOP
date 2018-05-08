@@ -1,5 +1,8 @@
 package nl.han.ica.airspaceinvaders.objects.enemies;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -24,12 +27,13 @@ public class Air extends SpriteObject implements IFlyingObject {
     private AirspaceInvadersGame airspaceInvadersGame;
     private boolean isDirectionLeft;
     Timer timer = new Timer();
+    private Logger logger = LogFactory.getLogger();
 
     public Air(AirspaceInvadersGame game, GameView view, Sprite sprite) {
         super(sprite);
         this.gameState = view;
         this.airspaceInvadersGame = game;
-        this.health = 250;
+        this.health = 100;
         this.shield = 0;
         this.weapon = new Canon(game, this);
         timer.schedule(new TimerTask() {
@@ -62,13 +66,17 @@ public class Air extends SpriteObject implements IFlyingObject {
 
     @Override
     public void update() {
-        // TODO ??
+        if (this.getY() > airspaceInvadersGame.getHeight() | this.getY() < 0) {
+            logger.logln(DefaultLogger.LOG_DEBUG,"Projectile removed");
+            airspaceInvadersGame.deleteGameObject(this);
+            gameState.enemies.remove(this);
+        }
     }
 
     @Override
     public void movement(boolean isDirectionLeft) {
-        this.setSpeed(2);
-        this.setDirection(isDirectionLeft ? 90 : 270);
+        this.setSpeed(5);
+        this.setDirection(isDirectionLeft ? 120 : 240);
         this.move();
         this.isDirectionLeft = !isDirectionLeft;
     }

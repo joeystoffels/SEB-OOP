@@ -13,7 +13,7 @@ public class LevelMap extends TileMap {
 
     private int travelHeight = 0;
     private int travelWidth = 0;
-    private int scrollSpeed = 10 ;
+    private int scrollSpeed = 3;
 
     private int visibleTiles;
     private int visibleTilesOffset;
@@ -30,7 +30,7 @@ public class LevelMap extends TileMap {
         // Set the amount of tiles visible
         this.visibleTiles = GameProperties.getValue("worldHeight", true) / super.getTileSize() + 1;
         this.visibleTilesOffset = super.getTileSize() - (GameProperties.getValue("worldHeight", true) % super.getTileSize());
-        System.out.println(" d");
+//        System.out.println(" d");
     }
 
     public LevelMap(int tileSize) {
@@ -59,10 +59,7 @@ public class LevelMap extends TileMap {
 
                         pGraphics.image(tileMap[indexVertical][indexHorizontal].getSprite().getPImage(), horizontalPosition, verticalPosition);
                     }
-
                 }
-
-
             }
 
             // Set the new travelheight

@@ -8,6 +8,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.objects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.objects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.objects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.state.GameView;
@@ -32,10 +33,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         super(AssetLoader.getSprite("player/A10.png", 20), 6);
         this.world = world;
 //        this.world = AirspaceInvadersGame.getInstance();
-//        world.getDashboardText().setText("Health: " + this.getHealth());
-//        this.canon = new Canon(this);
+//        this.world.getDashboardText().setText("Health: " + this.getHealth());
+        this.canon = new Canon(this.world, this);
 //        setCurrentFrameIndex(0);
-//        setFriction(0.02f);
+        setFriction(0.04f);
     }
 
     /**
