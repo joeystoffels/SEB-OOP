@@ -1,7 +1,5 @@
 package nl.han.ica.airspaceinvaders.assets.level;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.Tile;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
@@ -11,15 +9,17 @@ import processing.core.PGraphics;
 public class LevelMap extends TileMap {
 
     private int travelHeight = 0;
-    private int travelWidth = 0;
-    private int scrollSpeed = 10 ;
-
+    private int scrollSpeed = 3;
     private int visibleTiles;
     private int visibleTilesOffset;
 
 
-    private Logger logger = LogFactory.getLogger();
-
+    /**
+     * Levelmap extends a Tilemap, and only draws the visual part of the map instead of drawing everything.
+     * @param tileSize int
+     * @param tileTypes TileType[]
+     * @param indexMap int[][]
+     */
     public LevelMap(int tileSize, TileType[] tileTypes, int[][] indexMap) {
         super(tileSize, tileTypes, indexMap);
 
@@ -29,7 +29,6 @@ public class LevelMap extends TileMap {
         // Set the amount of tiles visible
         this.visibleTiles = GameProperties.getValue("worldHeight", true) / super.getTileSize() + 1;
         this.visibleTilesOffset = super.getTileSize() - (GameProperties.getValue("worldHeight", true) % super.getTileSize());
-        System.out.println(" d");
     }
 
     public LevelMap(int tileSize) {
@@ -44,8 +43,6 @@ public class LevelMap extends TileMap {
         int amountOfPixelsOffset = super.getTileSize() - (this.travelHeight % super.getTileSize());
 
         if (tileMap != null && super.getIndexMap() != null) {
-
-
             for (int indexVertical = 0; indexVertical < tileMap.length; indexVertical++) {
 
                 // Don't render images that fall out of the scope of the views
@@ -58,12 +55,8 @@ public class LevelMap extends TileMap {
 
                         pGraphics.image(tileMap[indexVertical][indexHorizontal].getSprite().getPImage(), horizontalPosition, verticalPosition);
                     }
-
                 }
-
-
             }
-
             // Set the new travelheight
             this.travelHeight -= this.scrollSpeed;
         }
