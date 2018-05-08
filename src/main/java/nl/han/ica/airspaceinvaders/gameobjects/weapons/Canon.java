@@ -2,8 +2,8 @@ package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import processing.core.PGraphics;
 
 import java.util.Timer;

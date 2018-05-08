@@ -1,8 +1,6 @@
 package nl.han.ica.airspaceinvaders.assets;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import processing.core.PFont;
-import processing.core.PImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;

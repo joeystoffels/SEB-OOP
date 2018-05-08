@@ -49,7 +49,7 @@ public class HighScores extends FilePersistence {
                 String scoreName = scoreArray[index].getName();
                 int scoreScore = scoreArray[index].getScore();
 
-                if (score >= scoreScore && inserted == false) {
+                if (score >= scoreScore && !inserted) {
                     stringArray[index] = name + scoreSeparator + score;
                     stringArray[index + 1] = scoreName + scoreSeparator + scoreScore;
                     inserted = true;

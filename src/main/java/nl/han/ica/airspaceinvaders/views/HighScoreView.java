@@ -6,9 +6,9 @@ import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.assets.highscores.Score;
-import nl.han.ica.airspaceinvaders.interfaces.IState;
-import nl.han.ica.airspaceinvaders.gameobjects.dashboard.TextObject;
 import nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView;
+import nl.han.ica.airspaceinvaders.gameobjects.dashboard.TextObject;
+import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 public class HighScoreView extends View implements IState {
 

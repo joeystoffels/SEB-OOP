@@ -8,9 +8,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import processing.core.PConstants;
 
 import java.util.List;
@@ -20,7 +20,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
     private int health = 250;
-    private final float horizontalRecovery = 0.5f;
     private final float verticalRecovery = 1.0f;
 
     private Weapon canon;
@@ -60,7 +59,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 
         if (getySpeed() < this.verticalRecovery && getySpeed() > (this.verticalRecovery * -1)) {
-            if (getxSpeed() < this.horizontalRecovery && getxSpeed() > (this.horizontalRecovery * -1)) {
+            float horizontalRecovery = 0.5f;
+            if (getxSpeed() < horizontalRecovery && getxSpeed() > (horizontalRecovery * -1)) {
                 setCurrentFrameIndex(1);
             }
         }

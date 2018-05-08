@@ -5,13 +5,12 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
-import nl.han.ica.airspaceinvaders.interfaces.IState;
 import nl.han.ica.airspaceinvaders.assets.level.Level;
 import nl.han.ica.airspaceinvaders.gameobjects.dashboard.TextObject;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
-import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
+import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 import java.util.ArrayList;
 import java.util.List;

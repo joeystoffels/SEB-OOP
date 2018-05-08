@@ -9,7 +9,6 @@ import processing.core.PGraphics;
 public class LevelMap extends TileMap {
 
     private int travelHeight = 0;
-    private int scrollSpeed = 3;
     private int visibleTiles;
     private int visibleTilesOffset;
 
@@ -37,6 +36,7 @@ public class LevelMap extends TileMap {
 
     @Override
     public void draw(PGraphics pGraphics) {
+        int scrollSpeed = 3;
         Tile[][] tileMap = super.getTileMap();
 
         int amountOfTilesLeft = this.travelHeight / super.getTileSize() + 1;
@@ -58,7 +58,7 @@ public class LevelMap extends TileMap {
                 }
             }
             // Set the new travelheight
-            this.travelHeight -= this.scrollSpeed;
+            this.travelHeight -= scrollSpeed;
         }
     }
 }

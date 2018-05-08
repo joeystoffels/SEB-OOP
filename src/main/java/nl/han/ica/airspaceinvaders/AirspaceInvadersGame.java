@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler;
-import nl.han.ica.airspaceinvaders.views.*;
+import nl.han.ica.airspaceinvaders.views.AirspaceInvadersStateMachine;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
