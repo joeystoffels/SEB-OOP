@@ -1,14 +1,19 @@
 package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
+import nl.han.ica.airspaceinvaders.assets.highscores.Score;
 import nl.han.ica.airspaceinvaders.assets.level.Level;
 import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
+import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
+import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
@@ -57,14 +62,24 @@ public class GameState extends View implements IState {
 
     @Override
     public void reset() {
+        for (GameObject gameObject : game.getGameObjectItems()) {
 
+        }
+        for (GameObject gameObject : game.getGameObjectItems()) {
+            if (gameObject instanceof IFlyingObject){
+                ((IFlyingObject) gameObject).getWeapon().stopTimer();
+
+                if (gameObject instanceof Player) {
+                    HighScores list = new HighScores("highscores.csv");
+                    list.saveScore(((Player) gameObject).getName(), ((Player) gameObject).getScore());
+                }
+            }
+
+        }
+        game.setTileMap(null); // remove level tilemap
+        this.game.deleteAllDashboards();
+        this.game.deleteAllGameOBjects();
     }
-
-//    private Dashboard createLoadingDashboard() {
-//        Dashboard dashboard = new Dashboard(0, worldHeight / 2, 200, 200);
-//        dashboard.addGameObject(loadingDashboardText);
-//        return dashboard;
-//    }
 
     private void createDashboard(int dashboardWidth, int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);

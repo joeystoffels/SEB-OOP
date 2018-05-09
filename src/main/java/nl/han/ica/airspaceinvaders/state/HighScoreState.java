@@ -1,5 +1,6 @@
 package nl.han.ica.airspaceinvaders.state;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
@@ -7,6 +8,7 @@ import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.assets.highscores.Score;
 import nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView;
+import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
@@ -44,8 +46,6 @@ public class HighScoreState extends View implements IState {
                 this.game.addGameObject(score, horizontalWidth + 200, index * verticalStep + this.margin, 1);
             }
         }
-
-//        list.saveScore("Nick", 10);
     }
 
     @Override

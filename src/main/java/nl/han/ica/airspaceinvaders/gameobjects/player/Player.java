@@ -12,6 +12,7 @@ import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.state.HighScoreState;
 import processing.core.PConstants;
 
 import java.util.List;
@@ -109,17 +110,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         for (GameObject gameObject : collidedGameObjects) {
             if (gameObject instanceof Projectile) {
                 setHealth(getHealth() - ((Projectile) gameObject).getDamage());
-                updateDashboard();
                 if (getHealth() <= 0) {
                     this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
+                    this.world.changeView(new HighScoreState(this.world));
                 }
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             }
         }
-    }
-
-    public void updateDashboard() {
-//        world.getDashboardText().setText("Health:" + getHealth());
     }
 
     @Override
@@ -156,5 +153,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     public void setScore(int score) {
         this.score = score;
+    }
+
+    public Weapon getWeapon() {
+        return canon;
+    }
+
+    public String getName() {
+        return "Henk";
     }
 }
