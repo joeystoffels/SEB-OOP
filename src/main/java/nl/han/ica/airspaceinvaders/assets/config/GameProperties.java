@@ -12,14 +12,10 @@ import static java.lang.Integer.parseInt;
 
 public class GameProperties {
 
-    /**
-     * This logger is used to output information to a console or file.
-     * //
-     */
-//    private Logger logger = LogFactory.getLogger();
 
     private static Properties properties = new Properties();
 
+    // Only gets initialized once.
     static {
         int keyWidth = 20;
         Logger logger = LogFactory.getLogger();
@@ -56,11 +52,22 @@ public class GameProperties {
     }
 
 
+    /**
+     * Get a value from the game.properties as String
+     * @param key String
+     * @return String
+     */
     public static String getValue(String key) {
         return properties.getProperty(key);
     }
 
-    public static Integer getValue(String key, Boolean isInteger) {
+    /**
+     * Get a value from the game.properties as int
+     * @param key String
+     * @param isInteger Boolean
+     * @return int
+     */
+    public static int getValue(String key, Boolean isInteger) {
         if (!isInteger) {
             GameProperties.getValue(key);
         }

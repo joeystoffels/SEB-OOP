@@ -1,6 +1,7 @@
 package nl.han.ica.airspaceinvaders.gameobjects.player;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
@@ -26,12 +27,16 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private Weapon missile;
 
 
+    /**
+     *  Class that represents the player in the game
+     * @param world AirspaceInvadersGame
+     */
     public Player(AirspaceInvadersGame world) {
         super(AssetLoader.getSprite("player/A10-shade.png", 25), 6);
-        //        this.world.getDashboardText().setText("Health: " + this.getHealth());
         this.canon = new Canon(world, this);
         this.world = world;
         setFriction(0.04f);
+        this.logger.logln(DefaultLogger.LOG_DEBUG, "Player spawned");
     }
 
     /**

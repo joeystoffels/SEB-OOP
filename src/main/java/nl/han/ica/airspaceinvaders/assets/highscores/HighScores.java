@@ -8,6 +8,7 @@ public class HighScores extends FilePersistence {
     private final String scoreSeparator = "/";
 
     /**
+     * Highscores
      * The constructor allows you to specify the filename the internal storage
      * will use.
      *
@@ -17,6 +18,11 @@ public class HighScores extends FilePersistence {
         super(filename);
     }
 
+    /**
+     * Load scores from file persistance
+     *
+     * @return Score[]
+     */
     public Score[] loadScores() {
         String[] stringArray = this.loadDataStringArray(stringSeparator);
         Score[] scoreArray = new Score[stringArray.length];
@@ -24,14 +30,20 @@ public class HighScores extends FilePersistence {
         for (int index = 0; index < stringArray.length; index++) {
             String value = stringArray[index];
             String[] parts = value.split(scoreSeparator, 2);
-                Score newScore = new Score();
-                newScore.setName(parts[0]);
-                newScore.setScore(Integer.parseInt(parts[1]));
-                scoreArray[index] = newScore;
+            Score newScore = new Score();
+            newScore.setName(parts[0]);
+            newScore.setScore(Integer.parseInt(parts[1]));
+            scoreArray[index] = newScore;
         }
         return scoreArray;
     }
 
+    /**
+     * Save score in file persistance
+     *
+     * @param name  String
+     * @param score int
+     */
     public void saveScore(String name, int score) {
         Score[] scoreArray = this.loadScores();
         Boolean inserted = false;
@@ -53,16 +65,16 @@ public class HighScores extends FilePersistence {
                     stringArray[index] = name + scoreSeparator + score;
                     stringArray[index + 1] = scoreName + scoreSeparator + scoreScore;
                     inserted = true;
-                } else if (inserted == true) {
+                } else if (inserted) {
                     stringArray[index + 1] = scoreName + scoreSeparator + scoreScore;
 
-                } else if (( inserted == false && index == scoreArray.length) || inserted == false){
+                } else if ((!inserted && index == scoreArray.length) || !inserted) {
                     stringArray[index] = scoreName + scoreSeparator + scoreScore;
                 }
             }
         }
 
-        if(inserted == false){
+        if (!inserted) {
             stringArray[stringArray.length - 1] = name + scoreSeparator + score;
         }
         this.saveData(stringArray, stringSeparator);

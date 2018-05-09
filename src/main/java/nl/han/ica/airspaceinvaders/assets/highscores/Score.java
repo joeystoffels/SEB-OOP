@@ -38,7 +38,7 @@ public class Score {
     }
 
     /**
-     *  Check the higher
+     *  Compare witch score is higher
      * @param other
      * @return Score
      */
