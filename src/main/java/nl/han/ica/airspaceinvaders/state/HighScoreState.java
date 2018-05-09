@@ -55,6 +55,5 @@ public class HighScoreState extends View implements IState {
 
     @Override
     public void update() {
-//        System.out.println("Update HighScoreState");
     }
 }

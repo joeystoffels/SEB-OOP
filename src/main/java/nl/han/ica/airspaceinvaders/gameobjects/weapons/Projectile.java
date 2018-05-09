@@ -32,7 +32,6 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
 
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        // System.out.println(collidedGameObjects);
         if (collidedGameObjects.get(0) instanceof IFlyingObject) {
             world.deleteGameObject(this);
         }

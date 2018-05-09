@@ -110,7 +110,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
                 setHealth(getHealth() - ((Projectile) gameObject).getDamage());
                 updateDashboard();
                 if (getHealth() <= 0) {
-                    System.out.println("ENDGAME");
+                    this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
                 }
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             }

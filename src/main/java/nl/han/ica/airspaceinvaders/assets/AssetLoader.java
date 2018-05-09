@@ -1,5 +1,8 @@
 package nl.han.ica.airspaceinvaders.assets;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 
 import java.io.BufferedReader;
@@ -47,7 +50,8 @@ public class AssetLoader {
                 lines++;
             }
         } catch (IOException e) {
-            System.out.println(e.toString());
+            LogFactory.getLogger().logln(DefaultLogger.LOG_DEBUG, e.toString());
+
         }
 
         int[][] level = new int[container.size()][container.get(0).length];

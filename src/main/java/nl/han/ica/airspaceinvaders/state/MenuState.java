@@ -48,7 +48,6 @@ public class MenuState extends View implements IState {
     @Override
     public void reset() {
         this.game.deleteAllGameOBjects();
-        System.out.println("deleted");
     }
 
     @Override

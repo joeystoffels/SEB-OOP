@@ -1,6 +1,9 @@
 package nl.han.ica.airspaceinvaders.gameobjects.buttons;
 
 
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.TextObject;
 import nl.han.ica.OOPDProcessingEngineHAN.UserInput.IMouseInput;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -12,6 +15,7 @@ public class ButtonText extends TextObject implements IMouseInput {
 
     protected AirspaceInvadersGame game;
     private PFont font;
+    private Logger logger = LogFactory.getLogger();
 
     /**
      * Create a new TextObject.
@@ -31,7 +35,7 @@ public class ButtonText extends TextObject implements IMouseInput {
     @Override
     public void mousePressed(int x, int y, int button) {
         if(x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
-            System.out.println("  Clicked button text");
+            this.logger.logln(DefaultLogger.LOG_DEBUG, "Clicked button text");
             execute();
         }
     }
