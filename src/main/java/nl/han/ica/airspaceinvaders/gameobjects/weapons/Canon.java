@@ -28,7 +28,7 @@ public class Canon extends Weapon {
             public void run() {
                 shoot();
             }
-        }, 1000, this.getIFlyingObject() instanceof Player ? 200 : 800);
+        }, 1000, this.getIFlyingObject() instanceof Player ? 200 : 1000);
     }
 
     /**

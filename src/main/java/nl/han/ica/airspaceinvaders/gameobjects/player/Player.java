@@ -21,6 +21,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
     private int health = 250;
+    private int score = 0;
     private final float verticalRecovery = 1.0f;
 
     private Weapon canon;
@@ -147,5 +148,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
     }
 }

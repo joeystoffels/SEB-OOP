@@ -19,7 +19,7 @@ public class GameState extends View implements IState {
 
     public List<IFlyingObject> enemies = new ArrayList<>();
 
-    private TextObject dashboardText = new TextObject("Health: ");
+    private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: ");
     private TextObject loadingDashboardText = new TextObject("Loading ");
 
     private Player player;
@@ -34,12 +34,12 @@ public class GameState extends View implements IState {
     @Override
     public void update() {
 
-        if (this.enemies.isEmpty()) {
+        if (this.player != null && this.enemies.isEmpty()) {
             generateEnemies();
         }
 
         if(this.player != null) {
-            this.getDashboardText().setText("Health:" + player.getHealth());
+            this.getDashboardText().setText("Health:" + player.getHealth() + "\n" + "Score: " + player.getScore());
         }
     }
 
@@ -50,21 +50,9 @@ public class GameState extends View implements IState {
         game.setTileMap(level.loadLevel("level1.csv"));
 
         this.player = new Player(this.game);
-        this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), 200);
+        this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), (float) (worldHeight * 0.9));
 
-        createDashboard(worldWidth, 100);
-
-        // Add enemies // TODO move to generateEnemies() ?
-//        enemies.add(new Air( this.game,this, AssetLoader.getSprite("enemy/A10.png", 15)));
-//
-//        for (IFlyingObject enemy : enemies) {
-//            if (enemy instanceof Air) {
-//                this.game.addGameObject((Air) enemy, worldWidth / 3, 200);
-//            }
-//            if (enemy instanceof Ground) {
-//                this.game.addGameObject((Ground) enemy, worldWidth / 2 - (player.getWidth() / 2), 2000);
-//            }
-//        }
+        createDashboard(worldWidth, 200);
     }
 
     @Override
@@ -72,11 +60,11 @@ public class GameState extends View implements IState {
 
     }
 
-    private Dashboard createLoadingDashboard() {
-        Dashboard dashboard = new Dashboard(0, worldHeight / 2, 200, 100);
-        dashboard.addGameObject(loadingDashboardText);
-        return dashboard;
-    }
+//    private Dashboard createLoadingDashboard() {
+//        Dashboard dashboard = new Dashboard(0, worldHeight / 2, 200, 200);
+//        dashboard.addGameObject(loadingDashboardText);
+//        return dashboard;
+//    }
 
     private void createDashboard(int dashboardWidth, int dashboardHeight) {
         Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);

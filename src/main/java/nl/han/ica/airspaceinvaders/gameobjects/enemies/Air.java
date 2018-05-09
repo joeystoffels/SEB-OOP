@@ -7,6 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
@@ -62,7 +63,15 @@ public class Air extends SpriteObject implements IFlyingObject {
             this.weapon.destroy();
             this.airspaceInvadersGame.deleteGameObject(this);
             this.gameState.enemies.remove(this);
+
+            for (GameObject gameObject : airspaceInvadersGame.getGameObjectItems()) {
+                if (gameObject instanceof Player) {
+                    ((Player) gameObject).setScore(((Player) gameObject).getScore() + 25);
+                }
+            }
         }
+
+
     }
 
     @Override
