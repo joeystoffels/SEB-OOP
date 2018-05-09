@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.views;
+package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -10,18 +10,18 @@ public class AirspaceInvadersStateMachine {
     private AirspaceInvadersGame game;
 
     /**
-     * The AirspaceInvadersStateMachine is used to keep the views of the application.
-     * A views design pattern is used for this purpose
+     * The AirspaceInvadersStateMachine is used to keep the state of the application.
+     * A state design pattern is used for this purpose
      * https://en.wikipedia.org/wiki/State_pattern
      * @param game AirspaceInvadersGame
      */
     public AirspaceInvadersStateMachine(AirspaceInvadersGame game) {
         this.game = game;
-        changeView(new MenuView(this.game));
+        changeView(new MenuState(this.game));
     }
 
     /**
-     * Get the current views
+     * Get the current state
      * @return View
      */
     public View getView() {
@@ -29,7 +29,7 @@ public class AirspaceInvadersStateMachine {
     }
 
     /**
-     * Get the current views
+     * Get the current state
      * @return IState
      */
     public IState getState() {
@@ -37,7 +37,7 @@ public class AirspaceInvadersStateMachine {
     }
 
     /**
-     * Setter method for the views.
+     * Setter method for the state.
      * Normally only called by classes implementing the State interface.
      *
      * @param gameView View

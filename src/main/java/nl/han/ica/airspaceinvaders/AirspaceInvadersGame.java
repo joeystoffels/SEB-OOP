@@ -7,7 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler;
-import nl.han.ica.airspaceinvaders.views.AirspaceInvadersStateMachine;
+import nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine;
 import processing.core.PApplet;
 
 @SuppressWarnings("serial")
@@ -38,7 +38,7 @@ public class AirspaceInvadersGame extends GameEngine {
     }
 
     /**
-     * This update method wil dispatch the update method in the views that is currently loaded
+     * This update method wil dispatch the update method in the state that is currently loaded
      */
     @Override
     public void update() {
@@ -46,7 +46,7 @@ public class AirspaceInvadersGame extends GameEngine {
     }
 
     /**
-     * Change views of the game
+     * Change state of the game
      * @param view View
      */
     public void changeView(View view){

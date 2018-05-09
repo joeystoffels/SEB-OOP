@@ -115,7 +115,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a dashboard to the GameEngine.
+     * Add a text to the GameEngine.
      * @param dashboard
      */
     public void addDashboard(Dashboard dashboard) {
@@ -136,7 +136,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a dashboard to te GameEngine.
+     * Add a text to te GameEngine.
      * @param dashboard
      * @param x
      * @param y
@@ -164,7 +164,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a dashboard to the GameEngine.
+     * Add a text to the GameEngine.
      * @param dashboard
      * @param x
      * @param y
@@ -190,7 +190,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Add a dashboard to the GameEngine.
+     * Add a text to the GameEngine.
      * @param dashboard
      * @param layerposition
      */
@@ -210,7 +210,7 @@ public abstract class GameEngine extends PApplet {
     
     /**
      * Get a list of all the Dashboards inside the GameEngine.
-     *  @return Vector<dashboard>
+     *  @return Vector<text>
      */
     public Vector<Dashboard> getDashboards() {
         return dashboards;
@@ -225,7 +225,7 @@ public abstract class GameEngine extends PApplet {
     }
     
     /**
-     * Delete a dashboard from the GameEngine.
+     * Delete a text from the GameEngine.
      * @param dashboard
      */
     public void deleteDashboard(Dashboard dashboard) {
@@ -289,7 +289,7 @@ public abstract class GameEngine extends PApplet {
     }
 
     /**
-     * Updates every dashboard inside the GameEngine.
+     * Updates every text inside the GameEngine.
      */
     private void updateDashboards() {
     	

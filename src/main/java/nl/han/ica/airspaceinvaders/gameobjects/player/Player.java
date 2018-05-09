@@ -27,7 +27,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
 
     public Player(AirspaceInvadersGame world) {
-        super(AssetLoader.getSprite("player/A10.png", 20), 6);
+        super(AssetLoader.getSprite("player/A10-shade.png", 25), 6);
         //        this.world.getDashboardText().setText("Health: " + this.getHealth());
         this.canon = new Canon(world, this);
         this.world = world;

@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.views;
+package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -7,17 +7,17 @@ import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.assets.highscores.Score;
 import nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView;
-import nl.han.ica.airspaceinvaders.gameobjects.dashboard.TextObject;
+import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
-public class HighScoreView extends View implements IState {
+public class HighScoreState extends View implements IState {
 
     private AirspaceInvadersGame game;
     private final int margin = 100;
 
     private String[] highscoreList;
 
-    public HighScoreView(AirspaceInvadersGame game) {
+    public HighScoreState(AirspaceInvadersGame game) {
         super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
         this.game = game;
     }
@@ -26,7 +26,7 @@ public class HighScoreView extends View implements IState {
     public void start() {
         this.setBackground(this.game.loadImage(AssetLoader.getImage("background/a10-fade.jpg")));
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new MenuView(this.game), this.game,"Back", 50, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game,"Back", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
 
         HighScores list = new HighScores("highscores.csv");
@@ -55,6 +55,6 @@ public class HighScoreView extends View implements IState {
 
     @Override
     public void update() {
-//        System.out.println("Update HighScoreView");
+//        System.out.println("Update HighScoreState");
     }
 }

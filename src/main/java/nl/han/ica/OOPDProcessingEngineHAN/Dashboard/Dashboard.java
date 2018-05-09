@@ -8,8 +8,8 @@ import processing.core.PGraphics;
 import java.util.Vector;
 
 /**
- * Create or extend this class to create a new dashboard, a dashboard object
- * will be drawn above the ViewPort when added to the dashboard list inside the
+ * Create or extend this class to create a new text, a text object
+ * will be drawn above the ViewPort when added to the text list inside the
  * GameEngine (addDashboard).
  */
 public class Dashboard extends GameObject {
@@ -37,7 +37,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Draws all the GameObjects inside the dashboard on the given canvas.
+	 * Draws all the GameObjects inside the text on the given canvas.
 	 *
 	 * @param g
 	 *            PGraphics object will be given by the GameEngine.
@@ -50,7 +50,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Draws the canvas (dashboard).
+	 * Draws the canvas (text).
 	 */
 	private PGraphics drawCanvas() {
 
@@ -77,7 +77,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Actually draws GameObjects that are set visible to the dashboard.
+	 * Actually draws GameObjects that are set visible to the text.
 	 * @param canvas
 	 * @param i
 	 */
@@ -88,7 +88,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Sets background for the dashboard. RGB when backgroundActive is false,
+	 * Sets background for the text. RGB when backgroundActive is false,
 	 * Image when backgroundActive is true.
 	 */
 	private void setBackgroundFor(PGraphics canvas) {
@@ -103,12 +103,12 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Add a GameObject to the dashboard.
+	 * Add a GameObject to the text.
 	 *
 	 * @param gameObject
 	 *            The GameObject that will be added to the canvas. Sets the X
 	 *            and Y relatively to the canvas, so the GameObjects will move
-	 *            with the dashboard.
+	 *            with the text.
 	 */
 	public void addGameObject(GameObject gameObject) {
 
@@ -119,7 +119,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Add a GameObject to the dashboard.
+	 * Add a GameObject to the text.
 	 *
 	 * @param gameObject
 	 * @param x
@@ -134,7 +134,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Add a GameObject to the dashboard.
+	 * Add a GameObject to the text.
 	 * 
 	 * @param gameObject
 	 * @param x
@@ -152,7 +152,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Add a GameObject to the dashboard.
+	 * Add a GameObject to the text.
 	 * 
 	 * @param gameObject
 	 * @param layerposition
@@ -165,7 +165,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Get a list of all the GameObjects inside the dashboard.
+	 * Get a list of all the GameObjects inside the text.
 	 */
 	public Vector<GameObject> getGameObjects() {
 
@@ -173,7 +173,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Delete a GameObject from the dashboard.
+	 * Delete a GameObject from the text.
 	 *
 	 * @param gameObject
 	 */
@@ -183,7 +183,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Deletes all GameObjects from the dashboard.
+	 * Deletes all GameObjects from the text.
 	 */
 	public void deleteAllDashboardObjects() {
 
@@ -191,7 +191,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Deletes all GameObjects with the given type from the dashboard.
+	 * Deletes all GameObjects with the given type from the text.
 	 *
 	 * Example paramater: Player.class
 	 *
@@ -203,7 +203,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Set the background of the dashboard with RGB-values.
+	 * Set the background of the text with RGB-values.
 	 * 
 	 * @param r
 	 * @param g
@@ -217,7 +217,7 @@ public class Dashboard extends GameObject {
 	}
 
 	/**
-	 * Set the background of the dashboard with a Sprite object (image).
+	 * Set the background of the text with a Sprite object (image).
 	 * 
 	 * @param sprite
 	 */

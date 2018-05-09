@@ -11,6 +11,7 @@ import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.state.GameState;
 
 import java.util.List;
 import java.util.Timer;
@@ -22,14 +23,14 @@ public class Air extends SpriteObject implements IFlyingObject {
     private int shield;
 
     private Weapon weapon;
-    private nl.han.ica.airspaceinvaders.state.GameView gameState;
+    private GameState gameState;
     private AirspaceInvadersGame airspaceInvadersGame;
     private boolean isDirectionLeft;
     private Logger logger = LogFactory.getLogger();
     private Timer timer = new Timer();
 
 
-    public Air(AirspaceInvadersGame game, nl.han.ica.airspaceinvaders.state.GameView view, Sprite sprite) {
+    public Air(AirspaceInvadersGame game, GameState view, Sprite sprite) {
         super(sprite);
         this.gameState = view;
         this.airspaceInvadersGame = game;

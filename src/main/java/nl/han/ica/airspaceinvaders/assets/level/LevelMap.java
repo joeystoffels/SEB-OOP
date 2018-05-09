@@ -45,7 +45,7 @@ public class LevelMap extends TileMap {
         if (tileMap != null && super.getIndexMap() != null) {
             for (int indexVertical = 0; indexVertical < tileMap.length; indexVertical++) {
 
-                // Don't render images that fall out of the scope of the views
+                // Don't render images that fall out of the scope of the state
                 int tileOffset = amountOfTilesLeft - this.visibleTiles - 2;
                 if (indexVertical > tileOffset) {
 

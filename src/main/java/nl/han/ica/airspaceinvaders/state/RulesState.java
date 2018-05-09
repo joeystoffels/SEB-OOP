@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.views;
+package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -7,11 +7,11 @@ import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
-public class RulesView extends View implements IState {
+public class RulesState extends View implements IState {
 
     private AirspaceInvadersGame game;
 
-    public RulesView(AirspaceInvadersGame game) {
+    public RulesState(AirspaceInvadersGame game) {
         super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
         this.game = game;
     }
@@ -20,7 +20,7 @@ public class RulesView extends View implements IState {
     public void start() {
         this.setBackground(this.game.loadImage(AssetLoader.getImage("background/a10-fade.jpg")));
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new MenuView(this.game), this.game,"Back", 50, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game,"Back", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
 
     }

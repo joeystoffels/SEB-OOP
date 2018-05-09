@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.gameobjects.dashboard;
+package nl.han.ica.airspaceinvaders.gameobjects.text;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import processing.core.PGraphics;

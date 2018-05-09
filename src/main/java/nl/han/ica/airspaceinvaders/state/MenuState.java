@@ -1,4 +1,4 @@
-package nl.han.ica.airspaceinvaders.views;
+package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -9,12 +9,12 @@ import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 import java.sql.Timestamp;
 
-public class MenuView extends View implements IState {
+public class MenuState extends View implements IState {
 
     private AirspaceInvadersGame game;
     private Timestamp startTimestamp;
 
-    public MenuView(AirspaceInvadersGame game) {
+    public MenuState(AirspaceInvadersGame game) {
         super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
         this.game = game;
     }
@@ -35,13 +35,13 @@ public class MenuView extends View implements IState {
         int horizontalOffset = 450;
         int fontSize = 80;
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new nl.han.ica.airspaceinvaders.state.GameView(this.game),this.game,"Start game", fontSize, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game),this.game,"Start game", fontSize, 200, 100);
         this.game.addGameObject(buttonStart, GameProperties.getValue("worldWidth", true) - horizontalOffset, 100, 2);
 
-        ButtonChangeView buttonRules = new ButtonChangeView(new RulesView(this.game), this.game,"Rules", fontSize, 200, 100);
+        ButtonChangeView buttonRules = new ButtonChangeView(new RulesState(this.game), this.game,"Rules", fontSize, 200, 100);
         this.game.addGameObject(buttonRules, GameProperties.getValue("worldWidth", true) - horizontalOffset, 200, 2);
 
-        ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreView(this.game), this.game,"Highscore", fontSize, 200, 100);
+        ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreState(this.game), this.game,"Highscore", fontSize, 200, 100);
         this.game.addGameObject(buttonHighscore, GameProperties.getValue("worldWidth", true) - horizontalOffset, 300, 2);
     }
 

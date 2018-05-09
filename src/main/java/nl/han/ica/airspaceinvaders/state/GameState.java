@@ -6,7 +6,7 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.level.Level;
-import nl.han.ica.airspaceinvaders.gameobjects.dashboard.TextObject;
+import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
@@ -15,7 +15,7 @@ import nl.han.ica.airspaceinvaders.interfaces.IState;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GameView extends View implements IState {
+public class GameState extends View implements IState {
 
     public List<IFlyingObject> enemies = new ArrayList<>();
 
@@ -26,7 +26,7 @@ public class GameView extends View implements IState {
     private AirspaceInvadersGame game;
     private Level level = new Level();
 
-    public GameView(AirspaceInvadersGame game) {
+    public GameState(AirspaceInvadersGame game) {
         super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
         this.game = game;
     }

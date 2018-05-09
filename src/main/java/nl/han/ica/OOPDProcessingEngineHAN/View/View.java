@@ -118,7 +118,7 @@ public class View {
 	}
 
     /**
-     * Draws all the dashboard objects on the given canvas.
+     * Draws all the text objects on the given canvas.
      * @param g
      * @param dashboards
      */
