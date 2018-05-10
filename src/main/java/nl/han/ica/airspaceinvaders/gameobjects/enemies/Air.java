@@ -1,6 +1,5 @@
 package nl.han.ica.airspaceinvaders.gameobjects.enemies;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
@@ -8,6 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.enums.PowerUpTypes;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
@@ -18,7 +18,6 @@ import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.state.GameState;
 
 import java.util.List;
-import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -67,7 +66,7 @@ public class Air extends SpriteObject implements IFlyingObject {
         }
 
         if (this.health <= 0) {
-            generatePowerUp();
+            createPowerUp();
             this.destroy();
 
             for (GameObject gameObject : airspaceInvadersGame.getGameObjectItems()) {
@@ -94,8 +93,8 @@ public class Air extends SpriteObject implements IFlyingObject {
     }
 
     @Override
-    public void generatePowerUp() {
-        if (Math.random() < 0.75) { // Dropchance
+    public void createPowerUp() {
+        if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) { // Dropchance
             int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
 
             this.airspaceInvadersGame.addGameObject(

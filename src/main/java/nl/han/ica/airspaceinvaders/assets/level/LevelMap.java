@@ -26,8 +26,8 @@ public class LevelMap extends TileMap {
         this.travelHeight = super.getTileMap().length * super.getTileSize();
 
         // Set the amount of tiles visible
-        this.visibleTiles = GameProperties.getValue("worldHeight", true) / super.getTileSize() + 1;
-        this.visibleTilesOffset = super.getTileSize() - (GameProperties.getValue("worldHeight", true) % super.getTileSize());
+        this.visibleTiles = GameProperties.getValueAsInt("worldHeight") / super.getTileSize() + 1;
+        this.visibleTilesOffset = super.getTileSize() - (GameProperties.getValueAsInt("worldHeight") % super.getTileSize());
     }
 
     public LevelMap(int tileSize) {

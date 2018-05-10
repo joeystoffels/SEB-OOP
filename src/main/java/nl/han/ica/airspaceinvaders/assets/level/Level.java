@@ -53,6 +53,6 @@ public class Level {
     }
 
     public TileMap loadLevel(String fileName) {
-        return new LevelMap(GameProperties.getValue("tileSize", true), this.tileTypes, AssetLoader.getLevel(fileName));
+        return new LevelMap(GameProperties.getValueAsInt("tileSize"), this.tileTypes, AssetLoader.getLevel(fileName));
     }
 }

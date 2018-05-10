@@ -9,5 +9,5 @@ public interface IFlyingObject extends ICollidableWithGameObjects {
     float getCenterYPos();
     float getObjectHeight();
     Weapon getWeapon();
-    void generatePowerUp();
+    void createPowerUp();
 }

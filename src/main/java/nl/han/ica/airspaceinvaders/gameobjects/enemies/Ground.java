@@ -69,7 +69,7 @@ public class Ground extends SpriteObject implements IFlyingObject {
     }
 
     @Override
-    public void generatePowerUp() {
+    public void createPowerUp() {
     }
 
     @Override

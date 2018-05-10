@@ -15,7 +15,7 @@ public class MenuState extends View implements IState {
     private Timestamp startTimestamp;
 
     public MenuState(AirspaceInvadersGame game) {
-        super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
+        super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
     }
 
@@ -36,13 +36,13 @@ public class MenuState extends View implements IState {
         int fontSize = 80;
 
         ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game),this.game,"Start game", fontSize, 200, 100);
-        this.game.addGameObject(buttonStart, GameProperties.getValue("worldWidth", true) - horizontalOffset, 100, 2);
+        this.game.addGameObject(buttonStart, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 100, 2);
 
         ButtonChangeView buttonRules = new ButtonChangeView(new RulesState(this.game), this.game,"Rules", fontSize, 200, 100);
-        this.game.addGameObject(buttonRules, GameProperties.getValue("worldWidth", true) - horizontalOffset, 200, 2);
+        this.game.addGameObject(buttonRules, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 200, 2);
 
         ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreState(this.game), this.game,"Highscore", fontSize, 200, 100);
-        this.game.addGameObject(buttonHighscore, GameProperties.getValue("worldWidth", true) - horizontalOffset, 300, 2);
+        this.game.addGameObject(buttonHighscore, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 300, 2);
     }
 
     @Override
@@ -52,7 +52,7 @@ public class MenuState extends View implements IState {
 
     @Override
     public void update() {
-        if(( new Timestamp(System.currentTimeMillis()).getTime() -  this.startTimestamp.getTime()) > GameProperties.getValue("splashTime", true) && this.game.getStartUp()){
+        if(( new Timestamp(System.currentTimeMillis()).getTime() -  this.startTimestamp.getTime()) > GameProperties.getValueAsInt("splashTime") && this.game.getStartUp()){
             this.game.setStartUp(false);
             this.showButtons();
         }

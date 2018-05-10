@@ -36,7 +36,7 @@ public class AirspaceInvadersGame extends GameEngine {
         this.stateMachine = new AirspaceInvadersStateMachine(this);
 
         // Set the size of the game
-        size(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
+        size(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.level.initialize();
     }
 

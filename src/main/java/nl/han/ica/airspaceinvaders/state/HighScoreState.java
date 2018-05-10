@@ -20,7 +20,7 @@ public class HighScoreState extends View implements IState {
     private String[] highscoreList;
 
     public HighScoreState(AirspaceInvadersGame game) {
-        super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
+        super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
     }
 
@@ -34,11 +34,11 @@ public class HighScoreState extends View implements IState {
         HighScores list = new HighScores("highscores.csv");
         Score[] highScoresList = list.loadScores();
 
-        int verticalStep = ( GameProperties.getValue("worldHeight", true) - (2 * margin)) / (highScoresList.length > 15 ? 15 : highScoresList.length);
-        int horizontalWidth =  GameProperties.getValue("worldHeight", true) / 100 * 40;
+        int verticalStep = ( GameProperties.getValueAsInt("worldHeight") - (2 * margin)) / (highScoresList.length > 15 ? 15 : highScoresList.length);
+        int horizontalWidth =  GameProperties.getValueAsInt("worldHeight") / 100 * 40;
 
         for( int index = 0; index < highScoresList.length; index++){
-            if(index <  GameProperties.getValue("amountOfHighScores", true) ) {
+            if(index <  GameProperties.getValueAsInt("amountOfHighScores") ) {
                 TextObject name = new TextObject(highScoresList[index].getName());
                 this.game.addGameObject(name, horizontalWidth, index * verticalStep + this.margin, 1);
 

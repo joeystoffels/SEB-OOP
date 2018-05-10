@@ -32,7 +32,7 @@ public class GameState extends View implements IState {
 
 
     public GameState(AirspaceInvadersGame game) {
-        super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
+        super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
     }
 

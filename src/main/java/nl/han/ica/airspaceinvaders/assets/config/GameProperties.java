@@ -8,6 +8,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import static java.lang.Double.parseDouble;
 import static java.lang.Integer.parseInt;
 
 public class GameProperties {
@@ -64,13 +65,18 @@ public class GameProperties {
     /**
      * Get a value from the game.properties as int
      * @param key String
-     * @param isInteger Boolean
      * @return int
      */
-    public static int getValue(String key, Boolean isInteger) {
-        if (!isInteger) {
-            GameProperties.getValue(key);
-        }
+    public static int getValueAsInt(String key) {
         return parseInt(properties.getProperty(key));
+    }
+
+    /**
+     * Get a value from the game.properties as int
+     * @param key String
+     * @return int
+     */
+    public static double getValueAsDouble(String key) {
+        return parseDouble(properties.getProperty(key));
     }
 }

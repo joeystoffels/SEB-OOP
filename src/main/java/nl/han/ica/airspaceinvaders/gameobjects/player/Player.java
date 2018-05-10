@@ -108,15 +108,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-
         for (GameObject gameObject : collidedGameObjects) {
-
             if (gameObject instanceof Air || gameObject instanceof Projectile) {
-                // todo remove below if
-                if (gameObject instanceof Projectile && ((Projectile)gameObject).getWeapon().getIFlyingObject().equals(this)) {
-                    System.out.println("TEST RETURN PLAYER");
-                    return;
-                }
                 handleCollisionDamage(gameObject);
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             } else if (gameObject instanceof PowerUp) {
@@ -200,7 +193,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     }
 
     @Override
-    public void generatePowerUp() {
+    public void createPowerUp() {
 
     }
 
