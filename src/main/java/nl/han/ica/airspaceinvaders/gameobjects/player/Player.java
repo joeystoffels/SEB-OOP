@@ -132,7 +132,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     private void handleCollisionDamage(GameObject gameObject) {
         if (gameObject instanceof Air) {
-            handlePlayerDamage(50);
+            handlePlayerDamage(25);
         } else if (gameObject instanceof Projectile) {
             handlePlayerDamage(((Projectile) gameObject).getDamage());
         }
@@ -145,9 +145,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     private void handlePlayerDamage(int damage) {
         if (this.getShield() == 0) {
-            this.setHealth(this.getHealth() - damage <= 0 ? 0 : this.getHealth() - damage);
+            if (this.getHealth() - damage <= 0) {
+                this.setHealth(0);
+            } else {
+                this.setHealth(this.getHealth() - damage);
+            }
         } else
-        if (this.getShield() < damage){
+        if (this.getShield() < damage) {
             this.setHealth(this.getHealth() + this.getShield() - damage);
             this.setShield(0);
         } else {

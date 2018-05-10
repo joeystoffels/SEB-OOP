@@ -39,11 +39,16 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
         this.setDirection(weapon.getIFlyingObject() instanceof Player ? 0 : 180);
         this.setSpeed(weapon instanceof Canon ? 7 : 3);
 
-        airspaceInvadersGame.addGameObject(this, (weapon.getIFlyingObject().getCenterXPos() - this.getWidth() / 2),
-                weapon.getIFlyingObject() instanceof Player ?
-                        weapon.getIFlyingObject().getCenterYPos() - (((Player) weapon.getIFlyingObject()).getHeight()) :
-                        weapon.getIFlyingObject().getCenterYPos() + (((IFlyingObject) weapon.getIFlyingObject()).getObjectHeight()) + this.getHeight()
-        );
+        float yPos;
+        float xPos = weapon.getIFlyingObject().getCenterXPos() - this.getWidth() / 2;
+
+        if (weapon.getIFlyingObject() instanceof Player) {
+            yPos = weapon.getIFlyingObject().getCenterYPos() - ((Player) weapon.getIFlyingObject()).getHeight();
+        } else {
+            yPos = weapon.getIFlyingObject().getCenterYPos() + ((IFlyingObject) weapon.getIFlyingObject()).getObjectHeight() + this.getHeight();
+        }
+
+        airspaceInvadersGame.addGameObject(this, xPos, yPos);
     }
 
     @Override
