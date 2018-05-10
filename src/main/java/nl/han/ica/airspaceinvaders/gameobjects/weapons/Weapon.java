@@ -28,4 +28,6 @@ public abstract class Weapon {
     public abstract void stopTimer();
 
     public abstract void destroy();
+
+    public abstract void shoot();
 }

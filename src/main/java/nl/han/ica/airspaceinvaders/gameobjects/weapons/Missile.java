@@ -1,27 +1,28 @@
 package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.enums.MissileType;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import processing.core.PGraphics;
 
 public class Missile extends Weapon {
 
-    MissileType missileType;
+    private AirspaceInvadersGame airspaceInvadersGame;
+    private IFlyingObject iFlyingObject;
 
     /**
-     * @param missileType
+     *
      */
-    public Missile(MissileType missileType) {
-        this.missileType = missileType;
-    }
-
-    public MissileType getMissileType() {
-        return missileType;
+    public Missile(AirspaceInvadersGame game, IFlyingObject iFlyingObject) {
+        super.setDamage(100);
+        this.airspaceInvadersGame = game;
+        this.iFlyingObject = iFlyingObject;
     }
 
     @Override
     public IFlyingObject getIFlyingObject() {
-        return null;
+        return this.iFlyingObject;
     }
 
     @Override
@@ -32,5 +33,10 @@ public class Missile extends Weapon {
     @Override
     public void destroy() {
 
+    }
+
+    @Override
+    public void shoot() {
+        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("enemy/A10.png", 6));
     }
 }

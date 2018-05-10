@@ -1,5 +1,6 @@
 package nl.han.ica.airspaceinvaders.gameobjects.player;
 
+import ddf.minim.AudioPlayer;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
@@ -11,6 +12,7 @@ import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
+import nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
@@ -23,14 +25,16 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
-    private int health = 250;
-    private int shield = 0;
-    private int score = 0;
     private final float verticalRecovery = 1.0f;
+    AudioPlayer missileSound;
 
     private Weapon canon;
     private Weapon missile;
 
+    private int health = 250;
+    private int shield = 0;
+    private int score = 0;
+    private int missileAmmo = 0;
 
     /**
      *  Class that represents the player in the game
@@ -39,9 +43,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public Player(AirspaceInvadersGame world) {
         super(AssetLoader.getSprite("player/A10-shade.png", 25), 6);
         this.canon = new Canon(world, this);
+        this.missile = new Missile(world, this);
         this.world = world;
         setFriction(0.04f);
         this.logger.logln(DefaultLogger.LOG_DEBUG, "Player spawned");
+        this.missileSound = world.soundLibrary.loadFile("sounds/MissileSound.mp3");
     }
 
     /**
@@ -99,7 +105,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setDirectionSpeed(180, speed);
         }
         if (keyCode == PConstants.CONTROL) {
-
+            if (missileAmmo > 0) {
+                System.out.println("SHOOT MISSILE");
+                missileSound.play();
+                missileSound.rewind();
+                this.missile.shoot();
+                missileAmmo--;
+            }
         }
     }
 
@@ -148,7 +160,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
             case "ShieldUp": this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount()); break;
             case "LivesUp": break; // todo
-            case "MissileUp": break; // todo
+            case "MissileUp": this.missileAmmo++; break;
             default: break;
         }
     }
@@ -208,5 +220,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     @Override
     public float getObjectHeight() {
         return this.getHeight();
+    }
+
+    public int getMissileAmmo() {
+        return missileAmmo;
     }
 }
