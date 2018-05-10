@@ -24,12 +24,12 @@ public class GameState extends View implements IState {
 
     public List<IFlyingObject> enemies = new ArrayList<>();
 
-    private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: ");
-    private TextObject loadingDashboardText = new TextObject("Loading ");
+    private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield");
+    private TextObject loadingDashboardText = new TextObject("Loading... ");
 
     private Player player;
     private AirspaceInvadersGame game;
-    private Level level = new Level();
+
 
     public GameState(AirspaceInvadersGame game) {
         super(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
@@ -44,15 +44,13 @@ public class GameState extends View implements IState {
         }
 
         if(this.player != null) {
-            this.getDashboardText().setText("Health:" + player.getHealth() + "\n" + "Score: " + player.getScore());
+            this.getDashboardText().setText("Health:" + player.getHealth() + "\n" + "Score: " + player.getScore() + "\n" + "Shield: " + player.getShield());
         }
     }
 
     @Override
     public void start() {
-
-        this.level.initialize();
-        game.setTileMap(level.loadLevel("level1.csv"));
+        game.setTileMap(game.getLevel().loadLevel("level1.csv"));
 
         this.player = new Player(this.game);
         this.game.addGameObject(player, worldWidth / 2 - (player.getWidth() / 2), (float) (worldHeight * 0.9));
@@ -62,9 +60,6 @@ public class GameState extends View implements IState {
 
     @Override
     public void reset() {
-        for (GameObject gameObject : game.getGameObjectItems()) {
-
-        }
         for (GameObject gameObject : game.getGameObjectItems()) {
             if (gameObject instanceof IFlyingObject){
                 ((IFlyingObject) gameObject).getWeapon().stopTimer();
@@ -95,14 +90,14 @@ public class GameState extends View implements IState {
         this.dashboardText = dashboardText;
     }
 
-    public void generateEnemies() {
+    private void generateEnemies() {
         int nrEnemies = (int) Math.ceil(Math.random() * 3);
         float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
         for (int x = 0; x < nrEnemies; x++) {
             Air enemy = new Air(this.game, this, AssetLoader.getSprite("enemy/A10.png", 13));
             enemies.add(enemy);
-            this.game.addGameObject((Air) enemy, (float) (xPos + (x * enemy.getWidth())), 0); //todo startpositie enemies fixen
+            this.game.addGameObject((Air) enemy, (float) (xPos + (x * enemy.getWidth())), 0);
         }
     }
 }

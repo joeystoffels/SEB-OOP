@@ -2,6 +2,7 @@ package nl.han.ica.airspaceinvaders.state;
 
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.level.Level;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 public class AirspaceInvadersStateMachine {

@@ -20,9 +20,9 @@ public abstract class SpriteObject extends GameObject {
 		this.sprite = sprite;
 		
 		setWidth(sprite.getWidth());
-		setHeight(sprite.getHeight());
-	}
-	
+	setHeight(sprite.getHeight());
+}
+
 	/**
 	 * Draws the image on the PGraphics object, this is fired by the GameEngine.
 	 */

@@ -72,4 +72,9 @@ public class Ground extends SpriteObject implements IFlyingObject {
     public Weapon getWeapon() {
         return weapon;
     }
+
+    @Override
+    public void generatePowerUp() {
+
+    }
 }

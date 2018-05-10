@@ -34,7 +34,7 @@ public class HighScoreState extends View implements IState {
         HighScores list = new HighScores("highscores.csv");
         Score[] highScoresList = list.loadScores();
 
-        int verticalStep = ( GameProperties.getValue("worldHeight", true) - (2 * margin)) / highScoresList.length;
+        int verticalStep = ( GameProperties.getValue("worldHeight", true) - (2 * margin)) / (highScoresList.length > 15 ? 15 : highScoresList.length);
         int horizontalWidth =  GameProperties.getValue("worldHeight", true) / 100 * 40;
 
         for( int index = 0; index < highScoresList.length; index++){

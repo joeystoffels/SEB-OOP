@@ -7,7 +7,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import nl.han.ica.airspaceinvaders.enums.PowerUpTypes;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
+import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
@@ -15,6 +18,7 @@ import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.state.GameState;
 
 import java.util.List;
+import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -57,12 +61,14 @@ public class Air extends SpriteObject implements IFlyingObject {
                 this.health = health - ((Projectile) gameObject).getDamage();
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             }
+            if (gameObject instanceof Player) {
+                this.setHealth(0);
+            }
         }
 
         if (this.health <= 0) {
-            this.weapon.destroy();
-            this.airspaceInvadersGame.deleteGameObject(this);
-            this.gameState.enemies.remove(this);
+            generatePowerUp();
+            this.destroy();
 
             for (GameObject gameObject : airspaceInvadersGame.getGameObjectItems()) {
                 if (gameObject instanceof Player) {
@@ -70,8 +76,12 @@ public class Air extends SpriteObject implements IFlyingObject {
                 }
             }
         }
+    }
 
-
+    private void destroy() {
+        this.weapon.destroy();
+        this.airspaceInvadersGame.deleteGameObject(this);
+        this.gameState.enemies.remove(this);
     }
 
     @Override
@@ -85,8 +95,21 @@ public class Air extends SpriteObject implements IFlyingObject {
     }
 
     @Override
+    public void generatePowerUp() {
+        if (Math.random() < 0.75) { // Dropchance
+            int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
+
+            this.airspaceInvadersGame.addGameObject(
+                    new PowerUp(this.airspaceInvadersGame,
+                    AssetLoader.getSprite("enemy/" + PowerUpTypes.values()[randomNr].toString() + ".png", 20),
+                    PowerUpTypes.values()[randomNr].toString()), this.getCenterXPos(), this.getCenterYPos()
+            );
+        }
+    }
+
+    @Override
     public void movement(boolean isDirectionLeft) {
-        this.setSpeed(5);
+        this.setSpeed(4);
         this.setDirection(isDirectionLeft ? 120 : 240);
         this.move();
         this.isDirectionLeft = !isDirectionLeft;
@@ -107,11 +130,6 @@ public class Air extends SpriteObject implements IFlyingObject {
     public void setShield(int shield) {
         this.shield = shield;
     }
-
-//    @Override
-//    public AirspaceInvadersGame getWorld() {
-//        return world;
-//    }
 
     @Override
     public float getCenterXPos() {

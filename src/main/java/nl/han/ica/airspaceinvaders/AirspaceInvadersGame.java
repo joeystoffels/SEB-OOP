@@ -5,6 +5,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import nl.han.ica.airspaceinvaders.assets.level.Level;
 import nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler;
 import nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler;
 import nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine;
@@ -16,6 +17,7 @@ public class AirspaceInvadersGame extends GameEngine {
     private Boolean startUp = true;
     private AirspaceInvadersStateMachine stateMachine;
     private Logger logger = LogFactory.getLogger();
+    private Level level = new Level();
 
     public static void main(String[] args) {
         PApplet.main(new String[]{"nl.han.ica.airspaceinvaders.AirspaceInvadersGame"});
@@ -35,6 +37,7 @@ public class AirspaceInvadersGame extends GameEngine {
 
         // Set the size of the game
         size(GameProperties.getValue("worldWidth", true), GameProperties.getValue("worldHeight", true));
+        this.level.initialize();
     }
 
     /**
@@ -67,5 +70,9 @@ public class AirspaceInvadersGame extends GameEngine {
      */
     public void setStartUp(Boolean startUp) {
         this.startUp = startUp;
+    }
+
+    public Level getLevel() {
+        return level;
     }
 }

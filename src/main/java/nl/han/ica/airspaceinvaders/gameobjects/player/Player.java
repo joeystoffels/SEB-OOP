@@ -8,6 +8,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
+import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
@@ -22,6 +24,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private final AirspaceInvadersGame world;
     private Logger logger = LogFactory.getLogger();
     private int health = 250;
+    private int shield = 0;
     private int score = 0;
     private final float verticalRecovery = 1.0f;
 
@@ -108,14 +111,47 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 
         for (GameObject gameObject : collidedGameObjects) {
-            if (gameObject instanceof Projectile) {
-                setHealth(getHealth() - ((Projectile) gameObject).getDamage());
-                if (getHealth() <= 0) {
-                    this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
-                    this.world.changeView(new HighScoreState(this.world));
-                }
+            if (gameObject instanceof Air || gameObject instanceof Projectile) {
+                handleCollisionDamage(gameObject);
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
+            } else if (gameObject instanceof PowerUp) {
+                handlePowerUp(gameObject);
             }
+        }
+    }
+
+    private void handleCollisionDamage(GameObject gameObject) {
+        if (gameObject instanceof Air) {
+            handlePlayerDamage(50);
+        } else if (gameObject instanceof Projectile) {
+            handlePlayerDamage(((Projectile) gameObject).getDamage());
+        }
+
+        if (getHealth() <= 0) {
+            this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
+            this.world.changeView(new HighScoreState(this.world));
+        }
+    }
+
+    private void handlePlayerDamage(int damage) {
+        if (this.getShield() == 0) {
+            this.setHealth(this.getHealth() - damage <= 0 ? 0 : this.getHealth() - damage);
+        } else
+        if (this.getShield() < damage){
+            this.setHealth(this.getHealth() + this.getShield() - damage);
+            this.setShield(0);
+        } else {
+            this.setShield(this.getShield() - damage);
+        }
+    }
+
+    private void handlePowerUp(GameObject gameObject) {
+        switch(((PowerUp) gameObject).getPowerUpType()) {
+            case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
+            case "ShieldUp": this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount()); break;
+            case "LivesUp": break; // todo
+            case "MissileUp": break; // todo
+            default: break;
         }
     }
 
@@ -161,5 +197,18 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     public String getName() {
         return "Henk";
+    }
+
+    @Override
+    public void generatePowerUp() {
+
+    }
+
+    public int getShield() {
+        return shield;
+    }
+
+    public void setShield(int shield) {
+        this.shield = shield;
     }
 }
