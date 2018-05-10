@@ -4,6 +4,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import processing.core.PApplet;
+import processing.core.PImage;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +20,7 @@ import static java.lang.Integer.parseInt;
 
 public class AssetLoader {
 
-    public static String getImage(String name) {
+    public static String getImageUrl(String name) {
         return Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString();
     }
 
@@ -64,5 +68,11 @@ public class AssetLoader {
             lineIndex++;
         }
         return level;
+    }
+
+    public static PImage getBackgroundImage(String url, AirspaceInvadersGame game) {
+        PImage backgroundImage = game.loadImage(AssetLoader.getImageUrl(url));
+        backgroundImage.resize(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
+        return backgroundImage;
     }
 }
