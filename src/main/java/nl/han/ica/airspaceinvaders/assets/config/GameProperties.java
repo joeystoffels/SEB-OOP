@@ -52,7 +52,6 @@ public class GameProperties {
 
     }
 
-
     /**
      * Get a value from the game.properties as String
      * @param key String
@@ -72,9 +71,9 @@ public class GameProperties {
     }
 
     /**
-     * Get a value from the game.properties as int
+     * Get a value from the game.properties as Double
      * @param key String
-     * @return int
+     * @return double
      */
     public static double getValueAsDouble(String key) {
         return parseDouble(properties.getProperty(key));

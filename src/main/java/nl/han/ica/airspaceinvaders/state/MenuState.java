@@ -23,14 +23,14 @@ public class MenuState extends View implements IState {
     public void start() {
         this.startTimestamp =  new Timestamp(System.currentTimeMillis());
         if(this.game.getStartUp()){
-            this.setBackground(this.game.loadImage(AssetLoader.getImage("background/a10-logo.jpg")));
+            this.setBackground(AssetLoader.getBackgroundImage("background/a10-logo.jpg", this.game));
         } else {
             this.showButtons();
         }
     }
 
     private void showButtons() {
-        this.setBackground(this.game.loadImage(AssetLoader.getImage("background/a10.jpg")));
+        this.setBackground(AssetLoader.getBackgroundImage("background/a10.jpg", this.game));
 
         int horizontalOffset = 450;
         int fontSize = 80;
