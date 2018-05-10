@@ -7,7 +7,7 @@ public interface IFlyingObject extends ICollidableWithGameObjects {
     void movement(boolean isDirectionLeft);
     float getCenterXPos();
     float getCenterYPos();
-    float getObjectDirection();
+    float getObjectHeight();
     Weapon getWeapon();
     void generatePowerUp();
 }

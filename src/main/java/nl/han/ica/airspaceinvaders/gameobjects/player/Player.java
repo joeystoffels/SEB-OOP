@@ -67,7 +67,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setY(world.getHeight() - super.getWidth());
         }
 
-
         if (getySpeed() < this.verticalRecovery && getySpeed() > (this.verticalRecovery * -1)) {
             float horizontalRecovery = 0.5f;
             if (getxSpeed() < horizontalRecovery && getxSpeed() > (horizontalRecovery * -1)) {
@@ -111,7 +110,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
 
         for (GameObject gameObject : collidedGameObjects) {
+
             if (gameObject instanceof Air || gameObject instanceof Projectile) {
+                // todo remove below if
+                if (gameObject instanceof Projectile && ((Projectile)gameObject).getWeapon().getIFlyingObject().equals(this)) {
+                    System.out.println("TEST RETURN PLAYER");
+                    return;
+                }
                 handleCollisionDamage(gameObject);
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             } else if (gameObject instanceof PowerUp) {
@@ -170,11 +175,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         return this.getCenterY();
     }
 
-    @Override
-    public float getObjectDirection() {
-        return this.getDirection();
-    }
-
     public int getHealth() {
         return this.health;
     }
@@ -210,5 +210,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     public void setShield(int shield) {
         this.shield = shield;
+    }
+
+    @Override
+    public float getObjectHeight() {
+        return this.getHeight();
     }
 }

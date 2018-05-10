@@ -141,12 +141,12 @@ public class Air extends SpriteObject implements IFlyingObject {
     }
 
     @Override
-    public float getObjectDirection() {
-        return 0;
+    public Weapon getWeapon() {
+        return weapon;
     }
 
     @Override
-    public Weapon getWeapon() {
-        return weapon;
+    public float getObjectHeight() {
+        return this.getHeight();
     }
 }

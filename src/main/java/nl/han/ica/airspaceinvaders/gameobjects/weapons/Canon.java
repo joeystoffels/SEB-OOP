@@ -31,24 +31,9 @@ public class Canon extends Weapon {
         }, 1000, this.getIFlyingObject() instanceof Player ? 250 : 2000);
     }
 
-    /**
-     *
-     */
-    @Override
-    public void update() {
-    }
-
     //@Override
     public void shoot() {
-        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3), iFlyingObject.getCenterXPos(), iFlyingObject.getCenterYPos(), iFlyingObject.getObjectDirection());
-    }
-
-    /**
-     * @param g PGraphics object will be given by the GameEngine.
-     */
-    @Override
-    public void draw(PGraphics g) {
-
+        new Projectile(this, this.world, AssetLoader.getSprite("enemy/A10.png", 3));
     }
 
     @Override
@@ -63,6 +48,5 @@ public class Canon extends Weapon {
     @Override
     public void destroy() {
         stopTimer();
-        world.deleteGameObject(this);
     }
 }

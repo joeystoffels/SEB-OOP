@@ -64,17 +64,16 @@ public class Ground extends SpriteObject implements IFlyingObject {
     }
 
     @Override
-    public float getObjectDirection() {
-        return 0;
-    }
-
-    @Override
     public Weapon getWeapon() {
         return weapon;
     }
 
     @Override
     public void generatePowerUp() {
+    }
 
+    @Override
+    public float getObjectHeight() {
+        return 0;
     }
 }

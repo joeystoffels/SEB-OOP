@@ -2,7 +2,7 @@ package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 
-public abstract class Weapon extends GameObject {
+public abstract class Weapon {
 
     protected int damage;
     protected int intervalTime;

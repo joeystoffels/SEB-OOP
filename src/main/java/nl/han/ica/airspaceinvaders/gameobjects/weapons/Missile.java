@@ -15,22 +15,6 @@ public class Missile extends Weapon {
         this.missileType = missileType;
     }
 
-    /**
-     *
-     */
-    @Override
-    public void update() {
-
-    }
-
-    /**
-     * @param g PGraphics object will be given by the GameEngine.
-     */
-    @Override
-    public void draw(PGraphics g) {
-
-    }
-
     public MissileType getMissileType() {
         return missileType;
     }
