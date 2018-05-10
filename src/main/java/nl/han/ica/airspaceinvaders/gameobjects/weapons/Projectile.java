@@ -3,6 +3,7 @@ package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
@@ -13,18 +14,20 @@ import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 
 import java.util.List;
 
-public class Projectile extends SpriteObject implements ICollidableWithGameObjects {
+public class Projectile extends AnimatedSpriteObject implements ICollidableWithGameObjects {
 
     private int damage;
     private AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();
     private Weapon weapon;
+    private int counter = 0;
 
-    public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite) {
-        super(sprite);
+    public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
+        super(sprite, totalFrames);
         this.airspaceInvadersGame = game;
         this.weapon = weapon;
         createProjectile(weapon);
+        this.setCurrentFrameIndex(1);
     }
 
     @Override
@@ -54,6 +57,13 @@ public class Projectile extends SpriteObject implements ICollidableWithGameObjec
     @Override
     public void update() {
         checkIfOutsideView();
+
+//
+//        if(counter > 20){
+//            this.setCurrentFrameIndex(2);
+//        } else if(counter > 10){
+//            this.setCurrentFrameIndex(1);
+//        }
     }
 
     private void checkIfOutsideView() {

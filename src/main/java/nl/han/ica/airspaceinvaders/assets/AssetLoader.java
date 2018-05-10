@@ -34,9 +34,9 @@ public class AssetLoader {
 
     public static Sprite getSprite(String name, int sizePercentage) {
         Sprite newSprite = new Sprite(Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString());
-        int newWidth = newSprite.getWidth() / 100 * sizePercentage;
-        int newHeight = newSprite.getHeight() / 100 * sizePercentage;
-        newSprite.resize(newWidth, newHeight);
+        float newWidth = (float) newSprite.getWidth() / 100f * sizePercentage;
+        float newHeight = (float) newSprite.getHeight() / 100f * sizePercentage;
+        newSprite.resize((int)newWidth, (int)newHeight);
         return newSprite;
     }
 

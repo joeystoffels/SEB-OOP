@@ -1,5 +1,6 @@
 package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
@@ -32,7 +33,8 @@ public class Canon extends Weapon {
 
     @Override
     public void shoot() {
-        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("enemy/A10.png", 3));
+        Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", 99);
+        new Projectile(this, this.airspaceInvadersGame, sprite, 3);
     }
 
     @Override

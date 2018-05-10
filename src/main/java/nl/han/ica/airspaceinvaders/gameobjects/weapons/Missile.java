@@ -37,6 +37,6 @@ public class Missile extends Weapon {
 
     @Override
     public void shoot() {
-        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("enemy/A10.png", 6));
+        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("weapons/Missile.png", 100), 3);
     }
 }

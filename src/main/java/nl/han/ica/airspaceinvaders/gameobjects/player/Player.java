@@ -34,7 +34,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private int health = 250;
     private int shield = 0;
     private int score = 0;
-    private int missileAmmo = 0;
+    private int missileAmmo = 10;
 
     /**
      *  Class that represents the player in the game
@@ -55,7 +55,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      */
     @Override
     public void update() {
-
         if (getX() <= 0) {
             setxSpeed(0);
             setX(0);
