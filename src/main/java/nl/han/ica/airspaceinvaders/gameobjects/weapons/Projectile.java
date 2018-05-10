@@ -27,9 +27,8 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         this.airspaceInvadersGame = game;
         this.weapon = weapon;
         createProjectile(weapon);
-        this.setCurrentFrameIndex(1);
+        this.setCurrentFrameIndex(0);
     }
-
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         if (collidedGameObjects.get(0) instanceof IFlyingObject) {
@@ -39,31 +38,39 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     private void createProjectile(Weapon weapon) {
         this.damage = weapon.getDamage();
+
         this.setDirection(weapon.getIFlyingObject() instanceof Player ? 0 : 180);
         this.setSpeed(weapon instanceof Canon ? 7 : 3);
 
-        float yPos;
+        float yPos = weapon.getIFlyingObject().getCenterYPos() - weapon.getIFlyingObject().getObjectHeight();
         float xPos = weapon.getIFlyingObject().getCenterXPos() - this.getWidth() / 2;
+        float xPosOffset = 0;
 
         if (weapon.getIFlyingObject() instanceof Player) {
-            yPos = weapon.getIFlyingObject().getCenterYPos() - ((Player) weapon.getIFlyingObject()).getHeight();
+            Player player = (Player) weapon.getIFlyingObject();
+            float playerWidth = player.getWidth();
+            if (weapon instanceof Missile) {
+                yPos = yPos - player.getHeight() / 3;
+                xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 3 : playerWidth / 3;
+            }
         } else {
             yPos = weapon.getIFlyingObject().getCenterYPos() + ((IFlyingObject) weapon.getIFlyingObject()).getObjectHeight() + this.getHeight();
         }
 
-        airspaceInvadersGame.addGameObject(this, xPos, yPos);
+        airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
     }
 
     @Override
     public void update() {
         checkIfOutsideView();
 
-//
-//        if(counter > 20){
-//            this.setCurrentFrameIndex(2);
-//        } else if(counter > 10){
-//            this.setCurrentFrameIndex(1);
-//        }
+        counter++;
+
+        if(counter > 45){
+            this.setCurrentFrameIndex(2);
+        } else if(counter > 15){
+            this.setCurrentFrameIndex(1);
+        }
     }
 
     private void checkIfOutsideView() {

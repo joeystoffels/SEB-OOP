@@ -10,6 +10,7 @@ public class Missile extends Weapon {
 
     private AirspaceInvadersGame airspaceInvadersGame;
     private IFlyingObject iFlyingObject;
+    public boolean leftMissilePosition;
 
     /**
      *
@@ -37,6 +38,7 @@ public class Missile extends Weapon {
 
     @Override
     public void shoot() {
-        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("weapons/Missile.png", 100), 3);
+        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("weapons/Missile.png", 30), 3);
+        this.leftMissilePosition = !leftMissilePosition;
     }
 }

@@ -23,17 +23,12 @@ public class Canon extends Weapon {
         super.setIntervalTime(1);
         this.iFlyingObject = iFlyingObject;
         this.airspaceInvadersGame = game;
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                shoot();
-            }
-        }, 1000, this.getIFlyingObject() instanceof Player ? 400 : 2000);
+        startTimer();
     }
 
     @Override
     public void shoot() {
-        Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", 99);
+        Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", 75);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
     }
 
@@ -44,6 +39,23 @@ public class Canon extends Weapon {
 
     public void stopTimer() {
         this.timer.cancel();
+    }
+
+    private void startTimer() {
+        int timerInterval;
+
+        if (this.getIFlyingObject() instanceof Player) {
+            timerInterval = 400;
+        } else {
+            timerInterval = 2000;
+        }
+
+        timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                shoot();
+            }
+        }, 1000, timerInterval);
     }
 
     @Override

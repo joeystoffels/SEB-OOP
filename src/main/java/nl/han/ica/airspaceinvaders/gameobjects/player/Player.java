@@ -143,18 +143,19 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     }
 
     private void handlePlayerDamage(int damage) {
-        if (this.getShield() == 0) {
-            if (this.getHealth() - damage <= 0) {
-                this.setHealth(0);
-            } else {
-                this.setHealth(this.getHealth() - damage);
-            }
-        } else
-        if (this.getShield() < damage) {
-            this.setHealth(this.getHealth() + this.getShield() - damage);
+        if (this.getShield() - damage <= 0) {
+            subtractFromHealth(damage - this.getShield());
             this.setShield(0);
         } else {
             this.setShield(this.getShield() - damage);
+        }
+    }
+
+    private void subtractFromHealth(int damage) {
+        if (this.getHealth() - damage <= 0) {
+            this.setHealth(0);
+        } else {
+            this.setHealth(this.getHealth() - damage);
         }
     }
 
@@ -162,7 +163,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         switch(((PowerUp) gameObject).getPowerUpType()) {
             case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
             case "ShieldUp": this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount()); break;
-            case "LivesUp": break; // todo
             case "MissileUp": this.missileAmmo++; break;
             default: break;
         }
