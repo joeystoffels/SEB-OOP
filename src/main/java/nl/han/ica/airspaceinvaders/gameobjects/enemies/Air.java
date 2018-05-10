@@ -99,7 +99,7 @@ public class Air extends SpriteObject implements IFlyingObject {
 
             this.airspaceInvadersGame.addGameObject(
                     new PowerUp(this.airspaceInvadersGame,
-                    AssetLoader.getSprite("enemy/" + PowerUpTypes.values()[randomNr].toString() + ".png", 20),
+                    AssetLoader.getSprite("powerup/PowerUp.png", 10),
                     PowerUpTypes.values()[randomNr].toString()), this.getCenterXPos() - (this.getWidth() / 2), this.getCenterYPos() - (this.getHeight() / 2)
             );
         }
