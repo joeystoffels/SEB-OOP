@@ -89,7 +89,6 @@ public class Air extends SpriteObject implements IFlyingObject {
             airspaceInvadersGame.deleteGameObject(this);
             gameState.enemies.remove(this);
         }
-
     }
 
     @Override
@@ -108,7 +107,7 @@ public class Air extends SpriteObject implements IFlyingObject {
     @Override
     public void movement(boolean isDirectionLeft) {
         this.setSpeed(4);
-        this.setDirection(isDirectionLeft ? 120 : 240);
+        this.setDirection(isDirectionLeft ? 110 : 250);
         this.move();
         this.isDirectionLeft = !isDirectionLeft;
     }
