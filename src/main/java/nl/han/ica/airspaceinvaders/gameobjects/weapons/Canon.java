@@ -19,7 +19,7 @@ public class Canon extends Weapon {
      *
      */
     public Canon(AirspaceInvadersGame world, IFlyingObject iFlyingObject) {
-        super.setDamage(15);
+        super.setDamage(10);
         super.setIntervalTime(1);
         this.iFlyingObject = iFlyingObject;
         this.world = world;
@@ -28,7 +28,7 @@ public class Canon extends Weapon {
             public void run() {
                 shoot();
             }
-        }, 1000, this.getIFlyingObject() instanceof Player ? 200 : 1000);
+        }, 1000, this.getIFlyingObject() instanceof Player ? 250 : 2000);
     }
 
     /**

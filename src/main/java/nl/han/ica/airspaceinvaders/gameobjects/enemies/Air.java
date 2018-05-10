@@ -39,7 +39,7 @@ public class Air extends SpriteObject implements IFlyingObject {
         super(sprite);
         this.gameState = view;
         this.airspaceInvadersGame = game;
-        this.health = 100;
+        this.health = 50;
         this.shield = 0;
         this.weapon = new Canon(game, this);
         timer.schedule(new TimerTask() {
@@ -87,7 +87,6 @@ public class Air extends SpriteObject implements IFlyingObject {
     @Override
     public void update() {
         if (this.getY() > airspaceInvadersGame.getHeight() | this.getY() < 0) {
-            logger.logln(DefaultLogger.LOG_DEBUG, "Projectile removed");
             airspaceInvadersGame.deleteGameObject(this);
             gameState.enemies.remove(this);
         }
