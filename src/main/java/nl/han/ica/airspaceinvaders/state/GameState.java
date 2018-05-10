@@ -8,19 +8,21 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
-import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
+import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public class GameState extends View implements IState {
 
     public List<IFlyingObject> enemies = new ArrayList<>();
 
+    private String[] enemyPlanes = {"enemy/F22.png", "enemy/Grippen.png", "enemy/Mig.png"};
     private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield" + "\n" + "Missiles: ");
     private TextObject loadingDashboardText = new TextObject("Loading... ");
 
@@ -40,7 +42,7 @@ public class GameState extends View implements IState {
             generateEnemies();
         }
 
-        if(this.player != null) {
+        if (this.player != null) {
             this.getDashboardText().setText("Health:" + player.getHealth() + "\n" +
                     "Score: " + player.getScore() + "\n" +
                     "Shield: " + player.getShield() + "\n" +
@@ -64,7 +66,7 @@ public class GameState extends View implements IState {
     @Override
     public void reset() {
         for (GameObject gameObject : game.getGameObjectItems()) {
-            if (gameObject instanceof IFlyingObject){
+            if (gameObject instanceof IFlyingObject) {
                 ((IFlyingObject) gameObject).getWeapon().stopTimer();
 
                 if (gameObject instanceof Player) {
@@ -94,11 +96,12 @@ public class GameState extends View implements IState {
     }
 
     private void generateEnemies() {
+
         int nrEnemies = (int) Math.ceil(Math.random() * 3);
         float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
         for (int x = 0; x < nrEnemies; x++) {
-            IFlyingObject enemy = new Air(this.game, this, AssetLoader.getSprite("enemy/A10.png", 13));
+            IFlyingObject enemy = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 20));
             enemies.add(enemy);
             this.game.addGameObject((Air) enemy, (float) (xPos + (x * ((Air) enemy).getWidth())), 0);
         }
