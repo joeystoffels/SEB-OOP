@@ -41,7 +41,8 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
     /**
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
-     * @param collidedGameObjects
+     * Gets called by the GameEngine.
+     * @param collidedGameObjects List<GameObject>
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -54,7 +55,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 
     /**
      * Method to get powerUpAmount
-     * @return
+     * @return powerUpAmount int
      */
     public int getAmount() {
         return powerUpAmount;
@@ -62,7 +63,7 @@ public class PowerUp extends SpriteObject implements ICollidableWithGameObjects 
 
     /**
      * Method to get powerUpType
-     * @return
+     * @return powerUpType String
      */
     public String getPowerUpType() {
         return powerUpType;

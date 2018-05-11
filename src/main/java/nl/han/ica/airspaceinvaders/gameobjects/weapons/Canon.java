@@ -14,32 +14,32 @@ public class Canon extends Weapon {
 
     private Timer timer = new Timer();
     private AirspaceInvadersGame airspaceInvadersGame;
-    private IAirspaceObject iFlyingObject;
+    private IAirspaceObject iAirspaceObject;
 
     /**
      * Constructor for Canon. This class will represent the Canon weapon
      * for either the player or the enemy.
-     * @param game
-     * @param iFlyingObject
+     * @param game AirspaceInvadersGame
+     * @param iAirspaceObject IAirspaceObject
      */
-    public Canon(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
-        if (iFlyingObject instanceof Ground) {
+    public Canon(AirspaceInvadersGame game, IAirspaceObject iAirspaceObject) {
+        if (iAirspaceObject instanceof Ground) {
             super.setDamage(20);
         } else {
             super.setDamage(10);
         }
-        this.iFlyingObject = iFlyingObject;
+        this.iAirspaceObject = iAirspaceObject;
         this.airspaceInvadersGame = game;
         startTimer();
     }
 
     /**
-     * Method to shoot a Projectile from the type of this object
+     * Method to shoot a Projectile from the type of this object.
      */
     @Override
     public void shoot() {
         int bulletSize;
-        if (iFlyingObject instanceof Ground) {
+        if (iAirspaceObject instanceof Ground) {
             bulletSize = 75;
         } else {
             bulletSize = 45;
@@ -49,12 +49,12 @@ public class Canon extends Weapon {
     }
 
     /**
-     * Getter for the iFlyingObject in this class
-     * @return iFlyingObject
+     * Getter for the iAirspaceObject in this class.
+     * @return iAirspaceObject IAirspaceObject
      */
     @Override
     public IAirspaceObject getIAirspaceObject() {
-        return iFlyingObject;
+        return iAirspaceObject;
     }
 
 
@@ -81,7 +81,7 @@ public class Canon extends Weapon {
 
     /**
      * Method to handle the actions needed before
-     * this class can be removed from the Game Engine
+     * this class can be removed from the Game Engine.
      */
     @Override
     public void destroy() {

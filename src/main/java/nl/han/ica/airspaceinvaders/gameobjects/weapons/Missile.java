@@ -9,34 +9,32 @@ import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 public class Missile extends Weapon {
 
     private AirspaceInvadersGame airspaceInvadersGame;
-    private IAirspaceObject iFlyingObject;
+    private IAirspaceObject iAirspaceObject;
     boolean leftMissilePosition;
-    private AudioPlayer missileSound;
-
     /**
      * Constructor for Missile. This class will represent the Missile weapon
      * for the player.
-     * @param game
-     * @param iFlyingObject
+     * @param game AirspaceInvadersGame
+     * @param iAirspaceObject IAirspaceObject
      */
-    public Missile(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
+    public Missile(AirspaceInvadersGame game, IAirspaceObject iAirspaceObject) {
         super.setDamage(100);
         this.airspaceInvadersGame = game;
-        this.iFlyingObject = iFlyingObject;
+        this.iAirspaceObject = iAirspaceObject;
     }
 
     /**
-     * Getter for the iFlyingObject in this class
-     * @return iFlyingObject
+     * Getter for the iAirspaceObject in this class.
+     * @return iAirspaceObject IAirspaceObject
      */
     @Override
     public IAirspaceObject getIAirspaceObject() {
-        return this.iFlyingObject;
+        return this.iAirspaceObject;
     }
 
     /**
      * Method to handle the actions needed before
-     * this class can be removed from the Game Engine
+     * this class can be removed from the Game Engine.
      */
     @Override
     public void destroy() {
@@ -44,16 +42,15 @@ public class Missile extends Weapon {
     }
 
     /**
-     * Method to shoot a Projectile from the type of this object
+     * Method to shoot a Projectile from the type of this object.
      */
     @Override
     public void shoot() {
         Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 25);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
-        this.missileSound = airspaceInvadersGame.soundLibrary.loadFile("sounds/MissileSound.mp3");
+        AudioPlayer missileSound = airspaceInvadersGame.soundLibrary.loadFile("sounds/MissileSound.mp3");
         missileSound.play();
         missileSound.rewind();
-        this.missileSound = null;
         this.leftMissilePosition = !leftMissilePosition;
     }
 }

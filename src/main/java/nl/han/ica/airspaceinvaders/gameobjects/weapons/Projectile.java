@@ -23,10 +23,10 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Constructor for Projectile. This class will represent a projectile from one of
      * the possible weapons in-game. Currently Canon or Missile.
-     * @param weapon
-     * @param game
-     * @param sprite
-     * @param totalFrames
+     * @param weapon Weapon
+     * @param game AirspaceInvadersGame
+     * @param sprite Sprite
+     * @param totalFrames int
      */
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
@@ -40,7 +40,8 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
-     * @param collidedGameObjects
+     * Gets called by the GameEngine.
+     * @param collidedGameObjects List<GameObject>
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -60,7 +61,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Method to create the Projectile based on the given weapon type
      * and its parent IAirspaceObject.
-     * @param weapon
+     * @param weapon Weapon
      */
     private void createProjectile(Weapon weapon) {
         this.damage = weapon.getDamage();
@@ -115,7 +116,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     /**
      * Getter of damage
-     * @return damage
+     * @return damage int
      */
     public int getDamage() {
         return damage;
@@ -123,7 +124,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     /**
      * Getter of weapon
-     * @return weapon
+     * @return weapon Weapon
      */
     public Weapon getWeapon() {
         return weapon;

@@ -25,8 +25,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     private final AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();
-    private final float verticalRecovery = 1.0f;
-    AudioPlayer missileSound;
 
     private Weapon canon;
     private Weapon missile;
@@ -37,21 +35,22 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private int missileAmmo = 10;
 
     /**
-     *  Class that represents the player in the game
-     * @param world AirspaceInvadersGame
+     *  Constructor for Player. This class will represent the player in the game
+     * @param game AirspaceInvadersGame
      */
-    public Player(AirspaceInvadersGame world) {
+    public Player(AirspaceInvadersGame game) {
         super(AssetLoader.getSprite("player/A10-shade.png", 20), 6);
-        this.canon = new Canon(world, this);
-        this.missile = new Missile(world, this);
-        this.airspaceInvadersGame = world;
+        this.canon = new Canon(game, this);
+        this.missile = new Missile(game, this);
+        this.airspaceInvadersGame = game;
         setFriction(0.04f);
         this.logger.logln(DefaultLogger.LOG_DEBUG, "Player spawned");
-        this.missileSound = world.soundLibrary.loadFile("sounds/MissileSound.mp3");
+
     }
 
     /**
-     *
+     * Method to update this class. It is automatically called
+     * by the Game Engine.
      */
     @Override
     public void update() {
@@ -72,7 +71,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setY(airspaceInvadersGame.getHeight() - super.getWidth());
         }
 
-        if (getySpeed() < this.verticalRecovery && getySpeed() > (this.verticalRecovery * -1)) {
+        final float verticalRecovery = 1.0f;
+
+        if (getySpeed() < verticalRecovery && getySpeed() > (verticalRecovery * -1)) {
             float horizontalRecovery = 0.5f;
             if (getxSpeed() < horizontalRecovery && getxSpeed() > (horizontalRecovery * -1)) {
                 setCurrentFrameIndex(1);
@@ -81,8 +82,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     }
 
     /**
-     * @param keyCode
-     * @param key
+     * Method that handles keypressed actions by the player.
+     * @param keyCode int
+     * @param key char
      */
     @Override
     public void keyPressed(int keyCode, char key) {
@@ -104,18 +106,29 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setDirectionSpeed(180, speed);
         }
         if (keyCode == PConstants.CONTROL) {
-            if (missileAmmo > 0) {
-                this.logger.logln(DefaultLogger.LOG_DEBUG, "SHOOT MISSILE");
-                missileSound.play();
-                missileSound.rewind();
-                this.missile.shoot();
-                missileAmmo--;
-            }
+            shootMissile();
         }
     }
 
     /**
-     * @param collidedGameObjects
+     * Method to shoot a Missile and also play its sound.
+     */
+    private void shootMissile() {
+        if (missileAmmo > 0) {
+            AudioPlayer missileSound = this.airspaceInvadersGame.soundLibrary.loadFile("sounds/MissileSound.mp3");
+            this.logger.logln(DefaultLogger.LOG_DEBUG, "SHOOT MISSILE");
+            missileSound.play();
+            missileSound.rewind();
+            this.missile.shoot();
+            missileAmmo--;
+        }
+    }
+
+    /**
+     * Implemented method from ICollidableWithGameObjects which determines the
+     * behaviour of this class when an collision occurs with an other GameObject.
+     * Gets called by the GameEngine.
+     * @param collidedGameObjects List<GameObject>
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
@@ -129,6 +142,12 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
+
+    /**
+     * Method that handles the damage that occurs when the Player
+     * collides with an other Game Object.
+     * @param gameObject GameObject
+     */
     private void handleCollisionDamage(GameObject gameObject) {
         if (gameObject instanceof Air) {
             handlePlayerDamage(25);
@@ -142,6 +161,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
+    /**
+     * Method that determines the damage done to the Player.
+     * @param damage int
+     */
     private void handlePlayerDamage(int damage) {
         if (this.getShield() - damage <= 0) {
             subtractFromHealth(damage - this.getShield());
@@ -151,6 +174,11 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
+    /**
+     * Method that calculates and subtracts the damage done by
+     * the collision to the Player.
+     * @param damage int
+     */
     private void subtractFromHealth(int damage) {
         if (this.getHealth() - damage <= 0) {
             this.setHealth(0);
@@ -159,6 +187,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
+    /**
+     * Method that handles a picked-up PowerUp.
+     * @param gameObject GameObject
+     */
     private void handlePowerUp(GameObject gameObject) {
         switch(((PowerUp) gameObject).getPowerUpType()) {
             case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
@@ -168,71 +200,133 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
     }
 
+    /**
+     * Method that described the movement logic of the object.
+     * This method is empty for the Player because the player
+     * moves itself.
+     * @param isDirectionLeft boolean
+     */
     @Override
     public void movement(boolean isDirectionLeft) {
         // do nothing
     }
 
+    /**
+     * Method to get centerX.
+     * @return centerX float
+     */
     @Override
     public float getCenterXPos() {
         return this.getCenterX();
     }
 
+    /**
+     * Method to get centerY
+     * @return centerY float
+     */
     @Override
     public float getCenterYPos() {
         return this.getCenterY();
     }
 
+    /**
+     * Method to get health
+     * @return health int
+     */
     public int getHealth() {
         return this.health;
     }
 
+    /**
+     * Method to set health
+     * @param health int
+     */
     public void setHealth(int health) {
         this.health = health;
     }
 
+    /**
+     * Method to get score
+     * @return score int
+     */
     public int getScore() {
         return score;
     }
 
+    /**
+     * Method to set score
+     * @param score int
+     */
     public void setScore(int score) {
         this.score = score;
     }
 
+    /**
+     * Method to get name
+     * @return name String
+     */
     public String getName() {
         return "Henk";
     }
 
+    /**
+     * Method to create a PowerUp object.
+     * Remains empty for the Player object.
+     */
     @Override
     public void createPowerUp() {
         // do nothing
     }
 
+    /**
+     * Method to get shield
+     * @return shield int
+     */
     public int getShield() {
         return shield;
     }
 
+    /**
+     * Method to set shield
+     * @param shield int
+     */
     public void setShield(int shield) {
         this.shield = shield;
     }
 
+    /**
+     * Method to get object height
+     * @return height float
+     */
     @Override
     public float getObjectHeight() {
         return this.getHeight();
     }
 
+    /**
+     * Method to get missileAmmo
+     * @return missileAmmo int
+     */
     public int getMissileAmmo() {
         return missileAmmo;
     }
 
+    /**
+     * Method to handle the actions needed before
+     * this class can be removed from the Game Engine.
+     */
     @Override
     public void destroy() {
         this.canon.destroy();
         this.missile.destroy();
     };
 
+    /**
+     * Method to get airspaceInvadersGame
+     * @return AirSpaceInvadersGame airspaceInvadersGame
+     */
     @Override
     public AirspaceInvadersGame getAirspaceInvadersGame() {
-        return null;
+        return airspaceInvadersGame;
     }
 }

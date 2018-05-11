@@ -10,7 +10,7 @@ public class TextObject extends GameObject {
     /**
      * Constructor for TextObject. This class will represent
      * the text on the various game screens.
-     * @param text
+     * @param text String
      */
     public TextObject(String text) {
         this.text=text;

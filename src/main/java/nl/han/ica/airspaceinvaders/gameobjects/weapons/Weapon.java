@@ -7,7 +7,7 @@ public abstract class Weapon {
 
     /**
      * Method to get damage
-     * @return
+     * @return damage int
      */
     int getDamage() {
         return damage;
@@ -15,7 +15,7 @@ public abstract class Weapon {
 
     /**
      * Method to set damage
-     * @param damage
+     * @param damage int
      */
     void setDamage(int damage) {
         this.damage = damage;
