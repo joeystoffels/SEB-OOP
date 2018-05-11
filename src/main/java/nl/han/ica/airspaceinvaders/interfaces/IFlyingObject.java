@@ -10,4 +10,5 @@ public interface IFlyingObject extends ICollidableWithGameObjects {
     float getObjectHeight();
     Weapon getWeapon();
     void createPowerUp();
+    void destroy();
 }

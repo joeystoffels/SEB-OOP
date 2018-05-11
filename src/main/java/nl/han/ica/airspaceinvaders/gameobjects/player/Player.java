@@ -135,11 +135,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         } else if (gameObject instanceof Projectile) {
             handlePlayerDamage(((Projectile) gameObject).getDamage());
         }
-
-        if (getHealth() <= 0) {
-            this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
-            this.airspaceInvadersGame.changeView(new HighScoreState(this.airspaceInvadersGame));
-        }
     }
 
     private void handlePlayerDamage(int damage) {
@@ -228,4 +223,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public int getMissileAmmo() {
         return missileAmmo;
     }
+
+    @Override
+    public void destroy() {
+        this.canon.destroy();
+        this.missile.destroy();
+    };
 }

@@ -77,8 +77,8 @@ public class Air extends SpriteObject implements IFlyingObject {
         }
     }
 
-
-    private void destroy() {
+    @Override
+    public void destroy() {
         this.weapon.destroy();
         this.airspaceInvadersGame.deleteGameObject(this);
         this.gameState.enemies.remove(this);

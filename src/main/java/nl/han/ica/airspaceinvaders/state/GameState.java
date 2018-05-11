@@ -2,6 +2,9 @@ package nl.han.ica.airspaceinvaders.state;
 
 import ddf.minim.AudioPlayer;
 import nl.han.ica.OOPDProcessingEngineHAN.Dashboard.Dashboard;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
+import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
@@ -29,6 +32,9 @@ public class GameState extends View implements IState {
     private Player player;
     private AirspaceInvadersGame game;
 
+    private Logger logger = LogFactory.getLogger();
+
+
 
     public GameState(AirspaceInvadersGame game) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
@@ -48,6 +54,11 @@ public class GameState extends View implements IState {
                     "Shield: " + player.getShield() + "\n" +
                     "Missiles: " + player.getMissileAmmo());
         }
+
+        if (player != null && player.getHealth() <= 0) {
+            this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
+            this.game.changeView(new HighScoreState(this.game));
+        }
     }
 
     @Override
@@ -66,6 +77,7 @@ public class GameState extends View implements IState {
     @Override
     public void reset() {
         this.game.deleteAllDashboards();
+        removeGameObjects();
         this.game.deleteAllGameOBjects();
         game.setTileMap(null); // remove level tilemap
     }
@@ -93,6 +105,20 @@ public class GameState extends View implements IState {
             IFlyingObject enemy = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 20));
             enemies.add(enemy);
             this.game.addGameObject((Air) enemy, (float) (xPos + (x * ((Air) enemy).getWidth())), 0);
+        }
+    }
+
+    private void removeGameObjects() {
+        ArrayList<GameObject> gameObjectsToRemove = new ArrayList<>();
+
+        for (GameObject gameObject : game.getGameObjectItems()) {
+            if (gameObject instanceof IFlyingObject) {
+                gameObjectsToRemove.add(gameObject);
+            }
+        }
+
+        for (GameObject gameObject : gameObjectsToRemove) {
+            ((IFlyingObject) gameObject).destroy();
         }
     }
 }

@@ -76,4 +76,9 @@ public class Ground extends SpriteObject implements IFlyingObject {
     public float getObjectHeight() {
         return 0;
     }
+
+    @Override
+    public void destroy() {
+
+    }
 }
