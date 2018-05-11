@@ -36,6 +36,7 @@ public class Ground extends SpriteObject implements IAirspaceObject {
         this.airspaceInvadersGame = game;
         this.health = 100;
         this.weapon = new Canon(game, this);
+        this.setZ(-1); // displays a ground unit below an air unit
         movement(false);
     }
 
