@@ -1,0 +1,967 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>nl.han.ica.airspaceinvaders</OriginalElement>
+  <nodes>
+    <node x="3842.420635504846" y="4100.0">nl.han.ica.airspaceinvaders.assets.logger.LogMessage</node>
+    <node x="935.8657903063865" y="2695.5">nl.han.ica.airspaceinvaders.state.RulesState</node>
+    <node x="1201.2618916869728" y="4033.0">nl.han.ica.airspaceinvaders.state.MenuState</node>
+    <node x="221.6875" y="4291.0">nl.han.ica.airspaceinvaders.assets.level.Level</node>
+    <node x="1911.0407903063865" y="3199.0">nl.han.ica.airspaceinvaders.state.EndGameState</node>
+    <node x="2343.9157903063865" y="2039.5">nl.han.ica.airspaceinvaders.gameobjects.text.TextObject</node>
+    <node x="2134.0407903063865" y="2673.5">nl.han.ica.airspaceinvaders.state.HighScoreState</node>
+    <node x="2585.9157903063865" y="1885.0">nl.han.ica.airspaceinvaders.gameobjects.enemies.Air</node>
+    <node x="589.2" y="1626.5">nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonText</node>
+    <node x="2088.4157903063865" y="1660.0">nl.han.ica.airspaceinvaders.assets.highscores.Score</node>
+    <node x="3727.920635504846" y="4301.5">nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler</node>
+    <node x="2866.9642726393536" y="698.0">nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil</node>
+    <node x="3378.4642726393536" y="892.0">nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground</node>
+    <node x="5049.104213345273" y="0.0">nl.han.ica.airspaceinvaders.enums.MissileType</node>
+    <node x="1674.0407903063865" y="342.5">nl.han.ica.airspaceinvaders.assets.AssetLoader</node>
+    <node x="2040.4157903063865" y="2028.5">nl.han.ica.airspaceinvaders.assets.highscores.HighScores</node>
+    <node x="4265.412546678606" y="1325.0">nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon</node>
+    <node x="1683.0302891994447" y="2051.5">nl.han.ica.airspaceinvaders.interfaces.IState</node>
+    <node x="860.2657903063864" y="55.0">nl.han.ica.airspaceinvaders.assets.config.GameProperties</node>
+    <node x="4649.454213345273" y="2006.0">nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile</node>
+    <node x="2409.185774871955" y="3493.0">nl.han.ica.airspaceinvaders.state.GameState</node>
+    <node x="1519.7907903063865" y="4279.0">nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine</node>
+    <node x="2450.008380011939" y="4642.0">nl.han.ica.airspaceinvaders.AirspaceInvadersGame</node>
+    <node x="36.5" y="4900.0">nl.han.ica.airspaceinvaders.state.EndLevelState</node>
+    <node x="4193.800878025685" y="341.5">nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon</node>
+    <node x="63.37018322675749" y="5114.0">nl.han.ica.airspaceinvaders.assets.level.LevelMap</node>
+    <node x="4424.412546678606" y="1582.0">nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile</node>
+    <node x="1003.4157903063865" y="2050.5">nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView</node>
+    <node x="3944.920635504846" y="4324.5">nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler</node>
+    <node x="2941.547605972687" y="341.5">nl.han.ica.airspaceinvaders.enums.PowerUpTypes</node>
+    <node x="3782.257456973053" y="0.0">nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject</node>
+    <node x="3519.5522144522142" y="2464.0">nl.han.ica.airspaceinvaders.gameobjects.player.Player</node>
+    <node x="3531.258380011939" y="319.0">nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-15.650000000000091" y="-82.0" />
+      <point x="2051.8907903063864" y="3139.0" />
+      <point x="2029.9157903063865" y="3139.0" />
+      <point x="2029.9157903063865" y="802.0" />
+      <point x="2627.758380011939" y="802.0" />
+      <point x="2627.758380011939" y="279.0" />
+      <point x="1046.493063033659" y="279.0" />
+      <point x="65.72727272727252" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground">
+      <point x="-133.75" y="-93.5" />
+      <point x="4292.162546678606" y="1285.0" />
+      <point x="3675.13093930602" y="1285.0" />
+      <point x="118.66666666666674" y="181.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="-89.0" y="104.5" />
+      <point x="3620.258380011939" y="628.0" />
+      <point x="3340.4642726393536" y="628.0" />
+      <point x="3340.4642726393536" y="2414.0" />
+      <point x="3602.618881118881" y="2414.0" />
+      <point x="-94.9333333333334" y="-302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-192.91666666666674" y="-37.0" />
+      <point x="2905.547605972687" y="648.0" />
+      <point x="1986.6177133833098" y="648.0" />
+      <point x="119.07692307692332" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="0.0" y="-82.0" />
+      <point x="4303.800878025685" y="299.0" />
+      <point x="3950.7189954345918" y="299.0" />
+      <point x="22.461538461538566" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-127.3125" y="-82.0" />
+      <point x="54.6875" y="4870.0" />
+      <point x="103.78125" y="4870.0" />
+      <point x="103.78125" y="259.0" />
+      <point x="893.1294266700229" y="259.0" />
+      <point x="-87.63636363636351" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.AssetLoader" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="-29.769230769230944" y="81.0" />
+      <point x="1837.7715595371556" y="678.0" />
+      <point x="1509.2907903063865" y="678.0" />
+      <point x="1509.2907903063865" y="4502.0" />
+      <point x="2544.695880011939" y="4502.0" />
+      <point x="-56.8125" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-114.75" y="-93.0" />
+      <point x="1214.0118916869728" y="4013.0" />
+      <point x="607.7657903063864" y="4013.0" />
+      <point x="607.7657903063864" y="3089.0" />
+      <point x="578.7" y="3089.0" />
+      <point x="578.7" y="289.0" />
+      <point x="958.8566993972954" y="289.0" />
+      <point x="-21.90909090909099" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.Level" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-77.25" y="-59.5" />
+      <point x="298.9375" y="4249.0" />
+      <point x="315.7195749137304" y="4249.0" />
+      <point x="315.7195749137304" y="3099.0" />
+      <point x="235.01189168697283" y="3099.0" />
+      <point x="235.01189168697283" y="269.0" />
+      <point x="915.0385175791139" y="269.0" />
+      <point x="-65.72727272727252" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="89.0" y="104.5" />
+      <point x="3798.258380011939" y="628.0" />
+      <point x="4254.912546678606" y="628.0" />
+      <point x="4254.912546678606" y="4552.0" />
+      <point x="2696.195880011939" y="4552.0" />
+      <point x="94.6875" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="34.375" y="225.0" />
+      <point x="2581.060774871955" y="4013.0" />
+      <point x="2597.7208800119397" y="4013.0" />
+      <point x="-3.787499999999909" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.AirspaceInvadersGame" target="nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler">
+      <point x="26.512499999999818" y="-104.0" />
+      <point x="2628.020880011939" y="4462.0" />
+      <point x="4032.420635504846" y="4462.0" />
+      <point x="0.0" y="26.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView">
+      <point x="0.0" y="-71.0" />
+      <point x="1061.8657903063865" y="2404.0" />
+      <point x="1139.279426670023" y="2404.0" />
+      <point x="-77.63636363636351" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="40.375" y="93.5" />
+      <point x="4851.329213345273" y="2444.0" />
+      <point x="4887.916713345273" y="2444.0" />
+      <point x="4887.916713345273" y="4582.0" />
+      <point x="2718.9208800119395" y="4582.0" />
+      <point x="117.41249999999991" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="130.26315789473665" y="-225.0" />
+      <point x="2676.9489327666915" y="3473.0" />
+      <point x="3703.0522144522142" y="3473.0" />
+      <point x="3703.0522144522142" y="3179.0" />
+      <point x="3727.2188811188807" y="3179.0" />
+      <point x="29.666666666666742" y="302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="69.5" y="-93.0" />
+      <point x="2342.5407903063865" y="2444.0" />
+      <point x="2333.4157903063865" y="2444.0" />
+      <point x="2333.4157903063865" y="812.0" />
+      <point x="2638.758380011939" y="812.0" />
+      <point x="2638.758380011939" y="269.0" />
+      <point x="1068.40215394275" y="269.0" />
+      <point x="87.63636363636351" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.assets.highscores.Score">
+      <point x="13.900000000000091" y="-93.0" />
+      <point x="2287.2407903063868" y="1865.0" />
+      <point x="2260.9157903063865" y="1865.0" />
+      <point x="69.0" y="48.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon">
+      <point x="158.22222222222217" y="181.5" />
+      <point x="3714.6864948615757" y="1275.0" />
+      <point x="4345.662546678606" y="1275.0" />
+      <point x="-80.25" y="-93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground">
+      <point x="0.0" y="-225.0" />
+      <point x="2546.685774871955" y="3473.0" />
+      <point x="2553.4157903063865" y="3473.0" />
+      <point x="2553.4157903063865" y="1275.0" />
+      <point x="3398.2420504171314" y="1275.0" />
+      <point x="-158.22222222222217" y="181.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground">
+      <point x="-47.4666666666667" y="-302.5" />
+      <point x="3650.0855477855475" y="2394.0" />
+      <point x="3556.4642726393536" y="2394.0" />
+      <point x="0.0" y="181.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air">
+      <point x="86.84210526315792" y="-225.0" />
+      <point x="2633.5278801351124" y="3443.0" />
+      <point x="2721.7158500599244" y="3443.0" />
+      <point x="2721.7158500599244" y="2444.0" />
+      <point x="2763.9157903063865" y="2444.0" />
+      <point x="0.0" y="214.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air">
+      <point x="-166.13333333333333" y="-302.5" />
+      <point x="3531.418881118881" y="2444.0" />
+      <point x="2814.772933163529" y="2444.0" />
+      <point x="50.85714285714289" y="214.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonText" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="-44.0" y="82.0" />
+      <point x="721.2" y="1865.0" />
+      <point x="556.3375000000001" y="1865.0" />
+      <point x="556.3375000000001" y="4562.0" />
+      <point x="2499.2458800119393" y="4562.0" />
+      <point x="-102.26249999999982" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="-91.71428571428555" y="93.5" />
+      <point x="4334.19826096432" y="1552.0" />
+      <point x="4047.4583800119394" y="1552.0" />
+      <point x="4047.4583800119394" y="2394.0" />
+      <point x="3745.018881118881" y="2394.0" />
+      <point x="47.4666666666667" y="-302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="100.80000000000018" y="-71.0" />
+      <point x="1162.6657903063867" y="2424.0" />
+      <point x="1692.7445749137305" y="2424.0" />
+      <point x="-58.28571428571422" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-142.4000000000001" y="-302.5" />
+      <point x="3555.152214452214" y="2434.0" />
+      <point x="2980.9657903063867" y="2434.0" />
+      <point x="2980.9657903063867" y="792.0" />
+      <point x="2616.758380011939" y="792.0" />
+      <point x="2616.758380011939" y="658.0" />
+      <point x="1956.8484826140789" y="658.0" />
+      <point x="89.30769230769238" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler" target="nl.han.ica.airspaceinvaders.assets.logger.LogMessage">
+      <point x="0.0" y="-49.0" />
+      <point x="3826.420635504846" y="4259.0" />
+      <point x="3885.920635504846" y="4259.0" />
+      <point x="-43.5" y="26.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="-148.33333333333348" y="126.5" />
+      <point x="4454.079213345272" y="1855.0" />
+      <point x="4069.4583800119394" y="1855.0" />
+      <point x="4069.4583800119394" y="2414.0" />
+      <point x="3792.4855477855476" y="2414.0" />
+      <point x="94.9333333333334" y="-302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="44.5" y="-181.5" />
+      <point x="3600.9642726393536" y="872.0" />
+      <point x="3520.758380011939" y="872.0" />
+      <point x="3520.758380011939" y="299.0" />
+      <point x="3883.334380049976" y="299.0" />
+      <point x="-44.923076923076906" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="127.3125" y="-82.0" />
+      <point x="309.3125" y="4880.0" />
+      <point x="2563.633380011939" y="4880.0" />
+      <point x="-37.875" y="104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.Level" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="123.60000000000036" y="59.5" />
+      <point x="499.78750000000036" y="4592.0" />
+      <point x="2476.52088001194" y="4592.0" />
+      <point x="-124.98749999999973" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView">
+      <point x="-140.8499999999999" y="-82.0" />
+      <point x="1926.6907903063866" y="3119.0" />
+      <point x="1334.4157903063865" y="3119.0" />
+      <point x="1334.4157903063865" y="2404.0" />
+      <point x="1294.55215394275" y="2404.0" />
+      <point x="77.63636363636351" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="80.75" y="-93.5" />
+      <point x="4891.704213345273" y="1865.0" />
+      <point x="4845.755731012307" y="1865.0" />
+      <point x="4845.755731012307" y="269.0" />
+      <point x="4018.103610819207" y="269.0" />
+      <point x="89.84615384615381" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.AssetLoader" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="0.0" y="-81.0" />
+      <point x="1867.5407903063865" y="299.0" />
+      <point x="1002.6748812154774" y="299.0" />
+      <point x="21.90909090909099" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.Level" target="nl.han.ica.airspaceinvaders.assets.level.LevelMap">
+      <point x="-123.60000000000036" y="59.5" />
+      <point x="252.58749999999964" y="4622.0" />
+      <point x="26.0" y="4622.0" />
+      <point x="26.0" y="5084.0" />
+      <point x="176.77018322675713" y="5084.0" />
+      <point x="-75.60000000000036" y="-115.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.state.MenuState">
+      <point x="31.5" y="71.0" />
+      <point x="1093.3657903063865" y="3119.0" />
+      <point x="1110.1877567319123" y="3119.0" />
+      <point x="1110.1877567319123" y="4003.0" />
+      <point x="1239.5118916869728" y="4003.0" />
+      <point x="-89.25" y="-93.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="44.875" y="71.5" />
+      <point x="1744.1657903063865" y="4472.0" />
+      <point x="2567.4208800119395" y="4472.0" />
+      <point x="-34.08750000000009" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="26.75" y="-93.5" />
+      <point x="4452.662546678606" y="1305.0" />
+      <point x="4431.412546678606" y="1305.0" />
+      <point x="4431.412546678606" y="598.0" />
+      <point x="4317.550878025685" y="598.0" />
+      <point x="13.75" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="0.0" y="93.0" />
+      <point x="1328.7618916869728" y="4239.0" />
+      <point x="1333.4726657262252" y="4239.0" />
+      <point x="1333.4726657262252" y="4512.0" />
+      <point x="2537.1208800119393" y="4512.0" />
+      <point x="-64.38749999999982" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.state.HighScoreState">
+      <point x="78.25" y="-82.0" />
+      <point x="2145.7907903063865" y="3159.0" />
+      <point x="2217.4407903063866" y="3159.0" />
+      <point x="-55.59999999999991" y="93.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.gameobjects.text.TextObject">
+      <point x="125.09999999999991" y="-93.0" />
+      <point x="2398.1407903063864" y="2444.0" />
+      <point x="2397.0157903063864" y="2444.0" />
+      <point x="-35.40000000000009" y="60.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="148.33333333333348" y="302.5" />
+      <point x="3845.8855477855477" y="3129.0" />
+      <point x="4145.570635504846" y="3129.0" />
+      <point x="4145.570635504846" y="4492.0" />
+      <point x="2650.7458800119393" y="4492.0" />
+      <point x="49.23750000000018" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="-142.4000000000001" y="-214.5" />
+      <point x="2621.5157903063864" y="1865.0" />
+      <point x="2643.508380011939" y="1865.0" />
+      <point x="2643.508380011939" y="842.0" />
+      <point x="2856.4642726393536" y="842.0" />
+      <point x="2856.4642726393536" y="279.0" />
+      <point x="3838.4113031268994" y="279.0" />
+      <point x="-89.84615384615381" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="71.20000000000005" y="-214.5" />
+      <point x="2835.1157903063863" y="1865.0" />
+      <point x="2832.008380011939" y="1865.0" />
+      <point x="2832.008380011939" y="872.0" />
+      <point x="3351.4642726393536" y="872.0" />
+      <point x="3351.4642726393536" y="658.0" />
+      <point x="4235.050878025685" y="658.0" />
+      <point x="-68.75" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="148.33333333333348" y="-126.5" />
+      <point x="4750.74588001194" y="1552.0" />
+      <point x="4664.755731012305" y="1552.0" />
+      <point x="4664.755731012305" y="568.0" />
+      <point x="4372.550878025685" y="568.0" />
+      <point x="68.75" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp">
+      <point x="-71.19999999999982" y="-302.5" />
+      <point x="3626.3522144522144" y="2404.0" />
+      <point x="3362.4642726393536" y="2404.0" />
+      <point x="3362.4642726393536" y="638.0" />
+      <point x="3679.5917133452726" y="638.0" />
+      <point x="-29.666666666666742" y="104.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.logger.ConsoleLogHandler" target="nl.han.ica.airspaceinvaders.assets.logger.LogMessage">
+      <point x="0.0" y="-26.0" />
+      <point x="4032.420635504846" y="4259.0" />
+      <point x="3972.920635504846" y="4259.0" />
+      <point x="43.5" y="26.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-90.9375" y="-82.0" />
+      <point x="91.0625" y="4880.0" />
+      <point x="114.78125" y="4880.0" />
+      <point x="114.78125" y="628.0" />
+      <point x="1688.9254056910017" y="628.0" />
+      <point x="-178.61538461538476" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon">
+      <point x="142.4000000000001" y="-214.5" />
+      <point x="2906.3157903063866" y="1865.0" />
+      <point x="2843.008380011939" y="1865.0" />
+      <point x="2843.008380011939" y="1542.0" />
+      <point x="4288.341118107177" y="1542.0" />
+      <point x="-137.57142857142867" y="93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile">
+      <point x="118.66666666666674" y="-302.5" />
+      <point x="3816.2188811188807" y="2424.0" />
+      <point x="4080.4583800119394" y="2424.0" />
+      <point x="4080.4583800119394" y="1865.0" />
+      <point x="4513.412546678606" y="1865.0" />
+      <point x="-89.0" y="126.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="79.11111111111109" y="181.5" />
+      <point x="3635.5753837504644" y="1295.0" />
+      <point x="4239.762546678606" y="1295.0" />
+      <point x="4239.762546678606" y="4532.0" />
+      <point x="2681.0458800119395" y="4532.0" />
+      <point x="79.53749999999991" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="55.59999999999991" y="93.0" />
+      <point x="2328.6407903063864" y="3159.0" />
+      <point x="3717.420635504846" y="3159.0" />
+      <point x="3717.420635504846" y="4442.0" />
+      <point x="2612.8708800119393" y="4442.0" />
+      <point x="11.362500000000182" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.AirspaceInvadersGame" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-117.41249999999991" y="-104.0" />
+      <point x="2484.0958800119397" y="4582.0" />
+      <point x="541.1875" y="4582.0" />
+      <point x="541.1875" y="279.0" />
+      <point x="936.9476084882044" y="279.0" />
+      <point x="-43.81818181818198" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="12.75" y="-93.0" />
+      <point x="1341.5118916869728" y="3963.0" />
+      <point x="1440.9157903063865" y="3963.0" />
+      <point x="1440.9157903063865" y="668.0" />
+      <point x="1808.002328767925" y="668.0" />
+      <point x="-59.53846153846143" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.Level" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="77.25" y="-59.5" />
+      <point x="453.4375" y="4249.0" />
+      <point x="348.7195749137304" y="4249.0" />
+      <point x="348.7195749137304" y="638.0" />
+      <point x="1718.6946364602327" y="638.0" />
+      <point x="-148.8461538461538" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="-130.26315789473665" y="-225.0" />
+      <point x="2416.4226169772182" y="3443.0" />
+      <point x="1828.2907903063865" y="3443.0" />
+      <point x="1828.2907903063865" y="2434.0" />
+      <point x="1770.4588606280163" y="2434.0" />
+      <point x="19.42857142857156" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.LevelMap" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-151.19999999999982" y="-115.5" />
+      <point x="101.17018322675767" y="5094.0" />
+      <point x="15.0" y="5094.0" />
+      <point x="15.0" y="249.0" />
+      <point x="871.2203357609319" y="249.0" />
+      <point x="-109.5454545454545" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile">
+      <point x="45.85714285714289" y="93.5" />
+      <point x="4471.769689535749" y="1562.0" />
+      <point x="4513.412546678606" y="1562.0" />
+      <point x="-89.0" y="-126.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.assets.highscores.HighScores">
+      <point x="-13.900000000000091" y="-93.0" />
+      <point x="2259.1407903063864" y="2334.0" />
+      <point x="2217.1657903063865" y="2334.0" />
+      <point x="75.75" y="71.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="134.76923076923072" y="114.5" />
+      <point x="4063.0266877422837" y="249.0" />
+      <point x="4998.104213345273" y="249.0" />
+      <point x="4998.104213345273" y="4622.0" />
+      <point x="2749.2208800119397" y="4622.0" />
+      <point x="147.7125000000001" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile">
+      <point x="-134.58333333333337" y="-93.5" />
+      <point x="4676.37088001194" y="1865.0" />
+      <point x="4691.412546678606" y="1865.0" />
+      <point x="89.0" y="126.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="192.91666666666674" y="-37.0" />
+      <point x="3291.38093930602" y="648.0" />
+      <point x="4207.550878025685" y="648.0" />
+      <point x="-96.25" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="38.58333333333326" y="-37.0" />
+      <point x="3137.047605972687" y="289.0" />
+      <point x="3860.872841588438" y="289.0" />
+      <point x="-67.38461538461547" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.AirspaceInvadersGame" target="nl.han.ica.airspaceinvaders.assets.level.Level">
+      <point x="-147.71249999999964" y="-104.0" />
+      <point x="2453.7958800119395" y="4622.0" />
+      <point x="314.3874999999998" y="4622.0" />
+      <point x="-61.80000000000018" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.assets.highscores.HighScores">
+      <point x="46.94999999999982" y="-82.0" />
+      <point x="2114.4907903063863" y="3139.0" />
+      <point x="2116.1657903063865" y="3139.0" />
+      <point x="-25.25" y="71.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView">
+      <point x="-97.30000000000018" y="-93.0" />
+      <point x="2175.7407903063863" y="2364.0" />
+      <point x="1411.0066993972955" y="2364.0" />
+      <point x="194.090909090909" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="-23.73333333333335" y="-302.5" />
+      <point x="3673.818881118881" y="2364.0" />
+      <point x="3897.758380011939" y="2364.0" />
+      <point x="3897.758380011939" y="289.0" />
+      <point x="3905.795918511515" y="289.0" />
+      <point x="-22.46153846153834" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="101.71428571428578" y="214.5" />
+      <point x="2865.6300760206723" y="2354.0" />
+      <point x="4153.145635504846" y="2354.0" />
+      <point x="4153.145635504846" y="4502.0" />
+      <point x="2658.320880011939" y="4502.0" />
+      <point x="56.8125" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile">
+      <point x="166.13333333333344" y="-302.5" />
+      <point x="3863.685547785548" y="2444.0" />
+      <point x="4770.579213345273" y="2444.0" />
+      <point x="-40.375" y="93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="-31.5" y="71.0" />
+      <point x="1030.3657903063865" y="3119.0" />
+      <point x="590.6407903063864" y="3119.0" />
+      <point x="590.6407903063864" y="4532.0" />
+      <point x="2521.9708800119397" y="4532.0" />
+      <point x="-79.53749999999991" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.state.RulesState">
+      <point x="-63.75" y="-93.0" />
+      <point x="1265.0118916869728" y="3993.0" />
+      <point x="1164.4157903063865" y="3993.0" />
+      <point x="1164.4157903063865" y="3119.0" />
+      <point x="1156.3657903063865" y="3119.0" />
+      <point x="94.5" y="71.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil">
+      <point x="-133.5" y="-181.5" />
+      <point x="3422.9642726393536" y="862.0" />
+      <point x="3137.047605972687" y="862.0" />
+      <point x="38.58333333333326" y="37.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.state.GameState">
+      <point x="-152.57142857142844" y="214.5" />
+      <point x="2611.344361734958" y="2444.0" />
+      <point x="2650.4726657262254" y="2444.0" />
+      <point x="2650.4726657262254" y="3413.0" />
+      <point x="2590.1068275035336" y="3413.0" />
+      <point x="43.42105263157896" y="-225.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-101.31578947368416" y="-225.0" />
+      <point x="2445.3699853982707" y="3423.0" />
+      <point x="1900.5407903063865" y="3423.0" />
+      <point x="1900.5407903063865" y="792.0" />
+      <point x="2335.0938811188807" y="792.0" />
+      <point x="2335.0938811188807" y="289.0" />
+      <point x="1024.5839721245684" y="289.0" />
+      <point x="43.81818181818198" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="41.69999999999982" y="-93.0" />
+      <point x="2314.7407903063863" y="2444.0" />
+      <point x="2305.9157903063865" y="2444.0" />
+      <point x="2305.9157903063865" y="668.0" />
+      <point x="1927.079251844848" y="668.0" />
+      <point x="59.53846153846143" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="38.25" y="-93.0" />
+      <point x="1367.0118916869728" y="3973.0" />
+      <point x="1451.9157903063865" y="3973.0" />
+      <point x="1451.9157903063865" y="3139.0" />
+      <point x="1691.6833800119393" y="3139.0" />
+      <point x="1691.6833800119393" y="2444.0" />
+      <point x="1731.6017177708732" y="2444.0" />
+      <point x="-19.42857142857156" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="-116.4545454545455" y="49.0" />
+      <point x="1100.461244851841" y="2394.0" />
+      <point x="875.5300735051546" y="2394.0" />
+      <point x="875.5300735051546" y="3099.0" />
+      <point x="563.9124999999999" y="3099.0" />
+      <point x="563.9124999999999" y="4552.0" />
+      <point x="2506.820880011939" y="4552.0" />
+      <point x="-94.6875" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-115.7894736842104" y="-225.0" />
+      <point x="2430.896301187744" y="3433.0" />
+      <point x="1867.5407903063865" y="3433.0" />
+      <point x="0.0" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.state.EndGameState">
+      <point x="-86.84210526315792" y="-225.0" />
+      <point x="2459.8436696087965" y="3413.0" />
+      <point x="2171.87412363972" y="3413.0" />
+      <point x="104.33333333333348" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon">
+      <point x="71.20000000000005" y="-302.5" />
+      <point x="3768.7522144522145" y="2404.0" />
+      <point x="4058.4583800119394" y="2404.0" />
+      <point x="4058.4583800119394" y="1562.0" />
+      <point x="4380.055403821463" y="1562.0" />
+      <point x="-45.85714285714289" y="93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.LevelMap" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="75.60000000000036" y="-115.5" />
+      <point x="327.97018322675785" y="5084.0" />
+      <point x="2671.758380011939" y="5084.0" />
+      <point x="2671.758380011939" y="4880.0" />
+      <point x="2639.383380011939" y="4880.0" />
+      <point x="37.875" y="104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="0.0" y="82.0" />
+      <point x="2067.5407903063865" y="3453.0" />
+      <point x="2155.4958800119393" y="3453.0" />
+      <point x="2155.4958800119393" y="4442.0" />
+      <point x="2590.145880011939" y="4442.0" />
+      <point x="-11.362500000000182" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="18.1875" y="-82.0" />
+      <point x="200.1875" y="3129.0" />
+      <point x="1487.2907903063865" y="3129.0" />
+      <point x="1487.2907903063865" y="2434.0" />
+      <point x="1712.173146342302" y="2434.0" />
+      <point x="-38.85714285714266" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView">
+      <point x="-38.25" y="-93.0" />
+      <point x="1290.5118916869728" y="3983.0" />
+      <point x="1216.9157903063865" y="3983.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="-28.947368421052488" y="-225.0" />
+      <point x="2517.7384064509024" y="3453.0" />
+      <point x="2531.4157903063865" y="3453.0" />
+      <point x="2531.4157903063865" y="822.0" />
+      <point x="2743.258380011939" y="822.0" />
+      <point x="2743.258380011939" y="259.0" />
+      <point x="3793.4882262038227" y="259.0" />
+      <point x="-134.76923076923072" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile">
+      <point x="148.33333333333348" y="126.5" />
+      <point x="4750.74588001194" y="1865.0" />
+      <point x="4730.204213345273" y="1865.0" />
+      <point x="-80.75" y="-93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon">
+      <point x="-148.33333333333348" y="-126.5" />
+      <point x="4454.079213345272" y="1562.0" />
+      <point x="4425.912546678606" y="1562.0" />
+      <point x="0.0" y="93.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.highscores.HighScores" target="nl.han.ica.airspaceinvaders.assets.highscores.Score">
+      <point x="50.5" y="-71.0" />
+      <point x="0.0" y="48.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile">
+      <point x="192.91666666666674" y="37.0" />
+      <point x="3291.38093930602" y="842.0" />
+      <point x="4596.912546678606" y="842.0" />
+      <point x="4596.912546678606" y="1562.0" />
+      <point x="4572.74588001194" y="1562.0" />
+      <point x="-29.666666666666515" y="-126.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-26.916666666666515" y="-93.5" />
+      <point x="4784.037546678606" y="1865.0" />
+      <point x="4805.454213345272" y="1865.0" />
+      <point x="4805.454213345272" y="558.0" />
+      <point x="2046.1561749217713" y="558.0" />
+      <point x="178.61538461538476" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp">
+      <point x="115.75" y="-37.0" />
+      <point x="3214.2142726393536" y="618.0" />
+      <point x="3560.925046678606" y="618.0" />
+      <point x="-148.33333333333334" y="104.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.state.MenuState">
+      <point x="0.0" y="93.0" />
+      <point x="2273.0407903063865" y="3473.0" />
+      <point x="1473.9157903063865" y="3473.0" />
+      <point x="1473.9157903063865" y="3993.0" />
+      <point x="1418.0118916869728" y="3993.0" />
+      <point x="89.25" y="-93.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine" target="nl.han.ica.airspaceinvaders.state.MenuState">
+      <point x="-89.75" y="-71.5" />
+      <point x="1609.5407903063865" y="4249.0" />
+      <point x="1413.7618916869728" y="4249.0" />
+      <point x="85.0" y="93.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.state.HighScoreState">
+      <point x="63.75" y="-93.0" />
+      <point x="1392.5118916869728" y="3983.0" />
+      <point x="1462.9157903063865" y="3983.0" />
+      <point x="1462.9157903063865" y="3463.0" />
+      <point x="1667.6476657262251" y="3463.0" />
+      <point x="1667.6476657262251" y="3149.0" />
+      <point x="2161.8407903063867" y="3149.0" />
+      <point x="-111.19999999999982" y="93.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-26.75" y="-93.5" />
+      <point x="4399.162546678606" y="1305.0" />
+      <point x="4420.412546678606" y="1305.0" />
+      <point x="4420.412546678606" y="608.0" />
+      <point x="2016.3869441525403" y="608.0" />
+      <point x="148.8461538461538" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="-29.666666666666515" y="126.5" />
+      <point x="4572.74588001194" y="1865.0" />
+      <point x="4598.625046678606" y="1865.0" />
+      <point x="4598.625046678606" y="4562.0" />
+      <point x="2703.770880011939" y="4562.0" />
+      <point x="102.26249999999982" y="-104.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.enums.PowerUpTypes">
+      <point x="-38.58333333333326" y="-37.0" />
+      <point x="3059.88093930602" y="678.0" />
+      <point x="3034.047605972687" y="678.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Air" target="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil">
+      <point x="0.0" y="-214.5" />
+      <point x="2763.9157903063865" y="1865.0" />
+      <point x="2743.258380011939" y="1865.0" />
+      <point x="2743.258380011939" y="862.0" />
+      <point x="2982.7142726393536" y="862.0" />
+      <point x="-115.75" y="37.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView">
+      <point x="-54.5625" y="-82.0" />
+      <point x="127.4375" y="4880.0" />
+      <point x="131.28125" y="4880.0" />
+      <point x="131.28125" y="3109.0" />
+      <point x="246.01189168697283" y="3109.0" />
+      <point x="246.01189168697283" y="2374.0" />
+      <point x="1022.8248812154775" y="2374.0" />
+      <point x="-194.090909090909" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-46.94999999999982" y="-82.0" />
+      <point x="2020.5907903063867" y="3089.0" />
+      <point x="1987.8265643456389" y="3089.0" />
+      <point x="1987.8265643456389" y="678.0" />
+      <point x="1897.3100210756174" y="678.0" />
+      <point x="29.769230769230944" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.MenuState" target="nl.han.ica.airspaceinvaders.state.GameState">
+      <point x="114.75" y="-93.0" />
+      <point x="1443.5118916869728" y="4003.0" />
+      <point x="2443.560774871955" y="4003.0" />
+      <point x="-103.125" y="225.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="-78.25" y="-82.0" />
+      <point x="1989.2907903063865" y="3099.0" />
+      <point x="1889.5407903063865" y="3099.0" />
+      <point x="1889.5407903063865" y="2384.0" />
+      <point x="1789.8874320565874" y="2384.0" />
+      <point x="38.85714285714266" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="133.5" y="-181.5" />
+      <point x="3689.9642726393536" y="872.0" />
+      <point x="3706.757456973053" y="872.0" />
+      <point x="3706.757456973053" y="668.0" />
+      <point x="4262.550878025685" y="668.0" />
+      <point x="-41.25" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonText" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="0.0" y="-82.0" />
+      <point x="765.2" y="648.0" />
+      <point x="1748.4638672294636" y="648.0" />
+      <point x="-119.07692307692287" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndLevelState" target="nl.han.ica.airspaceinvaders.state.GameState">
+      <point x="54.5625" y="-82.0" />
+      <point x="236.5625" y="4880.0" />
+      <point x="211.1875" y="4880.0" />
+      <point x="211.1875" y="4259.0" />
+      <point x="1466.7618916869728" y="4259.0" />
+      <point x="1466.7618916869728" y="4013.0" />
+      <point x="2512.310774871955" y="4013.0" />
+      <point x="-34.375" y="225.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.player.Player" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="23.73333333333335" y="-302.5" />
+      <point x="3721.2855477855474" y="2384.0" />
+      <point x="4036.4583800119394" y="2384.0" />
+      <point x="4036.4583800119394" y="678.0" />
+      <point x="4290.050878025685" y="678.0" />
+      <point x="-13.75" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView" target="nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonText">
+      <point x="-106.75" y="-49.0" />
+      <point x="1110.1657903063865" y="1865.0" />
+      <point x="809.2" y="1865.0" />
+      <point x="44.0" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground" target="nl.han.ica.airspaceinvaders.state.GameState">
+      <point x="-79.11111111111109" y="181.5" />
+      <point x="3477.3531615282427" y="1295.0" />
+      <point x="2575.4157903063865" y="1295.0" />
+      <point x="28.947368421052715" y="-225.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile" target="nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp">
+      <point x="29.666666666666515" y="-126.5" />
+      <point x="4632.079213345272" y="1562.0" />
+      <point x="4607.912546678606" y="1562.0" />
+      <point x="4607.912546678606" y="588.0" />
+      <point x="3857.591713345273" y="588.0" />
+      <point x="148.33333333333348" y="104.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile" target="nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon">
+      <point x="26.916666666666515" y="-93.5" />
+      <point x="4837.87088001194" y="1865.0" />
+      <point x="4816.454213345272" y="1865.0" />
+      <point x="4816.454213345272" y="548.0" />
+      <point x="4400.050878025685" y="548.0" />
+      <point x="96.25" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject">
+      <point x="80.25" y="-93.5" />
+      <point x="4506.162546678606" y="1305.0" />
+      <point x="4479.163378025684" y="1305.0" />
+      <point x="4479.163378025684" y="289.0" />
+      <point x="3973.1805338961303" y="289.0" />
+      <point x="44.923076923076906" y="114.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.GameState" target="nl.han.ica.airspaceinvaders.gameobjects.text.TextObject">
+      <point x="-72.36842105263145" y="-225.0" />
+      <point x="2474.317353819323" y="3403.0" />
+      <point x="2432.4157903063865" y="3403.0" />
+      <point x="0.0" y="60.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-100.80000000000018" y="-71.0" />
+      <point x="961.0657903063864" y="2364.0" />
+      <point x="951.7" y="2364.0" />
+      <point x="951.7" y="299.0" />
+      <point x="980.7657903063864" y="299.0" />
+      <point x="0.0" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="-38.58333333333326" y="37.0" />
+      <point x="3059.88093930602" y="862.0" />
+      <point x="3077.4667133452726" y="862.0" />
+      <point x="3077.4667133452726" y="2424.0" />
+      <point x="3578.8855477855477" y="2424.0" />
+      <point x="-118.66666666666652" y="-302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.AirspaceInvadersGame" target="nl.han.ica.airspaceinvaders.assets.logger.FileLogHandler">
+      <point x="18.9375" y="-104.0" />
+      <point x="2620.445880011939" y="4452.0" />
+      <point x="3826.420635504846" y="4452.0" />
+      <point x="0.0" y="49.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.AirspaceInvadersGame" target="nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine">
+      <point x="-41.66249999999991" y="-104.0" />
+      <point x="2559.8458800119397" y="4482.0" />
+      <point x="1654.4157903063865" y="4482.0" />
+      <point x="-44.875" y="71.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.assets.level.LevelMap" target="nl.han.ica.airspaceinvaders.state.EndLevelState">
+      <point x="0.0" y="-115.5" />
+      <point x="252.3701832267575" y="5094.0" />
+      <point x="182.0" y="5094.0" />
+      <point x="0.0" y="82.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.HighScoreState" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="-69.5" y="-93.0" />
+      <point x="2203.5407903063865" y="2354.0" />
+      <point x="1809.316003485159" y="2354.0" />
+      <point x="58.28571428571422" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.AirspaceInvadersStateMachine" target="nl.han.ica.airspaceinvaders.interfaces.IState">
+      <point x="89.75" y="-71.5" />
+      <point x="1789.0407903063865" y="2444.0" />
+      <point x="1751.0302891994447" y="2444.0" />
+      <point x="0.0" y="48.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.enemies.EnemyUtil" target="nl.han.ica.airspaceinvaders.assets.config.GameProperties">
+      <point x="-115.75" y="-37.0" />
+      <point x="2982.7142726393536" y="678.0" />
+      <point x="2931.047605972687" y="678.0" />
+      <point x="2931.047605972687" y="249.0" />
+      <point x="1090.311244851841" y="249.0" />
+      <point x="109.5454545454545" y="59.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.EndGameState" target="nl.han.ica.airspaceinvaders.gameobjects.player.Player">
+      <point x="109.55000000000018" y="-82.0" />
+      <point x="2177.0907903063867" y="3169.0" />
+      <point x="3549.2188811188807" y="3169.0" />
+      <point x="-148.33333333333337" y="302.5" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.state.RulesState" target="nl.han.ica.airspaceinvaders.assets.AssetLoader">
+      <point x="-50.40000000000009" y="-71.0" />
+      <point x="1011.4657903063865" y="2364.0" />
+      <point x="991.7657903063864" y="2364.0" />
+      <point x="991.7657903063864" y="658.0" />
+      <point x="1778.2330979986941" y="658.0" />
+      <point x="-89.30769230769238" y="81.0" />
+    </edge>
+    <edge source="nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon" target="nl.han.ica.airspaceinvaders.AirspaceInvadersGame">
+      <point x="91.71428571428578" y="93.5" />
+      <point x="4517.626832392892" y="1542.0" />
+      <point x="4982.954213345273" y="1542.0" />
+      <point x="4982.954213345273" y="4602.0" />
+      <point x="2734.070880011939" y="4602.0" />
+      <point x="132.5625" y="-104.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="2013.0" y="249.0" />
+  <SelectedNodes />
+  <Categories>
+    <Category>Methods</Category>
+    <Category>Properties</Category>
+    <Category>Inner Classes</Category>
+    <Category>Constructors</Category>
+    <Category>Fields</Category>
+  </Categories>
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
