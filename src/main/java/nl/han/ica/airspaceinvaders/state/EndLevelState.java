@@ -20,10 +20,13 @@ public class EndLevelState extends View implements IState {
 
     @Override
     public void start() {
-        this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
+        this.setBackground(AssetLoader.getBackgroundImage("background/a10-leveldone.jpg", this.game));
 
+        int postionX = (GameProperties.getValueAsInt("worldWidth") / 2)  - 100;
+        int postionY = GameProperties.getValueAsInt("worldHeight") - 100;
         ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game, levelNumber + 1), this.game,"Start level " + (this.levelNumber + 1), 50, 200, 100);
-        this.game.addGameObject(buttonStart, 100, 100, 1);
+        this.game.addGameObject(buttonStart, postionX, postionY, 1);
+
     }
 
     @Override

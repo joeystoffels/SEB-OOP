@@ -22,14 +22,15 @@ public class EndGameState extends View implements IState {
 
     @Override
     public void start() {
-        this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
+        this.setBackground(AssetLoader.getBackgroundImage("background/a10-gameover.jpg", this.game));
 
         HighScores list = new HighScores(GameProperties.getValue("highscoreFile"));
         list.saveScore(player.getName(), player.getScore());
 
-
-        ButtonChangeView buttonStart = new ButtonChangeView(new HighScoreState(this.game), this.game,"Next", 50, 200, 100);
-        this.game.addGameObject(buttonStart, 100, 100, 1);
+        int postionX = (GameProperties.getValueAsInt("worldWidth") / 2)  - 100;
+        int postionY = GameProperties.getValueAsInt("worldHeight") - 100;
+        ButtonChangeView buttonStart = new ButtonChangeView(new HighScoreState(this.game), this.game,"To menu", 50, 200, 100);
+        this.game.addGameObject(buttonStart, postionX, postionY, 1);
     }
 
     @Override
@@ -37,6 +38,9 @@ public class EndGameState extends View implements IState {
         this.game.deleteAllGameOBjects();
     }
 
+    /**
+     *
+     */
     @Override
     public void update() {
     }
