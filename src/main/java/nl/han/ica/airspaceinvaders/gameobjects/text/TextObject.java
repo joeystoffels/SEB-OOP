@@ -26,9 +26,8 @@ public class TextObject extends GameObject {
      */
     @Override
     public void update() {
-
+        //no action
     }
-
 
     /**
      * Method to draw this TextObject.

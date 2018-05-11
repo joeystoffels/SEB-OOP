@@ -1,7 +1,9 @@
 package nl.han.ica.airspaceinvaders.enums;
 
 
-
+/**
+ * Enum that describes the PowerUpTypes available in the game.
+ */
 public enum PowerUpTypes {
     HEALTH("HealthUp"),
     SHIELD("ShieldUp"),
@@ -17,8 +19,11 @@ public enum PowerUpTypes {
         this.text = text;
     }
 
-    /* (non-Javadoc)
-     * @see java.lang.Enum#toString()
+
+    /**
+     * Overriden implementation of toString to return the
+     * String representation of an enum value.
+     * @return String
      */
     @Override
     public String toString() {

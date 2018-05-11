@@ -2,11 +2,9 @@ package nl.han.ica.airspaceinvaders.assets;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
-import processing.core.PApplet;
 import processing.core.PImage;
 
 import java.io.BufferedReader;

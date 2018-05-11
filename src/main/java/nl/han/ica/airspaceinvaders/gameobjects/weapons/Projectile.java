@@ -36,7 +36,6 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         this.setCurrentFrameIndex(0);
     }
 
-
     /**
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
@@ -56,7 +55,6 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
             airspaceInvadersGame.deleteGameObject(this);
         }
     }
-
 
     /**
      * Method to create the Projectile based on the given weapon type
@@ -85,7 +83,6 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
     }
-
 
     /**
      * Method to update this class. It is automatically called

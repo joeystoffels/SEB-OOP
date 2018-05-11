@@ -21,6 +21,9 @@ public class ButtonChangeView extends ButtonText {
         this.view = view;
     }
 
+    /**
+     * Method to execute the change of view.
+     */
     @Override
     public void execute() {
         super.execute();
