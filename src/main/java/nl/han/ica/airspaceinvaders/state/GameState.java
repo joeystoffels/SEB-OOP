@@ -57,7 +57,7 @@ public class GameState extends View implements IState {
 
         if (player != null && player.getHealth() <= 0) {
             this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
-            this.game.changeView(new HighScoreState(this.game));
+            this.game.changeView(new EndGameState(this.game, player));
         }
     }
 

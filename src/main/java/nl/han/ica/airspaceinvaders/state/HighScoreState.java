@@ -26,10 +26,10 @@ public class HighScoreState extends View implements IState {
     public void start() {
         this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game,"Back", 50, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game,"Menu", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
 
-        HighScores list = new HighScores("highscores.csv");
+        HighScores list = new HighScores(GameProperties.getValue("highscoreFile"));
         Score[] highScoresList = list.loadScores();
 
         int verticalStep = ( GameProperties.getValueAsInt("worldHeight") - (2 * margin)) / (highScoresList.length > 15 ? 15 : highScoresList.length);
