@@ -35,7 +35,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private int missileAmmo = 10;
 
     /**
-     *  Constructor for Player. This class will represent the player in the game
+     *  Constructor for Player. This class will represent the player in the game.
      * @param game AirspaceInvadersGame
      */
     public Player(AirspaceInvadersGame game) {

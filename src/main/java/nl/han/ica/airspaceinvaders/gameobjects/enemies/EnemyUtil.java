@@ -15,6 +15,12 @@ import java.util.List;
 
 class EnemyUtil {
 
+    /**
+     * Util method of gameObjectCollisionOccurred that prevents double code
+     * from the Enemy-typed objects.
+     * @param iAirspaceObject IAirspaceObject
+     * @param collidedGameObjects List<GameObject>
+     */
     void gameObjectCollisionOccurredUtil(IAirspaceObject iAirspaceObject, List<GameObject> collidedGameObjects) {
         for (GameObject gameObject : collidedGameObjects) {
             if (gameObject instanceof Projectile) {
@@ -38,6 +44,12 @@ class EnemyUtil {
         }
     }
 
+    /**
+     * Util method of createPowerUp that prevents double code from the Enemy-
+     * typed objects.
+     * @param iAirspaceObject IAirspaceObject
+     * @param weapon Weapon
+     */
     void createPowerUpUtil(IAirspaceObject iAirspaceObject, Weapon weapon) {
         if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
             int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
