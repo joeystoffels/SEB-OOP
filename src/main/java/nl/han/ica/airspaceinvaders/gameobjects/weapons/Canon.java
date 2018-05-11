@@ -51,7 +51,7 @@ public class Canon extends Weapon {
         int timerInterval;
 
         if (this.getIAirspaceObject() instanceof Player) {
-            timerInterval = 400;
+            timerInterval = 350;
         } else {
             timerInterval = 2000;
         }

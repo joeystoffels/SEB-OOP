@@ -163,14 +163,14 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         switch(((PowerUp) gameObject).getPowerUpType()) {
             case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
             case "ShieldUp": this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount()); break;
-            case "MissileUp": this.missileAmmo++; break;
+            case "MissileUp": this.missileAmmo += 5; break;
             default: break;
         }
     }
 
     @Override
     public void movement(boolean isDirectionLeft) {
-
+        // do nothing
     }
 
     @Override
@@ -205,7 +205,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     @Override
     public void createPowerUp() {
-
+        // do nothing
     }
 
     public int getShield() {

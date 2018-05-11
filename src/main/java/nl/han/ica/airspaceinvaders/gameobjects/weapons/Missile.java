@@ -24,7 +24,6 @@ public class Missile extends Weapon {
         super.setDamage(100);
         this.airspaceInvadersGame = game;
         this.iFlyingObject = iFlyingObject;
-        this.missileSound = game.soundLibrary.loadFile("sounds/MissileSound.mp3");
     }
 
     @Override
@@ -41,8 +40,10 @@ public class Missile extends Weapon {
     public void shoot() {
         Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 25);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
+        this.missileSound = airspaceInvadersGame.soundLibrary.loadFile("sounds/MissileSound.mp3");
         missileSound.play();
         missileSound.rewind();
+        this.missileSound = null;
         this.leftMissilePosition = !leftMissilePosition;
     }
 }
