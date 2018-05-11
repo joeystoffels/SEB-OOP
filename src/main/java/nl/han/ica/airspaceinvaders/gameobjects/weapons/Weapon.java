@@ -1,6 +1,5 @@
 package nl.han.ica.airspaceinvaders.gameobjects.weapons;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 public abstract class Weapon {
 
@@ -23,7 +22,7 @@ public abstract class Weapon {
         this.damage = damage;
     }
 
-    public abstract IFlyingObject getIFlyingObject();
+    public abstract IAirspaceObject getIFlyingObject();
 
     public abstract void stopTimer();
 

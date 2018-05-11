@@ -14,14 +14,14 @@ import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 import nl.han.ica.airspaceinvaders.state.GameState;
 
 import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Air extends SpriteObject implements IFlyingObject {
+public class Air extends SpriteObject implements IAirspaceObject {
 
     private int health;
     private int shield;

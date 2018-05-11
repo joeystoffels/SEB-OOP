@@ -4,7 +4,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 import java.util.Timer;
 import java.util.TimerTask;
@@ -13,12 +13,12 @@ public class Canon extends Weapon {
 
     Timer timer = new Timer();
     private AirspaceInvadersGame airspaceInvadersGame;
-    private IFlyingObject iFlyingObject;
+    private IAirspaceObject iFlyingObject;
 
     /**
      *
      */
-    public Canon(AirspaceInvadersGame game, IFlyingObject iFlyingObject) {
+    public Canon(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
         super.setDamage(10);
         super.setIntervalTime(1);
         this.iFlyingObject = iFlyingObject;
@@ -33,7 +33,7 @@ public class Canon extends Weapon {
     }
 
     @Override
-    public IFlyingObject getIFlyingObject() {
+    public IAirspaceObject getIFlyingObject() {
         return iFlyingObject;
     }
 

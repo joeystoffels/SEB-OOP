@@ -2,27 +2,25 @@ package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.enums.MissileType;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
-import processing.core.PGraphics;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 public class Missile extends Weapon {
 
     private AirspaceInvadersGame airspaceInvadersGame;
-    private IFlyingObject iFlyingObject;
+    private IAirspaceObject iFlyingObject;
     public boolean leftMissilePosition;
 
     /**
      *
      */
-    public Missile(AirspaceInvadersGame game, IFlyingObject iFlyingObject) {
+    public Missile(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
         super.setDamage(100);
         this.airspaceInvadersGame = game;
         this.iFlyingObject = iFlyingObject;
     }
 
     @Override
-    public IFlyingObject getIFlyingObject() {
+    public IAirspaceObject getIFlyingObject() {
         return this.iFlyingObject;
     }
 

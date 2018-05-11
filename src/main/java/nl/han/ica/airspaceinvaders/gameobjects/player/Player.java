@@ -15,13 +15,12 @@ import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
-import nl.han.ica.airspaceinvaders.state.HighScoreState;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 import processing.core.PConstants;
 
 import java.util.List;
 
-public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IFlyingObject {
+public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IAirspaceObject {
 
     private final AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();

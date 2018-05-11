@@ -6,11 +6,9 @@ import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
-import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 import java.util.List;
 
@@ -31,7 +29,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     }
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        if (collidedGameObjects.get(0) instanceof IFlyingObject) {
+        if (collidedGameObjects.get(0) instanceof IAirspaceObject) {
             airspaceInvadersGame.deleteGameObject(this);
         }
     }
@@ -54,7 +52,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
                 xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 3 : playerWidth / 3;
             }
         } else {
-            yPos = weapon.getIFlyingObject().getCenterYPos() + ((IFlyingObject) weapon.getIFlyingObject()).getObjectHeight() + this.getHeight();
+            yPos = weapon.getIFlyingObject().getCenterYPos() + ((IAirspaceObject) weapon.getIFlyingObject()).getObjectHeight() + this.getHeight();
         }
 
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);

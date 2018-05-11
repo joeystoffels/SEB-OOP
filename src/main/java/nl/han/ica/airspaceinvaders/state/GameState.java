@@ -10,11 +10,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
-import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 import java.util.ArrayList;
@@ -23,7 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class GameState extends View implements IState {
 
-    public List<IFlyingObject> enemies = new ArrayList<>();
+    public List<IAirspaceObject> enemies = new ArrayList<>();
 
     private String[] enemyPlanes = {"enemy/F22.png", "enemy/Grippen.png", "enemy/Mig.png"};
     private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield" + "\n" + "Missiles: ");
@@ -102,7 +101,7 @@ public class GameState extends View implements IState {
         float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
         for (int x = 0; x < nrEnemies; x++) {
-            IFlyingObject enemy = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 20));
+            IAirspaceObject enemy = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 20));
             enemies.add(enemy);
             this.game.addGameObject((Air) enemy, (float) (xPos + (x * ((Air) enemy).getWidth())), 0);
         }
@@ -112,13 +111,13 @@ public class GameState extends View implements IState {
         ArrayList<GameObject> gameObjectsToRemove = new ArrayList<>();
 
         for (GameObject gameObject : game.getGameObjectItems()) {
-            if (gameObject instanceof IFlyingObject) {
+            if (gameObject instanceof IAirspaceObject) {
                 gameObjectsToRemove.add(gameObject);
             }
         }
 
         for (GameObject gameObject : gameObjectsToRemove) {
-            ((IFlyingObject) gameObject).destroy();
+            ((IAirspaceObject) gameObject).destroy();
         }
     }
 }

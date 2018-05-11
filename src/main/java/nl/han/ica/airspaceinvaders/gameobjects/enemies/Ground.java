@@ -4,11 +4,11 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
-import nl.han.ica.airspaceinvaders.interfaces.IFlyingObject;
+import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 import java.util.List;
 
-public class Ground extends SpriteObject implements IFlyingObject {
+public class Ground extends SpriteObject implements IAirspaceObject {
 
     private int health;
     private int shield;
