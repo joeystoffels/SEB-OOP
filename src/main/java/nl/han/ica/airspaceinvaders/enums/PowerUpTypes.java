@@ -1,5 +1,7 @@
 package nl.han.ica.airspaceinvaders.enums;
 
+
+
 public enum PowerUpTypes {
     HEALTH("HealthUp"),
     SHIELD("ShieldUp"),

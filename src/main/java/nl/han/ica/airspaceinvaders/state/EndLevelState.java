@@ -4,10 +4,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.View.View;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
-import nl.han.ica.airspaceinvaders.assets.highscores.HighScores;
-import nl.han.ica.airspaceinvaders.assets.highscores.Score;
 import nl.han.ica.airspaceinvaders.gameobjects.buttons.ButtonChangeView;
-import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 public class EndLevelState extends View implements IState {

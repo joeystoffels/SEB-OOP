@@ -1,6 +1,5 @@
 package nl.han.ica.airspaceinvaders.gameobjects.buttons;
 
-
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.DefaultLogger;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
 import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;

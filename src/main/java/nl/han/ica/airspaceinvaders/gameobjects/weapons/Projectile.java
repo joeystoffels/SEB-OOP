@@ -7,10 +7,8 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
-import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
-import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 import java.util.List;
 

@@ -6,7 +6,6 @@ import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.state.EndLevelState;
-import nl.han.ica.airspaceinvaders.state.MenuState;
 import processing.core.PGraphics;
 
 public class LevelMap extends TileMap {

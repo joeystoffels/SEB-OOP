@@ -1,18 +1,10 @@
 package nl.han.ica.airspaceinvaders.gameobjects.enemies;
 
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.LogFactory;
-import nl.han.ica.OOPDProcessingEngineHAN.Logger.Logger;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
-import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
-import nl.han.ica.airspaceinvaders.enums.PowerUpTypes;
-import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
-import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
-import nl.han.ica.airspaceinvaders.gameobjects.weapons.Projectile;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 import nl.han.ica.airspaceinvaders.state.GameState;

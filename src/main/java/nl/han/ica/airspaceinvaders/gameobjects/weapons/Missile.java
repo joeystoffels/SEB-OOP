@@ -4,11 +4,7 @@ import ddf.minim.AudioPlayer;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
-import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class Missile extends Weapon {
 

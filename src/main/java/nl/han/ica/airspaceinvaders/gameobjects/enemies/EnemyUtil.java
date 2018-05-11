@@ -2,7 +2,6 @@ package nl.han.ica.airspaceinvaders.gameobjects.enemies;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
-import nl.han.ica.OOPDProcessingEngineHAN.Objects.SpriteObject;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.enums.PowerUpTypes;
