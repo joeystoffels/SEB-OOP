@@ -20,6 +20,11 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     private int counter = 0;
     private Weapon weapon;
 
+    /**
+     * Constructor for Projectile. This class will represent a projectile from one of
+     * the possible weapons in-game. Currently Canon or Missile.
+     * @param weapon, game, sprite, totalFrames
+     */
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
         this.airspaceInvadersGame = game;
@@ -27,6 +32,13 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         createProjectile(weapon);
         this.setCurrentFrameIndex(0);
     }
+
+
+    /**
+     * Implemented method from ICollidableWithGameObjects which determines the
+     * behaviour of this class when an collision occurs with an other GameObject.
+     * @param collidedGameObjects
+     */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         if (weapon instanceof Missile) {
@@ -41,6 +53,12 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         }
     }
 
+
+    /**
+     * Method to create the Projectile based on the given weapon type
+     * and its parent IAirspaceObject.
+     * @param weapon
+     */
     private void createProjectile(Weapon weapon) {
         this.damage = weapon.getDamage();
 
@@ -64,6 +82,11 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
     }
 
+
+    /**
+     * Method to update this class. Is automatically called
+     * by the Game Engine.
+     */
     @Override
     public void update() {
         checkIfOutsideView();
@@ -76,6 +99,10 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         }
     }
 
+    /**
+     * Method to check if this object is outside the View boundaries.
+     * In this case only checked on the Y-axis.
+     */
     private void checkIfOutsideView() {
         if (this.getX() > airspaceInvadersGame.getWidth() | this.getY() > airspaceInvadersGame.getHeight() | this.getX() < 0 | this.getY() < 0) {
             //logger.logln(DefaultLogger.LOG_DEBUG,"Projectile removed");
@@ -83,10 +110,18 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         }
     }
 
+    /**
+     * Getter of damage
+     * @return damage
+     */
     public int getDamage() {
         return damage;
     }
 
+    /**
+     * Getter of weapon
+     * @return weapon
+     */
     public Weapon getWeapon() {
         return weapon;
     }

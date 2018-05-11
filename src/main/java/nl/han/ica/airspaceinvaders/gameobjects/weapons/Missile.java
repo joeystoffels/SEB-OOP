@@ -14,7 +14,8 @@ public class Missile extends Weapon {
     private AudioPlayer missileSound;
 
     /**
-     * Constructor for Missile
+     * Constructor for Missile. This class will represent the Missile weapon
+     * for the player.
      * @param game, iFlyingObject
      */
     public Missile(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
