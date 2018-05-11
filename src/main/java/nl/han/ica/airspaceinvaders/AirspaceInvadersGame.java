@@ -72,6 +72,10 @@ public class AirspaceInvadersGame extends GameEngine {
         this.startUp = startUp;
     }
 
+    /**
+     * Getter for Level
+     * @return Level
+     */
     public Level getLevel() {
         return level;
     }

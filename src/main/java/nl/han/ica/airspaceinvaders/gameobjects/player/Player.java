@@ -105,7 +105,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
         if (keyCode == PConstants.CONTROL) {
             if (missileAmmo > 0) {
-                System.out.println("SHOOT MISSILE");
+                this.logger.logln(DefaultLogger.LOG_DEBUG, "SHOOT MISSILE");
                 missileSound.play();
                 missileSound.rewind();
                 this.missile.shoot();

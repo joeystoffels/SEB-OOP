@@ -1,0 +1,15 @@
+nl.han.ica.airspaceinvaders
+nl.han.ica.airspaceinvaders.assets
+nl.han.ica.airspaceinvaders.assets.config
+nl.han.ica.airspaceinvaders.assets.highscores
+nl.han.ica.airspaceinvaders.assets.level
+nl.han.ica.airspaceinvaders.assets.logger
+nl.han.ica.airspaceinvaders.enums
+nl.han.ica.airspaceinvaders.gameobjects.buttons
+nl.han.ica.airspaceinvaders.gameobjects.enemies
+nl.han.ica.airspaceinvaders.gameobjects.player
+nl.han.ica.airspaceinvaders.gameobjects.powerups
+nl.han.ica.airspaceinvaders.gameobjects.text
+nl.han.ica.airspaceinvaders.gameobjects.weapons
+nl.han.ica.airspaceinvaders.interfaces
+nl.han.ica.airspaceinvaders.state

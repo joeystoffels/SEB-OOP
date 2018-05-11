@@ -45,7 +45,8 @@ public class Air extends SpriteObject implements IAirspaceObject {
     }
 
     /**
-     * @param collidedGameObjects
+     *
+     * @param collidedGameObjects List<GameObject>
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

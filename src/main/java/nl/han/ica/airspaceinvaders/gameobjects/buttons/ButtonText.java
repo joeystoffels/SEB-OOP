@@ -34,14 +34,23 @@ public class ButtonText extends TextObject implements IMouseInput {
     }
 
 
+    /**
+     * Function that is triggered when a mouse pressed is detected
+     * @param x The x value is the relative mouse position calculated with the position of the world (TileMap).
+     * @param y The y value is the relative mouse position calculated with the position of the world (TileMap).
+     * @param button int
+     */
     @Override
     public void mousePressed(int x, int y, int button) {
         if(x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
             this.logger.logln(DefaultLogger.LOG_DEBUG, "Clicked button text");
-            execute();
         }
     }
 
+    /**
+     * Draw function
+     * @param g PGraphics
+     */
     @Override
     public void draw(PGraphics g) {
         g.textFont(this.font);
@@ -49,8 +58,5 @@ public class ButtonText extends TextObject implements IMouseInput {
         g.textAlign(g.LEFT,g.TOP);
         g.textSize(getFontSize());
         g.text(getText(),getX(),getY());
-    }
-
-    public void execute(){
     }
 }
