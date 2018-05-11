@@ -28,8 +28,7 @@ public class GameState extends View implements IState {
     private String[] enemyPlanes = {"enemy/F22.png", "enemy/Grippen.png", "enemy/Mig.png"};
     private String[] enemyGround = {"enemy/Tank1.png", "enemy/Tank2.png"};
 
-    private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield" + "\n" + "Missiles: ");
-    private TextObject loadingDashboardText = new TextObject("Loading... ");
+    private TextObject dashboardText;
     private AudioPlayer soundTrack;
 
     private Player player;
@@ -47,6 +46,7 @@ public class GameState extends View implements IState {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
         int level1 = level;
+        this.dashboardText = new TextObject( "Score: " + "\n" + "Health: " + "\n" + "Shield" + "\n" + "Missiles: ", game);
     }
 
     /**
@@ -59,10 +59,10 @@ public class GameState extends View implements IState {
         }
 
         if (this.player != null) {
-            this.getDashboardText().setText("Health:" + player.getHealth() + "\n" +
-                    "Score: " + player.getScore() + "\n" +
-                    "Shield: " + player.getShield() + "\n" +
-                    "Missiles: " + player.getMissileAmmo());
+            this.getDashboardText().setText("Score:  " + player.getScore() + "\n" +
+                    "Health:  " + player.getHealth() + "\n" +
+                    "Shield:  " + player.getShield() + "\n" +
+                    "Missiles:  " + player.getMissileAmmo());
         }
 
         if (player != null && player.getHealth() <= 0) {
@@ -108,7 +108,7 @@ public class GameState extends View implements IState {
     }
 
     private void createDashboard(int dashboardWidth, int dashboardHeight) {
-        Dashboard dashboard = new Dashboard(0, 0, dashboardWidth, dashboardHeight);
+        Dashboard dashboard = new Dashboard(10, 10, dashboardWidth, dashboardHeight);
         dashboard.addGameObject(this.dashboardText);
         this.game.addDashboard(dashboard);
     }

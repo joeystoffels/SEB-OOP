@@ -44,10 +44,10 @@ public class HighScoreState extends View implements IState {
 
         for (int index = 0; index < highScoresList.length; index++) {
             if (index < GameProperties.getValueAsInt("amountOfHighScores")) {
-                TextObject name = new TextObject(highScoresList[index].getName());
+                TextObject name = new TextObject(highScoresList[index].getName(), this.game);
                 this.game.addGameObject(name, horizontalWidth, index * verticalStep + margin, 1);
 
-                TextObject score = new TextObject(Integer.toString(highScoresList[index].getScore()));
+                TextObject score = new TextObject(Integer.toString(highScoresList[index].getScore()), this.game);
                 this.game.addGameObject(score, horizontalWidth + 200, index * verticalStep + margin, 1);
             }
         }
