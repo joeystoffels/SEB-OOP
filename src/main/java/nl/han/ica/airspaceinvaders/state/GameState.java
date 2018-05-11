@@ -65,20 +65,9 @@ public class GameState extends View implements IState {
 
     @Override
     public void reset() {
-        for (GameObject gameObject : game.getGameObjectItems()) {
-            if (gameObject instanceof IFlyingObject) {
-                ((IFlyingObject) gameObject).getWeapon().stopTimer();
-
-                if (gameObject instanceof Player) {
-                    HighScores list = new HighScores("highscores.csv");
-                    list.saveScore(((Player) gameObject).getName(), ((Player) gameObject).getScore());
-                }
-            }
-
-        }
-        game.setTileMap(null); // remove level tilemap
         this.game.deleteAllDashboards();
         this.game.deleteAllGameOBjects();
+        game.setTileMap(null); // remove level tilemap
     }
 
     private void createDashboard(int dashboardWidth, int dashboardHeight) {

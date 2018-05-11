@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Player extends AnimatedSpriteObject implements ICollidableWithGameObjects, IFlyingObject {
 
-    private final AirspaceInvadersGame world;
+    private final AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();
     private final float verticalRecovery = 1.0f;
     AudioPlayer missileSound;
@@ -44,7 +44,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         super(AssetLoader.getSprite("player/A10-shade.png", 25), 6);
         this.canon = new Canon(world, this);
         this.missile = new Missile(world, this);
-        this.world = world;
+        this.airspaceInvadersGame = world;
         setFriction(0.04f);
         this.logger.logln(DefaultLogger.LOG_DEBUG, "Player spawned");
         this.missileSound = world.soundLibrary.loadFile("sounds/MissileSound.mp3");
@@ -63,13 +63,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
             setySpeed(0);
             setY(0);
         }
-        if (getX() >= world.getWidth() - super.getWidth()) {
+        if (getX() >= airspaceInvadersGame.getWidth() - super.getWidth()) {
             setxSpeed(0);
-            setX(world.getWidth() - super.getWidth());
+            setX(airspaceInvadersGame.getWidth() - super.getWidth());
         }
-        if (getY() >= world.getHeight() - super.getWidth()) {
+        if (getY() >= airspaceInvadersGame.getHeight() - super.getWidth()) {
             setySpeed(0);
-            setY(world.getHeight() - super.getWidth());
+            setY(airspaceInvadersGame.getHeight() - super.getWidth());
         }
 
         if (getySpeed() < this.verticalRecovery && getySpeed() > (this.verticalRecovery * -1)) {
@@ -138,7 +138,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
         if (getHealth() <= 0) {
             this.logger.logln(DefaultLogger.LOG_DEBUG, "ENDGAME");
-            this.world.changeView(new HighScoreState(this.world));
+            this.airspaceInvadersGame.changeView(new HighScoreState(this.airspaceInvadersGame));
         }
     }
 
