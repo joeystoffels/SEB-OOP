@@ -25,16 +25,19 @@ import java.util.TimerTask;
 public class Ground extends SpriteObject implements IAirspaceObject {
 
     private int health;
+    private int score;
 
     private Weapon weapon;
     private GameState gameState;
     private AirspaceInvadersGame airspaceInvadersGame;
+    private EnemyUtil enemyUtil = new EnemyUtil();
 
     public Ground(AirspaceInvadersGame game, GameState view, Sprite sprite) {
         super(sprite);
         this.gameState = view;
         this.airspaceInvadersGame = game;
         this.health = 100;
+        this.score = 50;
         this.weapon = new Canon(game, this);
         this.setZ(-1); // displays a ground unit below an air unit
         movement(false);
@@ -45,27 +48,21 @@ public class Ground extends SpriteObject implements IAirspaceObject {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+        enemyUtil.gameObjectCollisionOccurredUtil(this, collidedGameObjects);
+    }
 
-        for (GameObject gameObject : collidedGameObjects) {
-            if (gameObject instanceof Projectile) {
-                this.health = this.health - ((Projectile) gameObject).getDamage();
-                break; // break out of for loop so it only passes once when collided with multiple projectiles at once
-            }
-            if (gameObject instanceof Player) {
-                this.health = 0;
-            }
-        }
+    @Override
+    public void movement(boolean isDirectionLeft) {
+        this.setSpeed(1);
+        this.setDirection(180);
+        this.move();
+    }
 
-        if (this.health <= 0) {
-            createPowerUp();
-            this.destroy();
-
-            for (GameObject gameObject : airspaceInvadersGame.getGameObjectItems()) {
-                if (gameObject instanceof Player) {
-                    ((Player) gameObject).setScore(((Player) gameObject).getScore() + 50);
-                }
-            }
-        }
+    @Override
+    public void destroy() {
+        this.weapon.destroy();
+        this.airspaceInvadersGame.deleteGameObject(this);
+        this.gameState.enemies.remove(this);
     }
 
     @Override
@@ -77,10 +74,8 @@ public class Ground extends SpriteObject implements IAirspaceObject {
     }
 
     @Override
-    public void movement(boolean isDirectionLeft) {
-        this.setSpeed(1);
-        this.setDirection(180);
-        this.move();
+    public void createPowerUp() {
+        enemyUtil.createPowerUpUtil(this, this.weapon);
     }
 
     @Override
@@ -94,27 +89,27 @@ public class Ground extends SpriteObject implements IAirspaceObject {
     }
 
     @Override
-    public void createPowerUp() {
-        if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
-            int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
-
-            this.airspaceInvadersGame.addGameObject(
-                    new PowerUp(this.airspaceInvadersGame,
-                            AssetLoader.getSprite("powerup/PowerUp.png", 10),
-                            PowerUpTypes.values()[randomNr].toString()), this.getCenterXPos() - (this.getWidth() / 2), this.getCenterYPos() - (this.getHeight() / 2)
-            );
-        }
-    }
-
-    @Override
     public float getObjectHeight() {
         return this.getHeight();
     }
 
     @Override
-    public void destroy() {
-        this.weapon.destroy();
-        this.airspaceInvadersGame.deleteGameObject(this);
-        this.gameState.enemies.remove(this);
+    public AirspaceInvadersGame getAirspaceInvadersGame() {
+        return airspaceInvadersGame;
+    }
+
+    @Override
+    public int getHealth() {
+        return health;
+    }
+
+    @Override
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    @Override
+    public int getScore() {
+        return score;
     }
 }

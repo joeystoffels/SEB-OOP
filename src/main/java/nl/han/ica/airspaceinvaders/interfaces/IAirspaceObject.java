@@ -1,6 +1,7 @@
 package nl.han.ica.airspaceinvaders.interfaces;
 
 import nl.han.ica.OOPDProcessingEngineHAN.Collision.ICollidableWithGameObjects;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Weapon;
 
 public interface IAirspaceObject extends ICollidableWithGameObjects {
@@ -10,4 +11,8 @@ public interface IAirspaceObject extends ICollidableWithGameObjects {
     float getObjectHeight();
     void createPowerUp();
     void destroy();
+    AirspaceInvadersGame getAirspaceInvadersGame();
+    int getHealth();
+    void setHealth(int health);
+    int getScore();
 }

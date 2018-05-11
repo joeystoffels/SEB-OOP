@@ -24,12 +24,14 @@ import java.util.TimerTask;
 public class Air extends SpriteObject implements IAirspaceObject {
 
     private int health;
+    private int score;
 
     private Weapon weapon;
     private GameState gameState;
     private AirspaceInvadersGame airspaceInvadersGame;
     private boolean isDirectionLeft;
-    private Timer timer = new Timer();
+    private Timer timer;
+    private EnemyUtil enemyUtil = new EnemyUtil();
 
 
     public Air(AirspaceInvadersGame game, GameState view, Sprite sprite) {
@@ -37,13 +39,9 @@ public class Air extends SpriteObject implements IAirspaceObject {
         this.gameState = view;
         this.airspaceInvadersGame = game;
         this.health = 50;
+        this.score = 25;
         this.weapon = new Canon(game, this);
-        timer.schedule(new TimerTask() {
-            @Override
-            public void run() {
-                movement(isDirectionLeft);
-            }
-        }, 1000, 2000);
+        startTimer();
     }
 
     /**
@@ -51,31 +49,30 @@ public class Air extends SpriteObject implements IAirspaceObject {
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
+        enemyUtil.gameObjectCollisionOccurredUtil(this, collidedGameObjects);
+    }
 
-        for (GameObject gameObject : collidedGameObjects) {
-            if (gameObject instanceof Projectile) {
-                this.health = this.health - ((Projectile) gameObject).getDamage();
-                break; // break out of for loop so it only passes once when collided with multiple projectiles at once
+    private void startTimer() {
+        this.timer = new Timer();
+        this.timer.schedule(new TimerTask() {
+            @Override
+            public void run() {
+                movement(isDirectionLeft);
             }
-            if (gameObject instanceof Player) {
-                this.health = 0;
-            }
-        }
+        }, 1000, 2000);
+    }
 
-        if (this.health <= 0) {
-            createPowerUp();
-            this.destroy();
-
-            for (GameObject gameObject : airspaceInvadersGame.getGameObjectItems()) {
-                if (gameObject instanceof Player) {
-                    ((Player) gameObject).setScore(((Player) gameObject).getScore() + 25);
-                }
-            }
-        }
+    @Override
+    public void movement(boolean isDirectionLeft) {
+        this.setSpeed(3);
+        this.setDirection(isDirectionLeft ? 110 : 250);
+        this.move();
+        this.isDirectionLeft = !isDirectionLeft;
     }
 
     @Override
     public void destroy() {
+        this.timer.cancel();
         this.weapon.destroy();
         this.airspaceInvadersGame.deleteGameObject(this);
         this.gameState.enemies.remove(this);
@@ -91,23 +88,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     @Override
     public void createPowerUp() {
-        if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
-            int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
-
-            this.airspaceInvadersGame.addGameObject(
-                    new PowerUp(this.airspaceInvadersGame,
-                    AssetLoader.getSprite("powerup/PowerUp.png", 10),
-                    PowerUpTypes.values()[randomNr].toString()), this.getCenterXPos() - (this.getWidth() / 2), this.getCenterYPos() - (this.getHeight() / 2)
-            );
-        }
-    }
-
-    @Override
-    public void movement(boolean isDirectionLeft) {
-        this.setSpeed(3);
-        this.setDirection(isDirectionLeft ? 110 : 250);
-        this.move();
-        this.isDirectionLeft = !isDirectionLeft;
+        enemyUtil.createPowerUpUtil(this, this.weapon);
     }
 
     @Override
@@ -123,5 +104,25 @@ public class Air extends SpriteObject implements IAirspaceObject {
     @Override
     public float getObjectHeight() {
         return this.getHeight();
+    }
+
+    @Override
+    public AirspaceInvadersGame getAirspaceInvadersGame() {
+        return this.airspaceInvadersGame;
+    }
+
+    @Override
+    public int getHealth() {
+        return this.health;
+    }
+
+    @Override
+    public void setHealth(int health) {
+        this.health = health;
+    }
+
+    @Override
+    public int getScore() {
+        return score;
     }
 }

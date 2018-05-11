@@ -89,7 +89,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         final int speed = 6;
         if (keyCode == PConstants.LEFT) {
             setCurrentFrameIndex(5);
-            setDirectionSpeed(270, speed + 2);
+            setDirectionSpeed(270, speed);
         }
         if (keyCode == PConstants.UP) {
             setCurrentFrameIndex(2);
@@ -97,7 +97,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
         if (keyCode == PConstants.RIGHT) {
             setCurrentFrameIndex(4);
-            setDirectionSpeed(90, speed + 2);
+            setDirectionSpeed(90, speed);
         }
         if (keyCode == PConstants.DOWN) {
             setCurrentFrameIndex(3);
@@ -230,4 +230,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         this.canon.destroy();
         this.missile.destroy();
     };
+
+    @Override
+    public AirspaceInvadersGame getAirspaceInvadersGame() {
+        return null;
+    }
 }

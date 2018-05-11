@@ -47,10 +47,6 @@ public class Canon extends Weapon {
         return iFlyingObject;
     }
 
-    public void stopTimer() {
-        this.timer.cancel();
-    }
-
     private void startTimer() {
         int timerInterval;
 
@@ -70,7 +66,7 @@ public class Canon extends Weapon {
 
     @Override
     public void destroy() {
-        stopTimer();
+        this.timer.cancel();
         timer = null;
     }
 }

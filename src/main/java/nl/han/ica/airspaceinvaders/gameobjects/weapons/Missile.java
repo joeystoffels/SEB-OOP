@@ -33,11 +33,8 @@ public class Missile extends Weapon {
     }
 
     @Override
-    public void stopTimer() {
-    }
-
-    @Override
     public void destroy() {
+        // do nothing
     }
 
     @Override

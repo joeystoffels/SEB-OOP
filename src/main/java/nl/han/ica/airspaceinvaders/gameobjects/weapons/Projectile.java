@@ -60,7 +60,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
                 xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 4 : playerWidth / 4;
             }
         } else {
-            yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.4f;// + this.getHeight();
+            yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.5f;
         }
 
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
