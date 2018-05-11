@@ -34,7 +34,6 @@ public class GameState extends View implements IState {
 
     private Player player;
     private AirspaceInvadersGame game;
-    private int level;
 
     private Logger logger = LogFactory.getLogger();
 
@@ -47,7 +46,7 @@ public class GameState extends View implements IState {
     public GameState(AirspaceInvadersGame game, int level) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
-        this.level = level;
+        int level1 = level;
     }
 
     /**

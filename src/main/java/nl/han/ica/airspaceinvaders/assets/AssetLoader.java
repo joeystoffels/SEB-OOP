@@ -13,6 +13,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static java.lang.Integer.parseInt;
 
@@ -24,8 +25,8 @@ public class AssetLoader {
      * @param name String
      * @return String
      */
-    public static String getImageUrl(String name) {
-        return Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString();
+    private static String getImageUrl(String name) {
+        return Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("images/" + name)).toString();
     }
 
     /**
@@ -74,7 +75,7 @@ public class AssetLoader {
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
         BufferedReader reader = new BufferedReader(streamReader);
 
-        ArrayList<String[]> container = new ArrayList<String[]>();
+        ArrayList<String[]> container = new ArrayList<>();
         try {
             int lines = 0;
             for (String line; (line = reader.readLine()) != null; ) {

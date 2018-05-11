@@ -13,7 +13,6 @@ public class LevelMap extends TileMap {
     private int travelHeight = 0;
     private int visibleTiles;
     private int visibleTilesOffset;
-    private Boolean levelEnded = false;
     private int levelNumber;
     private AirspaceInvadersGame game;
 
@@ -48,7 +47,8 @@ public class LevelMap extends TileMap {
      * @return Boolean
      */
     public Boolean getLevelEnded() {
-        return this.levelEnded;
+        Boolean levelEnded = false;
+        return levelEnded;
     }
 
     /**

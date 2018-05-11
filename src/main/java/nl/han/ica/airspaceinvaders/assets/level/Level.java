@@ -12,6 +12,7 @@ import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 
 import java.io.File;
+import java.util.Objects;
 
 public class Level {
 
@@ -23,7 +24,7 @@ public class Level {
      */
     public void initialize() {
         StringBuilder url = new StringBuilder();
-        url.append(Thread.currentThread().getContextClassLoader().getResource("images/").getPath());
+        url.append(Objects.requireNonNull(Thread.currentThread().getContextClassLoader().getResource("images/")).getPath());
         url.append("terrain/60/");
 
         logger.logln(DefaultLogger.LOG_DEBUG, url.toString());

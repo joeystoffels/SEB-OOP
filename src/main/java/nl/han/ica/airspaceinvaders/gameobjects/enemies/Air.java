@@ -98,7 +98,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
      */
     @Override
     public void update() {
-        if (this.getY() > airspaceInvadersGame.getHeight() | this.getY() < 0) {
+        if (this.getY() > airspaceInvadersGame.getHeight() || this.getY() < 0) {
             airspaceInvadersGame.deleteGameObject(this);
             gameState.enemies.remove(this);
         }

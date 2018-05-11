@@ -347,8 +347,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         this.missile.destroy();
     }
 
-    ;
-
     /**
      * Method to get airspaceInvadersGame
      *

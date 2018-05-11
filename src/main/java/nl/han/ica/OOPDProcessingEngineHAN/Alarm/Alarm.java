@@ -12,7 +12,7 @@ import java.util.TimerTask;
  */
 public class Alarm {
 
-	private List<IAlarmListener> targets = new ArrayList<IAlarmListener>();
+	private List<IAlarmListener> targets = new ArrayList<>();
 	private Timer timer;
 
 	private String name;

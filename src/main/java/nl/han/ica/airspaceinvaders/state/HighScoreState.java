@@ -12,7 +12,6 @@ import nl.han.ica.airspaceinvaders.interfaces.IState;
 
 public class HighScoreState extends View implements IState {
 
-    private final int margin = 100;
     private AirspaceInvadersGame game;
     private String[] highscoreList;
 
@@ -39,16 +38,17 @@ public class HighScoreState extends View implements IState {
         HighScores list = new HighScores(GameProperties.getValue("highscoreFile"));
         Score[] highScoresList = list.loadScores();
 
+        int margin = 100;
         int verticalStep = (GameProperties.getValueAsInt("worldHeight") - (2 * margin)) / (highScoresList.length > 15 ? 15 : highScoresList.length);
         int horizontalWidth = GameProperties.getValueAsInt("worldHeight") / 100 * 40;
 
         for (int index = 0; index < highScoresList.length; index++) {
             if (index < GameProperties.getValueAsInt("amountOfHighScores")) {
                 TextObject name = new TextObject(highScoresList[index].getName());
-                this.game.addGameObject(name, horizontalWidth, index * verticalStep + this.margin, 1);
+                this.game.addGameObject(name, horizontalWidth, index * verticalStep + margin, 1);
 
                 TextObject score = new TextObject(Integer.toString(highScoresList[index].getScore()));
-                this.game.addGameObject(score, horizontalWidth + 200, index * verticalStep + this.margin, 1);
+                this.game.addGameObject(score, horizontalWidth + 200, index * verticalStep + margin, 1);
             }
         }
     }
