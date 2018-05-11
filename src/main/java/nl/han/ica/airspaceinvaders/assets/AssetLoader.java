@@ -20,6 +20,7 @@ public class AssetLoader {
 
     /**
      * Get the absolute path of an image
+     *
      * @param name String
      * @return String
      */
@@ -29,6 +30,7 @@ public class AssetLoader {
 
     /**
      * Gets the absolute path of an Font
+     *
      * @param name String
      * @return String
      */
@@ -38,6 +40,7 @@ public class AssetLoader {
 
     /**
      * Loads an sprite with a scale of 100%
+     *
      * @param name String
      * @return Sprite
      */
@@ -47,7 +50,8 @@ public class AssetLoader {
 
     /**
      * Loads an sprite with the according percentage of the size
-     * @param name String
+     *
+     * @param name           String
      * @param sizePercentage int
      * @return Sprite
      */
@@ -55,12 +59,13 @@ public class AssetLoader {
         Sprite newSprite = new Sprite(Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString());
         float newWidth = (float) newSprite.getWidth() / 100f * sizePercentage;
         float newHeight = (float) newSprite.getHeight() / 100f * sizePercentage;
-        newSprite.resize((int)newWidth, (int)newHeight);
+        newSprite.resize((int) newWidth, (int) newHeight);
         return newSprite;
     }
 
     /**
      * Loads a level from a csv file
+     *
      * @param levelName name
      * @return int[][]
      */
@@ -96,7 +101,8 @@ public class AssetLoader {
 
     /**
      * Loads an background image from file and resizes it to the game height and width
-     * @param url String
+     *
+     * @param url  String
      * @param game AirspaceInvadersGame
      * @return PImage
      */

@@ -18,11 +18,12 @@ public class ButtonText extends TextObject implements IMouseInput {
 
     /**
      * Creates a button that detects that it has been clicked
-     * @param game View
-     * @param text AirspaceInvadersGame
+     *
+     * @param game     View
+     * @param text     AirspaceInvadersGame
      * @param fontSize int
-     * @param width int
-     * @param height int
+     * @param width    int
+     * @param height   int
      */
     public ButtonText(AirspaceInvadersGame game, String text, int fontSize, int width, int height) {
         super(text, fontSize);
@@ -35,13 +36,14 @@ public class ButtonText extends TextObject implements IMouseInput {
 
     /**
      * Function that is triggered when a mouse pressed is detected
-     * @param x The x value is the relative mouse position calculated with the position of the world (TileMap).
-     * @param y The y value is the relative mouse position calculated with the position of the world (TileMap).
+     *
+     * @param x      The x value is the relative mouse position calculated with the position of the world (TileMap).
+     * @param y      The y value is the relative mouse position calculated with the position of the world (TileMap).
      * @param button int
      */
     @Override
     public void mousePressed(int x, int y, int button) {
-        if(x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
+        if (x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
             this.logger.logln(DefaultLogger.LOG_DEBUG, "Clicked button text");
             execute();
         }
@@ -49,18 +51,19 @@ public class ButtonText extends TextObject implements IMouseInput {
 
     /**
      * Draw function
+     *
      * @param g PGraphics
      */
     @Override
     public void draw(PGraphics g) {
         g.textFont(this.font);
         g.fill(0);
-        g.textAlign(g.LEFT,g.TOP);
+        g.textAlign(g.LEFT, g.TOP);
         g.textSize(getFontSize());
-        g.text(getText(),getX(),getY());
+        g.text(getText(), getX(), getY());
     }
 
-    public void execute(){
+    public void execute() {
     }
 
 }

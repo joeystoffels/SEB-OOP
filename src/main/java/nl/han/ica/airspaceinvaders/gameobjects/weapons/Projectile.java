@@ -23,9 +23,10 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Constructor for Projectile. This class will represent a projectile from one of
      * the possible weapons in-game. Currently Canon or Missile.
-     * @param weapon Weapon
-     * @param game AirspaceInvadersGame
-     * @param sprite Sprite
+     *
+     * @param weapon      Weapon
+     * @param game        AirspaceInvadersGame
+     * @param sprite      Sprite
      * @param totalFrames int
      */
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
@@ -40,18 +41,19 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
      * Gets called by the GameEngine.
+     *
      * @param collidedGameObjects List with GameObject
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         if (weapon instanceof Missile) {
             if (!(collidedGameObjects.get(0) instanceof Player) &&
-                !(collidedGameObjects.get(0) instanceof Projectile) &&
-                !(collidedGameObjects.get(0) instanceof PowerUp)) {
+                    !(collidedGameObjects.get(0) instanceof Projectile) &&
+                    !(collidedGameObjects.get(0) instanceof PowerUp)) {
                 airspaceInvadersGame.deleteGameObject(this);
             }
         } else if (!(collidedGameObjects.get(0) instanceof Projectile) &&
-                   !(collidedGameObjects.get(0) instanceof PowerUp)){
+                !(collidedGameObjects.get(0) instanceof PowerUp)) {
             airspaceInvadersGame.deleteGameObject(this);
         }
     }
@@ -59,6 +61,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Method to create the Projectile based on the given weapon type
      * and its parent IAirspaceObject.
+     *
      * @param weapon Weapon
      */
     private void createProjectile(Weapon weapon) {
@@ -75,7 +78,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
             Player player = (Player) weapon.getIAirspaceObject();
             float playerWidth = player.getWidth();
             if (weapon instanceof Missile) {
-                xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 4 : playerWidth / 4;
+                xPosOffset = ((Missile) weapon).leftMissilePosition ? -playerWidth / 4 : playerWidth / 4;
             }
         } else {
             yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.5f;
@@ -93,9 +96,9 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
         checkIfOutsideView();
         counter++;
 
-        if(counter > 45){
+        if (counter > 45) {
             this.setCurrentFrameIndex(2);
-        } else if(counter > 15){
+        } else if (counter > 15) {
             this.setCurrentFrameIndex(1);
         }
     }
@@ -113,6 +116,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     /**
      * Getter of damage
+     *
      * @return damage int
      */
     public int getDamage() {
@@ -121,6 +125,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     /**
      * Getter of weapon
+     *
      * @return weapon Weapon
      */
     public Weapon getWeapon() {

@@ -8,13 +8,15 @@ import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 public class Missile extends Weapon {
 
+    boolean leftMissilePosition;
     private AirspaceInvadersGame airspaceInvadersGame;
     private IAirspaceObject iAirspaceObject;
-    boolean leftMissilePosition;
+
     /**
      * Constructor for Missile. This class will represent the Missile weapon
      * for the player.
-     * @param game AirspaceInvadersGame
+     *
+     * @param game            AirspaceInvadersGame
      * @param iAirspaceObject IAirspaceObject
      */
     public Missile(AirspaceInvadersGame game, IAirspaceObject iAirspaceObject) {
@@ -25,6 +27,7 @@ public class Missile extends Weapon {
 
     /**
      * Getter for the iAirspaceObject in this class.
+     *
      * @return iAirspaceObject IAirspaceObject
      */
     @Override
@@ -46,7 +49,7 @@ public class Missile extends Weapon {
      */
     @Override
     public void shoot() {
-        Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 25);
+        Sprite sprite = AssetLoader.getSprite("weapons/Missile.png", 25);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
         AudioPlayer missileSound = airspaceInvadersGame.soundLibrary.loadFile("sounds/MissileSound.mp3");
         missileSound.play();

@@ -19,7 +19,8 @@ public class Canon extends Weapon {
     /**
      * Constructor for Canon. This class will represent the Canon weapon
      * for either the player or the enemy.
-     * @param game AirspaceInvadersGame
+     *
+     * @param game            AirspaceInvadersGame
      * @param iAirspaceObject IAirspaceObject
      */
     public Canon(AirspaceInvadersGame game, IAirspaceObject iAirspaceObject) {
@@ -50,6 +51,7 @@ public class Canon extends Weapon {
 
     /**
      * Getter for the iAirspaceObject in this class.
+     *
      * @return iAirspaceObject IAirspaceObject
      */
     @Override

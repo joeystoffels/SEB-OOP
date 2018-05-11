@@ -16,7 +16,8 @@ public class EndGameState extends View implements IState {
 
     /**
      * This state will be loaded when the game ends, and the player's lifes are ended.
-     * @param game AirspaceInvadersGame
+     *
+     * @param game   AirspaceInvadersGame
      * @param player Player
      */
     public EndGameState(AirspaceInvadersGame game, Player player) {
@@ -35,9 +36,9 @@ public class EndGameState extends View implements IState {
         HighScores list = new HighScores(GameProperties.getValue("highscoreFile"));
         list.saveScore(player.getName(), player.getScore());
 
-        int postionX = (GameProperties.getValueAsInt("worldWidth") / 2)  - 100;
+        int postionX = (GameProperties.getValueAsInt("worldWidth") / 2) - 100;
         int postionY = GameProperties.getValueAsInt("worldHeight") - 100;
-        ButtonChangeView buttonStart = new ButtonChangeView(new HighScoreState(this.game), this.game,"To menu", 50, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new HighScoreState(this.game), this.game, "To menu", 50, 200, 100);
         this.game.addGameObject(buttonStart, postionX, postionY, 1);
     }
 

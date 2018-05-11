@@ -18,18 +18,11 @@ public class LevelMap extends TileMap {
     private AirspaceInvadersGame game;
 
     /**
-     * Check if the level is ended
-     * @return Boolean
-     */
-    public Boolean getLevelEnded() {
-        return this.levelEnded;
-    }
-
-    /**
      * Levelmap extends a Tilemap, and only draws the visual part of the map instead of drawing everything.
-     * @param tileSize int
-     * @param tileTypes TileType[]
-     * @param indexMap int[][]
+     *
+     * @param tileSize    int
+     * @param tileTypes   TileType[]
+     * @param indexMap    int[][]
      * @param levelNumber int
      */
     public LevelMap(AirspaceInvadersGame game, int tileSize, TileType[] tileTypes, int[][] indexMap, int levelNumber) {
@@ -50,7 +43,17 @@ public class LevelMap extends TileMap {
     }
 
     /**
+     * Check if the level is ended
+     *
+     * @return Boolean
+     */
+    public Boolean getLevelEnded() {
+        return this.levelEnded;
+    }
+
+    /**
      * Draw function that only draws the tiles that are visible of the level
+     *
      * @param pGraphics The canvas on which the tiles will be drawn.
      */
     @Override
@@ -80,7 +83,7 @@ public class LevelMap extends TileMap {
             this.travelHeight -= scrollSpeed;
 
             // Check if the level is ended
-            if((this.travelHeight - GameProperties.getValueAsInt("worldHeight")) < 0){
+            if ((this.travelHeight - GameProperties.getValueAsInt("worldHeight")) < 0) {
                 this.game.changeView(new EndLevelState(this.game, this.levelNumber));
             }
         }

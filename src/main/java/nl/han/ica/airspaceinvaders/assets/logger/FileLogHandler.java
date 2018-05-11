@@ -13,6 +13,7 @@ public class FileLogHandler extends nl.han.ica.OOPDProcessingEngineHAN.Logger.Fi
 
     /**
      * Create a new logger which outputs to a file.
+     *
      * @param fileName String
      */
     public FileLogHandler(String fileName) {
@@ -30,7 +31,8 @@ public class FileLogHandler extends nl.han.ica.OOPDProcessingEngineHAN.Logger.Fi
 
     /**
      * Logs the message with an log option.
-     * @param level int
+     *
+     * @param level   int
      * @param message String
      */
     @Override

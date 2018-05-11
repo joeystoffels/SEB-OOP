@@ -50,14 +50,16 @@ public class AirspaceInvadersGame extends GameEngine {
 
     /**
      * Change state of the game
+     *
      * @param view View
      */
-    public void changeView(View view){
+    public void changeView(View view) {
         this.stateMachine.changeView(view);
     }
 
     /**
      * Getter for  startUp
+     *
      * @return Boolean
      */
     public Boolean getStartUp() {
@@ -66,6 +68,7 @@ public class AirspaceInvadersGame extends GameEngine {
 
     /**
      * Setter for startup
+     *
      * @param startUp Boolean
      */
     public void setStartUp(Boolean startUp) {
@@ -74,6 +77,7 @@ public class AirspaceInvadersGame extends GameEngine {
 
     /**
      * Getter for Level
+     *
      * @return Level
      */
     public Level getLevel() {

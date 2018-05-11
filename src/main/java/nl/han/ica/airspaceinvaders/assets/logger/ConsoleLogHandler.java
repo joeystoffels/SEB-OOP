@@ -9,6 +9,6 @@ public class ConsoleLogHandler implements LogHandler {
      */
     @Override
     public synchronized void logln(int level, String message) {
-        System.out.println(LogMessage.get(level,message));
+        System.out.println(LogMessage.get(level, message));
     }
 }

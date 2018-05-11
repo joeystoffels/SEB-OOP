@@ -1,4 +1,5 @@
 package nl.han.ica.airspaceinvaders.gameobjects.weapons;
+
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 public abstract class Weapon {
@@ -7,6 +8,7 @@ public abstract class Weapon {
 
     /**
      * Method to get damage
+     *
      * @return damage int
      */
     int getDamage() {
@@ -15,6 +17,7 @@ public abstract class Weapon {
 
     /**
      * Method to set damage
+     *
      * @param damage int
      */
     void setDamage(int damage) {

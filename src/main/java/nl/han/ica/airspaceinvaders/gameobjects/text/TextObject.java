@@ -10,14 +10,15 @@ public class TextObject extends GameObject {
     /**
      * Constructor for TextObject. This class will represent
      * the text on the various game screens.
+     *
      * @param text String
      */
     public TextObject(String text) {
-        this.text=text;
+        this.text = text;
     }
 
     public void setText(String text) {
-        this.text=text;
+        this.text = text;
     }
 
     /**
@@ -31,13 +32,14 @@ public class TextObject extends GameObject {
 
     /**
      * Method to draw this TextObject.
+     *
      * @param g PGraphics object will be given by the GameEngine.
      */
     @Override
     public void draw(PGraphics g) {
         g.fill(0);
-        g.textAlign(g.LEFT,g.TOP);
+        g.textAlign(g.LEFT, g.TOP);
         g.textSize(30);
-        g.text(text,getX(),getY());
+        g.text(text, getX(), getY());
     }
 }

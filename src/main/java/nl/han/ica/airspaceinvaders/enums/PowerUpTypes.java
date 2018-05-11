@@ -7,8 +7,7 @@ package nl.han.ica.airspaceinvaders.enums;
 public enum PowerUpTypes {
     HEALTH("HealthUp"),
     SHIELD("ShieldUp"),
-    MISSILE("MissileUp")
-    ;
+    MISSILE("MissileUp");
 
     private final String text;
 
@@ -23,6 +22,7 @@ public enum PowerUpTypes {
     /**
      * Overriden implementation of toString to return the
      * String representation of an enum value.
+     *
      * @return String
      */
     @Override

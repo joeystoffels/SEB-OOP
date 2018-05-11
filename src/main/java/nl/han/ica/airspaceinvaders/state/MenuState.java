@@ -16,6 +16,7 @@ public class MenuState extends View implements IState {
 
     /**
      * State to view the menu
+     *
      * @param game AirspaceInvadersGame
      */
     public MenuState(AirspaceInvadersGame game) {
@@ -28,8 +29,8 @@ public class MenuState extends View implements IState {
      */
     @Override
     public void start() {
-        this.startTimestamp =  new Timestamp(System.currentTimeMillis());
-        if(this.game.getStartUp()){
+        this.startTimestamp = new Timestamp(System.currentTimeMillis());
+        if (this.game.getStartUp()) {
             this.setBackground(AssetLoader.getBackgroundImage("background/a10-logo.jpg", this.game));
         } else {
             this.showButtons();
@@ -42,13 +43,13 @@ public class MenuState extends View implements IState {
         int horizontalOffset = 450;
         int fontSize = 80;
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game, 1),this.game,"Start game", fontSize, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game, 1), this.game, "Start game", fontSize, 200, 100);
         this.game.addGameObject(buttonStart, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 100, 2);
 
-        ButtonChangeView buttonRules = new ButtonChangeView(new RulesState(this.game), this.game,"Rules", fontSize, 200, 100);
+        ButtonChangeView buttonRules = new ButtonChangeView(new RulesState(this.game), this.game, "Rules", fontSize, 200, 100);
         this.game.addGameObject(buttonRules, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 200, 2);
 
-        ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreState(this.game), this.game,"Highscore", fontSize, 200, 100);
+        ButtonChangeView buttonHighscore = new ButtonChangeView(new HighScoreState(this.game), this.game, "Highscore", fontSize, 200, 100);
         this.game.addGameObject(buttonHighscore, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 300, 2);
     }
 
@@ -65,7 +66,7 @@ public class MenuState extends View implements IState {
      */
     @Override
     public void update() {
-        if(( new Timestamp(System.currentTimeMillis()).getTime() -  this.startTimestamp.getTime()) > GameProperties.getValueAsInt("splashTime") && this.game.getStartUp()){
+        if ((new Timestamp(System.currentTimeMillis()).getTime() - this.startTimestamp.getTime()) > GameProperties.getValueAsInt("splashTime") && this.game.getStartUp()) {
             this.game.setStartUp(false);
             this.showButtons();
         }

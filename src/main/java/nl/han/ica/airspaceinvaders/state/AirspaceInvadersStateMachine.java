@@ -13,6 +13,7 @@ public class AirspaceInvadersStateMachine {
      * The AirspaceInvadersStateMachine is used to keep the state of the application.
      * A state design pattern is used for this purpose
      * https://en.wikipedia.org/wiki/State_pattern
+     *
      * @param game AirspaceInvadersGame
      */
     public AirspaceInvadersStateMachine(AirspaceInvadersGame game) {
@@ -22,6 +23,7 @@ public class AirspaceInvadersStateMachine {
 
     /**
      * Get the current state
+     *
      * @return View
      */
     public View getView() {
@@ -30,6 +32,7 @@ public class AirspaceInvadersStateMachine {
 
     /**
      * Get the current state
+     *
      * @return IState
      */
     public IState getState() {
@@ -43,7 +46,7 @@ public class AirspaceInvadersStateMachine {
      * @param gameView View
      */
     public void changeView(final View gameView) {
-        if(this.currentView != null){
+        if (this.currentView != null) {
             IState state = (IState) this.currentView;
             state.reset();
         }

@@ -35,7 +35,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private int missileAmmo = 10;
 
     /**
-     *  Constructor for Player. This class will represent the player in the game.
+     * Constructor for Player. This class will represent the player in the game.
+     *
      * @param game AirspaceInvadersGame
      */
     public Player(AirspaceInvadersGame game) {
@@ -83,8 +84,9 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method that handles keypressed actions by the player.
+     *
      * @param keyCode int
-     * @param key char
+     * @param key     char
      */
     @Override
     public void keyPressed(int keyCode, char key) {
@@ -128,6 +130,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
      * Gets called by the GameEngine.
+     *
      * @param collidedGameObjects List with GameObjects
      */
     @Override
@@ -146,6 +149,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     /**
      * Method that handles the damage that occurs when the Player
      * collides with an other Game Object.
+     *
      * @param gameObject GameObject
      */
     private void handleCollisionDamage(GameObject gameObject) {
@@ -154,7 +158,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         } else if (gameObject instanceof Ground) {
             handlePlayerDamage(50);
         } else if (gameObject instanceof Projectile) {
-            if (!(((Projectile)gameObject).getWeapon() instanceof Missile)){
+            if (!(((Projectile) gameObject).getWeapon() instanceof Missile)) {
                 handlePlayerDamage(((Projectile) gameObject).getDamage());
             }
 
@@ -163,6 +167,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method that determines the damage done to the Player.
+     *
      * @param damage int
      */
     private void handlePlayerDamage(int damage) {
@@ -177,6 +182,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     /**
      * Method that calculates and subtracts the damage done by
      * the collision to the Player.
+     *
      * @param damage int
      */
     private void subtractFromHealth(int damage) {
@@ -189,14 +195,22 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method that handles a picked-up PowerUp.
+     *
      * @param gameObject GameObject
      */
     private void handlePowerUp(GameObject gameObject) {
-        switch(((PowerUp) gameObject).getPowerUpType()) {
-            case "HealthUp": this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount()); break;
-            case "ShieldUp": this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount()); break;
-            case "MissileUp": this.missileAmmo += 5; break;
-            default: break;
+        switch (((PowerUp) gameObject).getPowerUpType()) {
+            case "HealthUp":
+                this.setHealth(this.getHealth() + ((PowerUp) gameObject).getAmount());
+                break;
+            case "ShieldUp":
+                this.setShield(this.getShield() + ((PowerUp) gameObject).getAmount());
+                break;
+            case "MissileUp":
+                this.missileAmmo += 5;
+                break;
+            default:
+                break;
         }
     }
 
@@ -204,6 +218,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      * Method that described the movement logic of the object.
      * This method is empty for the Player because the player
      * moves itself.
+     *
      * @param isDirectionLeft boolean
      */
     @Override
@@ -213,6 +228,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get centerX.
+     *
      * @return centerX float
      */
     @Override
@@ -222,6 +238,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get centerY
+     *
      * @return centerY float
      */
     @Override
@@ -231,6 +248,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get health
+     *
      * @return health int
      */
     public int getHealth() {
@@ -239,6 +257,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to set health
+     *
      * @param health int
      */
     public void setHealth(int health) {
@@ -247,6 +266,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get score
+     *
      * @return score int
      */
     public int getScore() {
@@ -255,6 +275,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to set score
+     *
      * @param score int
      */
     public void setScore(int score) {
@@ -263,6 +284,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get name
+     *
      * @return name String
      */
     public String getName() {
@@ -280,6 +302,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get shield
+     *
      * @return shield int
      */
     public int getShield() {
@@ -288,6 +311,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to set shield
+     *
      * @param shield int
      */
     public void setShield(int shield) {
@@ -296,6 +320,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get object height
+     *
      * @return height float
      */
     @Override
@@ -305,6 +330,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
 
     /**
      * Method to get missileAmmo
+     *
      * @return missileAmmo int
      */
     public int getMissileAmmo() {
@@ -319,10 +345,13 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     public void destroy() {
         this.canon.destroy();
         this.missile.destroy();
-    };
+    }
+
+    ;
 
     /**
      * Method to get airspaceInvadersGame
+     *
      * @return AirSpaceInvadersGame airspaceInvadersGame
      */
     @Override

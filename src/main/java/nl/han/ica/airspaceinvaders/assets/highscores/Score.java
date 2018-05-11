@@ -7,6 +7,7 @@ public class Score {
 
     /**
      * Getter for name
+     *
      * @return String
      */
     public String getName() {
@@ -15,6 +16,7 @@ public class Score {
 
     /**
      * Setter for name
+     *
      * @param name String
      */
     public void setName(String name) {
@@ -23,6 +25,7 @@ public class Score {
 
     /**
      * Getter for score
+     *
      * @return int
      */
     public int getScore() {
@@ -31,6 +34,7 @@ public class Score {
 
     /**
      * Setter for score
+     *
      * @param score int
      */
     public void setScore(int score) {
@@ -38,12 +42,13 @@ public class Score {
     }
 
     /**
-     *  Compare witch score is higher
+     * Compare witch score is higher
+     *
      * @param other Score
      * @return Score
      */
     public Score isHigherScore(Score other) {
-        if(getScore() > other.getScore()){
+        if (getScore() > other.getScore()) {
             return this;
         }
         return other;

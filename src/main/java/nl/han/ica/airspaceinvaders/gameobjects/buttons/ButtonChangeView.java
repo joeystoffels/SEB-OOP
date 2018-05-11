@@ -10,12 +10,12 @@ public class ButtonChangeView extends ButtonText {
     /**
      * Creates a button that detects that it has been clicked, and changes to the according view.
      *
-     * @param view View
-     * @param game AirspaceInvadersGame
-     * @param text String
+     * @param view     View
+     * @param game     AirspaceInvadersGame
+     * @param text     String
      * @param fontSize int
-     * @param width int
-     * @param height int
+     * @param width    int
+     * @param height   int
      */
     public ButtonChangeView(View view, AirspaceInvadersGame game, String text, int fontSize, int width, int height) {
         super(game, text, fontSize, width, height);

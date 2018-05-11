@@ -21,7 +21,7 @@ public class Level {
     /**
      * Initialize the level, all sprites in de background folder are preloaded
      */
-    public void initialize(){
+    public void initialize() {
         StringBuilder url = new StringBuilder();
         url.append(Thread.currentThread().getContextClassLoader().getResource("images/").getPath());
         url.append("terrain/60/");
@@ -54,12 +54,13 @@ public class Level {
 
     /**
      * Load a specific level from a csv file
-     * @param game AirspaceInvadersGame
+     *
+     * @param game        AirspaceInvadersGame
      * @param levelNumber int
      * @return Tilemap
      */
     public TileMap loadLevel(AirspaceInvadersGame game, int levelNumber) {
-        String fileName = "level"+ Integer.toString(levelNumber)+".csv";
+        String fileName = "level" + Integer.toString(levelNumber) + ".csv";
         return new LevelMap(game, GameProperties.getValueAsInt("tileSize"), this.tileTypes, AssetLoader.getLevel(fileName), levelNumber);
     }
 }

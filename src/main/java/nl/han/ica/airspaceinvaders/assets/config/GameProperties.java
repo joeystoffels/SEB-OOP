@@ -54,6 +54,7 @@ public class GameProperties {
 
     /**
      * Get a value from the game.properties as String
+     *
      * @param key String
      * @return String
      */
@@ -63,6 +64,7 @@ public class GameProperties {
 
     /**
      * Get a value from the game.properties as int
+     *
      * @param key String
      * @return int
      */
@@ -72,6 +74,7 @@ public class GameProperties {
 
     /**
      * Get a value from the game.properties as Double
+     *
      * @param key String
      * @return double
      */

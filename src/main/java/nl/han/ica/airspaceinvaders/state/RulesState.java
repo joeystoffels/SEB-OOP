@@ -12,7 +12,8 @@ public class RulesState extends View implements IState {
     private AirspaceInvadersGame game;
 
     /**
-     *  State to view the rules
+     * State to view the rules
+     *
      * @param game AirspaceInvadersGame
      */
     public RulesState(AirspaceInvadersGame game) {
@@ -27,7 +28,7 @@ public class RulesState extends View implements IState {
     public void start() {
         this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game,"Back", 50, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game, "Back", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
 
     }

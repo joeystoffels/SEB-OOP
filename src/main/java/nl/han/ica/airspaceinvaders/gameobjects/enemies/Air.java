@@ -26,8 +26,9 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Constructor for Air. This class will represent an air enemy in the game.
-     * @param game AirspaceInvadersGame
-     * @param view GameState
+     *
+     * @param game   AirspaceInvadersGame
+     * @param view   GameState
      * @param sprite Sprite
      */
     public Air(AirspaceInvadersGame game, GameState view, Sprite sprite) {
@@ -44,6 +45,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
      * Gets called by the GameEngine.
+     *
      * @param collidedGameObjects List with GameObjects
      */
     @Override
@@ -67,6 +69,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method that described the movement logic of the object.
+     *
      * @param isDirectionLeft boolean
      */
     @Override
@@ -112,6 +115,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to get centerX
+     *
      * @return centerX float
      */
     @Override
@@ -121,6 +125,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to get centerY
+     *
      * @return centerY float
      */
     @Override
@@ -130,6 +135,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to get height
+     *
      * @return height float
      */
     @Override
@@ -139,6 +145,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to get airspaceInvadersGame
+     *
      * @return airspaceInvadersGame AirspaceInvadersGame
      */
     @Override
@@ -148,6 +155,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to return health
+     *
      * @return int health
      */
     @Override
@@ -157,6 +165,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to set health
+     *
      * @param health int
      */
     @Override
@@ -166,6 +175,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     /**
      * Method to set score
+     *
      * @return score int
      */
     @Override

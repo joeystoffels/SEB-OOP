@@ -40,7 +40,8 @@ public class GameState extends View implements IState {
 
     /**
      * The game state where the game is loaded.
-     * @param game AirspaceInvadersGame
+     *
+     * @param game  AirspaceInvadersGame
      * @param level int
      */
     public GameState(AirspaceInvadersGame game, int level) {
@@ -72,10 +73,11 @@ public class GameState extends View implements IState {
     }
 
     /**
-     *  Loads an level from file
+     * Loads an level from file
+     *
      * @param levelNumber int
      */
-    public void loadLevel(int levelNumber){
+    public void loadLevel(int levelNumber) {
         game.setTileMap(game.getLevel().loadLevel(this.game, levelNumber));
     }
 
