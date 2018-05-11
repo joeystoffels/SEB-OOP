@@ -17,7 +17,8 @@ public class Canon extends Weapon {
     private IAirspaceObject iFlyingObject;
 
     /**
-     *
+     * Constructor for Canon
+     * @param game, iFlyingObject
      */
     public Canon(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
         if (iFlyingObject instanceof Ground) {
@@ -31,7 +32,7 @@ public class Canon extends Weapon {
     }
 
     /**
-     *
+     * Method to shoot a Projectile from the type of this object
      */
     @Override
     public void shoot() {
@@ -45,6 +46,10 @@ public class Canon extends Weapon {
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
     }
 
+    /**
+     * Getter for the iFlyingObject in this class
+     * @return iFlyingObject
+     */
     @Override
     public IAirspaceObject getIAirspaceObject() {
         return iFlyingObject;
@@ -52,7 +57,8 @@ public class Canon extends Weapon {
 
 
     /**
-     *
+     * Method to configure and start the timer which
+     * determines the shoot frequency of this weapon type.
      */
     private void startTimer() {
         int timerInterval;
@@ -72,7 +78,8 @@ public class Canon extends Weapon {
     }
 
     /**
-     *
+     * Method to handle the actions needed before
+     * this class can be removed from the Game Engine
      */
     @Override
     public void destroy() {

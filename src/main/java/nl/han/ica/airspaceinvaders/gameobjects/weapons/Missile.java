@@ -14,7 +14,8 @@ public class Missile extends Weapon {
     private AudioPlayer missileSound;
 
     /**
-     *
+     * Constructor for Missile
+     * @param game, iFlyingObject
      */
     public Missile(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
         super.setDamage(100);
@@ -22,16 +23,27 @@ public class Missile extends Weapon {
         this.iFlyingObject = iFlyingObject;
     }
 
+    /**
+     * Getter for the iFlyingObject in this class
+     * @return iFlyingObject
+     */
     @Override
     public IAirspaceObject getIAirspaceObject() {
         return this.iFlyingObject;
     }
 
+    /**
+     * Method to handle the actions needed before
+     * this class can be removed from the Game Engine
+     */
     @Override
     public void destroy() {
         // do nothing
     }
 
+    /**
+     * Method to shoot a Projectile from the type of this object
+     */
     @Override
     public void shoot() {
         Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 25);
