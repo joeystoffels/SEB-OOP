@@ -11,6 +11,7 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.gameobjects.text.TextObject;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
@@ -25,6 +26,8 @@ public class GameState extends View implements IState {
     public List<IAirspaceObject> enemies = new ArrayList<>();
 
     private String[] enemyPlanes = {"enemy/F22.png", "enemy/Grippen.png", "enemy/Mig.png"};
+    private String[] enemyGround = {"enemy/Tank1.png", "enemy/Tank2.png"};
+
     private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield" + "\n" + "Missiles: ");
     private TextObject loadingDashboardText = new TextObject("Loading... ");
 
@@ -33,8 +36,6 @@ public class GameState extends View implements IState {
     private int level;
 
     private Logger logger = LogFactory.getLogger();
-
-
 
     public GameState(AirspaceInvadersGame game, int level) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
@@ -95,23 +96,27 @@ public class GameState extends View implements IState {
         this.game.addDashboard(dashboard);
     }
 
-    public TextObject getDashboardText() {
+    private TextObject getDashboardText() {
         return dashboardText;
-    }
-
-    public void setDashboardText(TextObject dashboardText) {
-        this.dashboardText = dashboardText;
     }
 
     private void generateEnemies() {
 
-        int nrEnemies = (int) Math.ceil(Math.random() * 3);
-        float xPos = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
+        int maxNrEnemiesAir = (int) Math.ceil(Math.random() * 4);
+        int maxNrEnemiesGround = (int) Math.ceil(Math.random() * 2);
+        float xPosAir = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
+        float xPosGround = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
-        for (int x = 0; x < nrEnemies; x++) {
-            IAirspaceObject enemy = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 20));
-            enemies.add(enemy);
-            this.game.addGameObject((Air) enemy, (float) (xPos + (x * ((Air) enemy).getWidth())), 0);
+        for (int x = 0; x < maxNrEnemiesAir; x++) {
+            IAirspaceObject enemyAir = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 15));
+            enemies.add(enemyAir);
+            this.game.addGameObject((Air) enemyAir, (xPosAir + (x * ((Air) enemyAir).getWidth())), 0);
+        }
+
+        for (int x = 0; x < maxNrEnemiesGround; x++) {
+            IAirspaceObject enemyGround = new Ground(this.game, this, AssetLoader.getSprite(this.enemyGround[ThreadLocalRandom.current().nextInt(0, this.enemyGround.length)], 15));
+            enemies.add(enemyGround);
+            this.game.addGameObject((Ground) enemyGround, xPosGround, 0);
         }
     }
 

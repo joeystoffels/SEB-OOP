@@ -24,13 +24,11 @@ import java.util.TimerTask;
 public class Air extends SpriteObject implements IAirspaceObject {
 
     private int health;
-    private int shield;
 
     private Weapon weapon;
     private GameState gameState;
     private AirspaceInvadersGame airspaceInvadersGame;
     private boolean isDirectionLeft;
-    private Logger logger = LogFactory.getLogger();
     private Timer timer = new Timer();
 
 
@@ -39,7 +37,6 @@ public class Air extends SpriteObject implements IAirspaceObject {
         this.gameState = view;
         this.airspaceInvadersGame = game;
         this.health = 50;
-        this.shield = 0;
         this.weapon = new Canon(game, this);
         timer.schedule(new TimerTask() {
             @Override
@@ -57,11 +54,11 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
         for (GameObject gameObject : collidedGameObjects) {
             if (gameObject instanceof Projectile) {
-                this.health = health - ((Projectile) gameObject).getDamage();
+                this.health = this.health - ((Projectile) gameObject).getDamage();
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             }
             if (gameObject instanceof Player) {
-                this.setHealth(0);
+                this.health = 0;
             }
         }
 
@@ -94,7 +91,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     @Override
     public void createPowerUp() {
-        if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) { // Dropchance
+        if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
             int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
 
             this.airspaceInvadersGame.addGameObject(
@@ -111,22 +108,6 @@ public class Air extends SpriteObject implements IAirspaceObject {
         this.setDirection(isDirectionLeft ? 110 : 250);
         this.move();
         this.isDirectionLeft = !isDirectionLeft;
-    }
-
-    public int getHealth() {
-        return health;
-    }
-
-    public void setHealth(int health) {
-        this.health = health;
-    }
-
-    public int getShield() {
-        return shield;
-    }
-
-    public void setShield(int shield) {
-        this.shield = shield;
     }
 
     @Override

@@ -3,26 +3,17 @@ import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
 public abstract class Weapon {
 
-    protected int damage;
-    protected int intervalTime;
+    private int damage;
 
-    public int getIntervalTime() {
-        return intervalTime;
-    }
-
-    public void setIntervalTime(int intervalTime) {
-        this.intervalTime = intervalTime;
-    }
-
-    public int getDamage() {
+    int getDamage() {
         return damage;
     }
 
-    public void setDamage(int damage) {
+    void setDamage(int damage) {
         this.damage = damage;
     }
 
-    public abstract IAirspaceObject getIFlyingObject();
+    public abstract IAirspaceObject getIAirspaceObject();
 
     public abstract void stopTimer();
 

@@ -37,22 +37,22 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     private void createProjectile(Weapon weapon) {
         this.damage = weapon.getDamage();
 
-        this.setDirection(weapon.getIFlyingObject() instanceof Player ? 0 : 180);
+        this.setDirection(weapon.getIAirspaceObject() instanceof Player ? 0 : 180);
         this.setSpeed(weapon instanceof Canon ? 7 : 3);
 
-        float yPos = weapon.getIFlyingObject().getCenterYPos() - weapon.getIFlyingObject().getObjectHeight();
-        float xPos = weapon.getIFlyingObject().getCenterXPos() - this.getWidth() / 2;
+        float yPos = weapon.getIAirspaceObject().getCenterYPos() - weapon.getIAirspaceObject().getObjectHeight();
+        float xPos = weapon.getIAirspaceObject().getCenterXPos() - this.getWidth() / 2;
         float xPosOffset = 0;
 
-        if (weapon.getIFlyingObject() instanceof Player) {
-            Player player = (Player) weapon.getIFlyingObject();
+        if (weapon.getIAirspaceObject() instanceof Player) {
+            Player player = (Player) weapon.getIAirspaceObject();
             float playerWidth = player.getWidth();
             if (weapon instanceof Missile) {
                 yPos = yPos - player.getHeight() / 3;
                 xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 3 : playerWidth / 3;
             }
         } else {
-            yPos = weapon.getIFlyingObject().getCenterYPos() + ((IAirspaceObject) weapon.getIFlyingObject()).getObjectHeight() + this.getHeight();
+            yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.5f;// + this.getHeight();
         }
 
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
@@ -61,7 +61,6 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     @Override
     public void update() {
         checkIfOutsideView();
-
         counter++;
 
         if(counter > 45){

@@ -3,6 +3,7 @@ package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
@@ -11,7 +12,7 @@ import java.util.TimerTask;
 
 public class Canon extends Weapon {
 
-    Timer timer = new Timer();
+    private Timer timer = new Timer();
     private AirspaceInvadersGame airspaceInvadersGame;
     private IAirspaceObject iFlyingObject;
 
@@ -19,8 +20,11 @@ public class Canon extends Weapon {
      *
      */
     public Canon(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
-        super.setDamage(10);
-        super.setIntervalTime(1);
+        if (iFlyingObject instanceof Ground) {
+            super.setDamage(20);
+        } else {
+            super.setDamage(10);
+        }
         this.iFlyingObject = iFlyingObject;
         this.airspaceInvadersGame = game;
         startTimer();
@@ -28,12 +32,18 @@ public class Canon extends Weapon {
 
     @Override
     public void shoot() {
-        Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", 75);
+        int bulletSize;
+        if (iFlyingObject instanceof Ground) {
+            bulletSize = 100;
+        } else {
+            bulletSize = 65;
+        }
+        Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", bulletSize);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
     }
 
     @Override
-    public IAirspaceObject getIFlyingObject() {
+    public IAirspaceObject getIAirspaceObject() {
         return iFlyingObject;
     }
 
@@ -44,7 +54,7 @@ public class Canon extends Weapon {
     private void startTimer() {
         int timerInterval;
 
-        if (this.getIFlyingObject() instanceof Player) {
+        if (this.getIAirspaceObject() instanceof Player) {
             timerInterval = 400;
         } else {
             timerInterval = 2000;
@@ -61,5 +71,6 @@ public class Canon extends Weapon {
     @Override
     public void destroy() {
         stopTimer();
+        timer = null;
     }
 }

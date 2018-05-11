@@ -1,14 +1,21 @@
 package nl.han.ica.airspaceinvaders.gameobjects.weapons;
 
+import ddf.minim.AudioPlayer;
+import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
+
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class Missile extends Weapon {
 
     private AirspaceInvadersGame airspaceInvadersGame;
     private IAirspaceObject iFlyingObject;
-    public boolean leftMissilePosition;
+    boolean leftMissilePosition;
+    private AudioPlayer missileSound;
 
     /**
      *
@@ -17,26 +24,28 @@ public class Missile extends Weapon {
         super.setDamage(100);
         this.airspaceInvadersGame = game;
         this.iFlyingObject = iFlyingObject;
+        this.missileSound = game.soundLibrary.loadFile("sounds/MissileSound.mp3");
     }
 
     @Override
-    public IAirspaceObject getIFlyingObject() {
+    public IAirspaceObject getIAirspaceObject() {
         return this.iFlyingObject;
     }
 
     @Override
     public void stopTimer() {
-
     }
 
     @Override
     public void destroy() {
-
     }
 
     @Override
     public void shoot() {
-        new Projectile(this, this.airspaceInvadersGame, AssetLoader.getSprite("weapons/Missile.png", 30), 3);
+        Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 30);
+        new Projectile(this, this.airspaceInvadersGame, sprite, 3);
+        missileSound.play();
+        missileSound.rewind();
         this.leftMissilePosition = !leftMissilePosition;
     }
 }

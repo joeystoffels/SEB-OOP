@@ -10,6 +10,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Ground;
 import nl.han.ica.airspaceinvaders.gameobjects.powerups.PowerUp;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Canon;
 import nl.han.ica.airspaceinvaders.gameobjects.weapons.Missile;
@@ -119,7 +120,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
         for (GameObject gameObject : collidedGameObjects) {
-            if (gameObject instanceof Air || gameObject instanceof Projectile) {
+            if (gameObject instanceof IAirspaceObject || gameObject instanceof Projectile) {
                 handleCollisionDamage(gameObject);
                 break; // break out of for loop so it only passes once when collided with multiple projectiles at once
             } else if (gameObject instanceof PowerUp) {
@@ -131,6 +132,8 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
     private void handleCollisionDamage(GameObject gameObject) {
         if (gameObject instanceof Air) {
             handlePlayerDamage(25);
+        } else if (gameObject instanceof Ground) {
+            handlePlayerDamage(50);
         } else if (gameObject instanceof Projectile) {
             handlePlayerDamage(((Projectile) gameObject).getDamage());
         }
