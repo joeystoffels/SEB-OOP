@@ -56,7 +56,7 @@ class EnemyUtil {
         if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
             int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);
 
-            Sprite sprite = AssetLoader.getSprite("powerup/PowerUp.png", 10);
+            Sprite sprite = AssetLoader.getSprite("powerUp/" + PowerUpTypes.values()[randomNr].toString() + ".png", 10);
             String randomPowerUp = PowerUpTypes.values()[randomNr].toString();
 
             iAirspaceObject.getAirspaceInvadersGame().addGameObject(
