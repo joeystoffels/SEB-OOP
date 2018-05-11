@@ -30,6 +30,9 @@ public class Canon extends Weapon {
         startTimer();
     }
 
+    /**
+     *
+     */
     @Override
     public void shoot() {
         int bulletSize;
@@ -47,6 +50,10 @@ public class Canon extends Weapon {
         return iFlyingObject;
     }
 
+
+    /**
+     *
+     */
     private void startTimer() {
         int timerInterval;
 
@@ -64,6 +71,9 @@ public class Canon extends Weapon {
         }, 1000, timerInterval);
     }
 
+    /**
+     *
+     */
     @Override
     public void destroy() {
         this.timer.cancel();

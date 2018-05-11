@@ -43,6 +43,7 @@ public class ButtonText extends TextObject implements IMouseInput {
     public void mousePressed(int x, int y, int button) {
         if(x > getX() && x < getX() + getWidth() && y > getY() && y < getY() + getHeight()) {
             this.logger.logln(DefaultLogger.LOG_DEBUG, "Clicked button text");
+            execute();
         }
     }
 
@@ -58,4 +59,8 @@ public class ButtonText extends TextObject implements IMouseInput {
         g.textSize(getFontSize());
         g.text(getText(),getX(),getY());
     }
+
+    public void execute(){
+    }
+
 }
