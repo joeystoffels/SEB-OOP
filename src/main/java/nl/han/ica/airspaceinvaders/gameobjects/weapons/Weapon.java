@@ -5,10 +5,18 @@ public abstract class Weapon {
 
     private int damage;
 
+    /**
+     * Method to get damage
+     * @return
+     */
     int getDamage() {
         return damage;
     }
 
+    /**
+     * Method to set damage
+     * @param damage
+     */
     void setDamage(int damage) {
         this.damage = damage;
     }

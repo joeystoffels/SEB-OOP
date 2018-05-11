@@ -16,7 +16,8 @@ public class Missile extends Weapon {
     /**
      * Constructor for Missile. This class will represent the Missile weapon
      * for the player.
-     * @param game, iFlyingObject
+     * @param game
+     * @param iFlyingObject
      */
     public Missile(AirspaceInvadersGame game, IAirspaceObject iFlyingObject) {
         super.setDamage(100);

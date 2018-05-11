@@ -23,7 +23,10 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     /**
      * Constructor for Projectile. This class will represent a projectile from one of
      * the possible weapons in-game. Currently Canon or Missile.
-     * @param weapon, game, sprite, totalFrames
+     * @param weapon
+     * @param game
+     * @param sprite
+     * @param totalFrames
      */
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
@@ -84,7 +87,7 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
 
     /**
-     * Method to update this class. Is automatically called
+     * Method to update this class. It is automatically called
      * by the Game Engine.
      */
     @Override

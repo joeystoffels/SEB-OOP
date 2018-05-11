@@ -7,6 +7,11 @@ public class TextObject extends GameObject {
 
     private String text;
 
+    /**
+     * Constructor for TextObject. This class will represent
+     * the text on the various game screens.
+     * @param text
+     */
     public TextObject(String text) {
         this.text=text;
     }
@@ -15,11 +20,20 @@ public class TextObject extends GameObject {
         this.text=text;
     }
 
+    /**
+     * Method to update this class. It is automatically called
+     * by the Game Engine.
+     */
     @Override
     public void update() {
 
     }
 
+
+    /**
+     * Method to draw this TextObject.
+     * @param g PGraphics object will be given by the GameEngine.
+     */
     @Override
     public void draw(PGraphics g) {
         g.fill(0);
