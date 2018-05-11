@@ -30,6 +30,7 @@ public class GameState extends View implements IState {
 
     private TextObject dashboardText = new TextObject("Health: " + "\n" + "Score: " + "\n" + "Shield" + "\n" + "Missiles: ");
     private TextObject loadingDashboardText = new TextObject("Loading... ");
+    private AudioPlayer soundTrack;
 
     private Player player;
     private AirspaceInvadersGame game;
@@ -73,7 +74,7 @@ public class GameState extends View implements IState {
     @Override
     public void start() {
         this.loadLevel(1);
-        AudioPlayer soundTrack = game.soundLibrary.loadFile("sounds/SoundTrack1.mp3");
+        this.soundTrack = game.soundLibrary.loadFile("sounds/SoundTrack1.mp3");
         soundTrack.play();
 
         this.player = new Player(this.game);
@@ -88,6 +89,7 @@ public class GameState extends View implements IState {
         removeGameObjects();
         this.game.deleteAllGameOBjects();
         game.setTileMap(null); // remove level tilemap
+        this.soundTrack.pause();
     }
 
     private void createDashboard(int dashboardWidth, int dashboardHeight) {
