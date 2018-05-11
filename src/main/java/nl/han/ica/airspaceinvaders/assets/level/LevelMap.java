@@ -30,6 +30,7 @@ public class LevelMap extends TileMap {
      * @param tileSize int
      * @param tileTypes TileType[]
      * @param indexMap int[][]
+     * @param levelNumber int
      */
     public LevelMap(AirspaceInvadersGame game, int tileSize, TileType[] tileTypes, int[][] indexMap, int levelNumber) {
         super(tileSize, tileTypes, indexMap);

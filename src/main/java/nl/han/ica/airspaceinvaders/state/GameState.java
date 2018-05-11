@@ -38,12 +38,20 @@ public class GameState extends View implements IState {
 
     private Logger logger = LogFactory.getLogger();
 
+    /**
+     * The game state where the game is loaded.
+     * @param game AirspaceInvadersGame
+     * @param level int
+     */
     public GameState(AirspaceInvadersGame game, int level) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
         this.level = level;
     }
 
+    /**
+     * On every cycle when the state is loaded, the update function is called
+     */
     @Override
     public void update() {
         if (this.player != null && this.enemies.isEmpty()) {
@@ -64,13 +72,16 @@ public class GameState extends View implements IState {
     }
 
     /**
-     *
+     *  Loads an level from file
      * @param levelNumber int
      */
     public void loadLevel(int levelNumber){
         game.setTileMap(game.getLevel().loadLevel(this.game, levelNumber));
     }
 
+    /**
+     * When the state is initialized the start function wil be executed
+     */
     @Override
     public void start() {
         this.loadLevel(1);
@@ -83,6 +94,9 @@ public class GameState extends View implements IState {
         createDashboard(worldWidth, 300);
     }
 
+    /**
+     * The reset will be executed when the state will be stopped or changed
+     */
     @Override
     public void reset() {
         this.game.deleteAllDashboards();
@@ -103,7 +117,6 @@ public class GameState extends View implements IState {
     }
 
     private void generateEnemies() {
-
         int maxNrEnemiesAir = (int) Math.ceil(Math.random() * 4);
         int maxNrEnemiesGround = (int) Math.ceil(Math.random() * 2);
         float xPosAir = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));

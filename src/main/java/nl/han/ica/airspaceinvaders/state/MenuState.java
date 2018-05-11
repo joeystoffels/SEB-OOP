@@ -14,11 +14,18 @@ public class MenuState extends View implements IState {
     private AirspaceInvadersGame game;
     private Timestamp startTimestamp;
 
+    /**
+     * State to view the menu
+     * @param game AirspaceInvadersGame
+     */
     public MenuState(AirspaceInvadersGame game) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
     }
 
+    /**
+     * When the state is initialized the start function wil be executed
+     */
     @Override
     public void start() {
         this.startTimestamp =  new Timestamp(System.currentTimeMillis());
@@ -45,11 +52,17 @@ public class MenuState extends View implements IState {
         this.game.addGameObject(buttonHighscore, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 300, 2);
     }
 
+    /**
+     * The reset will be executed when the state will be stopped or changed
+     */
     @Override
     public void reset() {
         this.game.deleteAllGameOBjects();
     }
 
+    /**
+     * On every cycle when the state is loaded, the update function is called
+     */
     @Override
     public void update() {
         if(( new Timestamp(System.currentTimeMillis()).getTime() -  this.startTimestamp.getTime()) > GameProperties.getValueAsInt("splashTime") && this.game.getStartUp()){

@@ -7,8 +7,8 @@ public interface IKeyInput {
 
 	/**
 	 * This event is fired when the GameEngine received a key press.
-	 * @param keyCode
-	 * @param key
+	 * @param keyCode int
+	 * @param key char
 	 */
 	void keyPressed(int keyCode, char key);
 	

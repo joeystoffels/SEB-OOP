@@ -12,12 +12,20 @@ public class EndLevelState extends View implements IState {
     private AirspaceInvadersGame game;
     private int levelNumber;
 
+    /**
+     * This state will be loaded when the level ends.
+     * @param game AirspaceInvadersGame
+     * @param levelNumber int
+     */
     public EndLevelState(AirspaceInvadersGame game, int levelNumber) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
         this.levelNumber = levelNumber;
     }
 
+    /**
+     * When the state is initialized the start function wil be executed
+     */
     @Override
     public void start() {
         this.setBackground(AssetLoader.getBackgroundImage("background/a10-leveldone.jpg", this.game));
@@ -29,11 +37,17 @@ public class EndLevelState extends View implements IState {
 
     }
 
+    /**
+     * The reset will be executed when the state will be stopped or changed
+     */
     @Override
     public void reset() {
         this.game.deleteAllGameOBjects();
     }
 
+    /**
+     * On every cycle when the state is loaded, the update function is called
+     */
     @Override
     public void update() {
     }

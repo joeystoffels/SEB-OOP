@@ -13,6 +13,7 @@ public class FileLogHandler extends nl.han.ica.OOPDProcessingEngineHAN.Logger.Fi
 
     /**
      * Create a new logger which outputs to a file.
+     * @param fileName String
      */
     public FileLogHandler(String fileName) {
         try {

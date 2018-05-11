@@ -15,7 +15,7 @@ public class Score {
 
     /**
      * Setter for name
-     * @param name
+     * @param name String
      */
     public void setName(String name) {
         this.name = name;
@@ -31,7 +31,7 @@ public class Score {
 
     /**
      * Setter for score
-     * @param score
+     * @param score int
      */
     public void setScore(int score) {
         this.score = score;
@@ -39,7 +39,7 @@ public class Score {
 
     /**
      *  Compare witch score is higher
-     * @param other
+     * @param other Score
      * @return Score
      */
     public Score isHigherScore(Score other) {

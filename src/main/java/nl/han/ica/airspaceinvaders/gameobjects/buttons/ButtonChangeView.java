@@ -10,8 +10,9 @@ public class ButtonChangeView extends ButtonText {
     /**
      * Creates a button that detects that it has been clicked, and changes to the according view.
      *
-     * @param game View
-     * @param text AirspaceInvadersGame
+     * @param view View
+     * @param game AirspaceInvadersGame
+     * @param text String
      * @param fontSize int
      * @param width int
      * @param height int

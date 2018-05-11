@@ -11,11 +11,18 @@ public class RulesState extends View implements IState {
 
     private AirspaceInvadersGame game;
 
+    /**
+     *  State to view the rules
+     * @param game AirspaceInvadersGame
+     */
     public RulesState(AirspaceInvadersGame game) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
     }
 
+    /**
+     * When the state is initialized the start function wil be executed
+     */
     @Override
     public void start() {
         this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
@@ -25,11 +32,17 @@ public class RulesState extends View implements IState {
 
     }
 
+    /**
+     * The reset will be executed when the state will be stopped or changed
+     */
     @Override
     public void reset() {
         this.game.deleteAllGameOBjects();
     }
 
+    /**
+     * On every cycle when the state is loaded, the update function is called
+     */
     @Override
     public void update() {
     }

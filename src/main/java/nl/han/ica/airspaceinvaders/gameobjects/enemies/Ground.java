@@ -41,7 +41,7 @@ public class Ground extends SpriteObject implements IAirspaceObject {
      * Implemented method from ICollidableWithGameObjects which determines the
      * behaviour of this class when an collision occurs with an other GameObject.
      * Gets called by the GameEngine.
-     * @param collidedGameObjects List<GameObject>
+     * @param collidedGameObjects List with GameObjects
      */
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {

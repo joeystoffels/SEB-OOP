@@ -23,7 +23,7 @@ import java.util.Vector;
 /**
  * GameEngine is the core of the game. Extending this class is required to make use of the GameEngine.
  * 
- * This engine is created by: Bram Heijmink, Jeffrey Haen, Joost Elshof, Kenny Ligthart, Mark Vaesen & Nico Smolders.
+ * This engine is created by: Bram Heijmink, Jeffrey Haen, Joost Elshof, Kenny Ligthart, Mark Vaesen  Nico Smolders.
  */
 public abstract class GameEngine extends PApplet {
 

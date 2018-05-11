@@ -14,12 +14,20 @@ public class EndGameState extends View implements IState {
     private AirspaceInvadersGame game;
     private Player player;
 
+    /**
+     * This state will be loaded when the game ends, and the player's lifes are ended.
+     * @param game AirspaceInvadersGame
+     * @param player Player
+     */
     public EndGameState(AirspaceInvadersGame game, Player player) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
         this.player = player;
     }
 
+    /**
+     * When the state is initialized the start function wil be executed
+     */
     @Override
     public void start() {
         this.setBackground(AssetLoader.getBackgroundImage("background/a10-gameover.jpg", this.game));
@@ -33,13 +41,16 @@ public class EndGameState extends View implements IState {
         this.game.addGameObject(buttonStart, postionX, postionY, 1);
     }
 
+    /**
+     * The reset will be executed when the state will be stopped or changed
+     */
     @Override
     public void reset() {
         this.game.deleteAllGameOBjects();
     }
 
     /**
-     *
+     * On every cycle when the state is loaded, the update function is called
      */
     @Override
     public void update() {
