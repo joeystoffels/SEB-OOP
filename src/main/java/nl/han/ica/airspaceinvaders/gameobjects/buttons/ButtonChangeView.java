@@ -6,14 +6,15 @@ import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 public class ButtonChangeView extends ButtonText {
 
     private View view;
+
     /**
-     * Create a new TextObject.
+     * Creates a button that detects that it has been clicked, and changes to the according view.
      *
-     * @param game
-     * @param text
-     * @param fontSize
-     * @param width
-     * @param height
+     * @param game View
+     * @param text AirspaceInvadersGame
+     * @param fontSize int
+     * @param width int
+     * @param height int
      */
     public ButtonChangeView(View view, AirspaceInvadersGame game, String text, int fontSize, int width, int height) {
         super(game, text, fontSize, width, height);

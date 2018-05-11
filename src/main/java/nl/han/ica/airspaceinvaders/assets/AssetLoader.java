@@ -20,18 +20,39 @@ import static java.lang.Integer.parseInt;
 
 public class AssetLoader {
 
+    /**
+     * Get the absolute path of an image
+     * @param name String
+     * @return String
+     */
     public static String getImageUrl(String name) {
         return Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString();
     }
 
+    /**
+     * Gets the absolute path of an Font
+     * @param name String
+     * @return String
+     */
     public static String getFont(String name) {
         return Thread.currentThread().getContextClassLoader().getResource("font/" + name).toString();
     }
 
+    /**
+     * Loads an sprite with a scale of 100%
+     * @param name String
+     * @return Sprite
+     */
     public static Sprite getSprite(String name) {
         return AssetLoader.getSprite(name, 100);
     }
 
+    /**
+     * Loads an sprite with the according percentage of the size
+     * @param name String
+     * @param sizePercentage int
+     * @return Sprite
+     */
     public static Sprite getSprite(String name, int sizePercentage) {
         Sprite newSprite = new Sprite(Thread.currentThread().getContextClassLoader().getResource("images/" + name).toString());
         float newWidth = (float) newSprite.getWidth() / 100f * sizePercentage;
@@ -40,6 +61,11 @@ public class AssetLoader {
         return newSprite;
     }
 
+    /**
+     * Loads a level from a csv file
+     * @param levelName name
+     * @return int[][]
+     */
     public static int[][] getLevel(String levelName) {
         InputStream inputStream = Thread.currentThread().getContextClassLoader().getResourceAsStream("levels/" + levelName);
         InputStreamReader streamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
@@ -70,6 +96,12 @@ public class AssetLoader {
         return level;
     }
 
+    /**
+     * Loads an background image from file and resizes it to the game height and width
+     * @param url String
+     * @param game AirspaceInvadersGame
+     * @return PImage
+     */
     public static PImage getBackgroundImage(String url, AirspaceInvadersGame game) {
         PImage backgroundImage = game.loadImage(AssetLoader.getImageUrl(url));
         backgroundImage.resize(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));

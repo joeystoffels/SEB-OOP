@@ -9,7 +9,7 @@ public enum PowerUpTypes {
     private final String text;
 
     /**
-     * @param text
+     * @param text String
      */
     PowerUpTypes(final String text) {
         this.text = text;

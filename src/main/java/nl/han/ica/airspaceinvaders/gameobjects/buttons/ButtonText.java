@@ -18,10 +18,12 @@ public class ButtonText extends TextObject implements IMouseInput {
     private Logger logger = LogFactory.getLogger();
 
     /**
-     * Create a new TextObject.
-     *
-     * @param text
-     * @param fontSize
+     * Creates a button that detects that it has been clicked
+     * @param game View
+     * @param text AirspaceInvadersGame
+     * @param fontSize int
+     * @param width int
+     * @param height int
      */
     public ButtonText(AirspaceInvadersGame game, String text, int fontSize, int width, int height) {
         super(text, fontSize);
@@ -50,6 +52,5 @@ public class ButtonText extends TextObject implements IMouseInput {
     }
 
     public void execute(){
-
     }
 }

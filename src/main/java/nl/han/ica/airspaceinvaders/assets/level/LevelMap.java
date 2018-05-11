@@ -49,6 +49,10 @@ public class LevelMap extends TileMap {
         super(tileSize);
     }
 
+    /**
+     * Draw function that only draws the tiles that are visible of the level
+     * @param pGraphics The canvas on which the tiles will be drawn.
+     */
     @Override
     public void draw(PGraphics pGraphics) {
         int scrollSpeed = 2;
