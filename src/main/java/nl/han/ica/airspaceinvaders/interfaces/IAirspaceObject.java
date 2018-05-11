@@ -8,7 +8,6 @@ public interface IAirspaceObject extends ICollidableWithGameObjects {
     float getCenterXPos();
     float getCenterYPos();
     float getObjectHeight();
-    Weapon getWeapon();
     void createPowerUp();
     void destroy();
 }

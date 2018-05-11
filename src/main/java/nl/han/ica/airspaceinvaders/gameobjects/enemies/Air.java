@@ -121,11 +121,6 @@ public class Air extends SpriteObject implements IAirspaceObject {
     }
 
     @Override
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    @Override
     public float getObjectHeight() {
         return this.getHeight();
     }

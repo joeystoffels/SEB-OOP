@@ -196,10 +196,6 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         this.score = score;
     }
 
-    public Weapon getWeapon() {
-        return canon;
-    }
-
     public String getName() {
         return "Henk";
     }

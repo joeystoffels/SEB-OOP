@@ -93,11 +93,6 @@ public class Ground extends SpriteObject implements IAirspaceObject {
     }
 
     @Override
-    public Weapon getWeapon() {
-        return weapon;
-    }
-
-    @Override
     public void createPowerUp() {
         if (Math.random() < GameProperties.getValueAsDouble("powerupchance")) {
             int randomNr = (int) Math.floor(Math.random() * PowerUpTypes.values().length);

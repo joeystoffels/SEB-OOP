@@ -17,13 +17,11 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     private int damage;
     private AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();
-    private Weapon weapon;
     private int counter = 0;
 
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
         this.airspaceInvadersGame = game;
-        this.weapon = weapon;
         createProjectile(weapon);
         this.setCurrentFrameIndex(0);
     }
@@ -79,9 +77,5 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     public int getDamage() {
         return damage;
-    }
-
-    public Weapon getWeapon() {
-        return weapon;
     }
 }
