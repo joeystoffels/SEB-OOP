@@ -34,9 +34,9 @@ public class Canon extends Weapon {
     public void shoot() {
         int bulletSize;
         if (iFlyingObject instanceof Ground) {
-            bulletSize = 100;
+            bulletSize = 75;
         } else {
-            bulletSize = 65;
+            bulletSize = 45;
         }
         Sprite sprite = AssetLoader.getSprite("weapons/Bullet.png", bulletSize);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);

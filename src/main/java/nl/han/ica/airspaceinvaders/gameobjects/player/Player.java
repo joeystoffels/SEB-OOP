@@ -41,7 +41,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
      * @param world AirspaceInvadersGame
      */
     public Player(AirspaceInvadersGame world) {
-        super(AssetLoader.getSprite("player/A10-shade.png", 25), 6);
+        super(AssetLoader.getSprite("player/A10-shade.png", 20), 6);
         this.canon = new Canon(world, this);
         this.missile = new Missile(world, this);
         this.airspaceInvadersGame = world;
@@ -89,7 +89,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         final int speed = 6;
         if (keyCode == PConstants.LEFT) {
             setCurrentFrameIndex(5);
-            setDirectionSpeed(270, speed);
+            setDirectionSpeed(270, speed + 2);
         }
         if (keyCode == PConstants.UP) {
             setCurrentFrameIndex(2);
@@ -97,7 +97,7 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         }
         if (keyCode == PConstants.RIGHT) {
             setCurrentFrameIndex(4);
-            setDirectionSpeed(90, speed);
+            setDirectionSpeed(90, speed + 2);
         }
         if (keyCode == PConstants.DOWN) {
             setCurrentFrameIndex(3);
@@ -135,7 +135,10 @@ public class Player extends AnimatedSpriteObject implements ICollidableWithGameO
         } else if (gameObject instanceof Ground) {
             handlePlayerDamage(50);
         } else if (gameObject instanceof Projectile) {
-            handlePlayerDamage(((Projectile) gameObject).getDamage());
+            if (!(((Projectile)gameObject).getWeapon() instanceof Missile)){
+                handlePlayerDamage(((Projectile) gameObject).getDamage());
+            }
+
         }
     }
 

@@ -42,7 +42,7 @@ public class Missile extends Weapon {
 
     @Override
     public void shoot() {
-        Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 30);
+        Sprite sprite =  AssetLoader.getSprite("weapons/Missile.png", 25);
         new Projectile(this, this.airspaceInvadersGame, sprite, 3);
         missileSound.play();
         missileSound.rewind();

@@ -104,7 +104,7 @@ public class Air extends SpriteObject implements IAirspaceObject {
 
     @Override
     public void movement(boolean isDirectionLeft) {
-        this.setSpeed(4);
+        this.setSpeed(3);
         this.setDirection(isDirectionLeft ? 110 : 250);
         this.move();
         this.isDirectionLeft = !isDirectionLeft;

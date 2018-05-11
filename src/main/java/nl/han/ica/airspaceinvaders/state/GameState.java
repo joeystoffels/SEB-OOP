@@ -110,13 +110,13 @@ public class GameState extends View implements IState {
         float xPosGround = ((float) ((Math.random() * (worldWidth * 0.8)) + (worldWidth * 0.1)));
 
         for (int x = 0; x < maxNrEnemiesAir; x++) {
-            IAirspaceObject enemyAir = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 15));
+            IAirspaceObject enemyAir = new Air(this.game, this, AssetLoader.getSprite(this.enemyPlanes[ThreadLocalRandom.current().nextInt(0, this.enemyPlanes.length)], 10));
             enemies.add(enemyAir);
             this.game.addGameObject((Air) enemyAir, (xPosAir + (x * ((Air) enemyAir).getWidth())), 0);
         }
 
         for (int x = 0; x < maxNrEnemiesGround; x++) {
-            IAirspaceObject enemyGround = new Ground(this.game, this, AssetLoader.getSprite(this.enemyGround[ThreadLocalRandom.current().nextInt(0, this.enemyGround.length)], 15));
+            IAirspaceObject enemyGround = new Ground(this.game, this, AssetLoader.getSprite(this.enemyGround[ThreadLocalRandom.current().nextInt(0, this.enemyGround.length)], 10));
             enemies.add(enemyGround);
             this.game.addGameObject((Ground) enemyGround, xPosGround, 0);
         }

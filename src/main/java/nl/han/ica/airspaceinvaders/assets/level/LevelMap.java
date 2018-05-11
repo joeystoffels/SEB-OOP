@@ -51,7 +51,7 @@ public class LevelMap extends TileMap {
 
     @Override
     public void draw(PGraphics pGraphics) {
-        int scrollSpeed = 3;
+        int scrollSpeed = 2;
         Tile[][] tileMap = super.getTileMap();
 
         int amountOfTilesLeft = this.travelHeight / super.getTileSize() + 1;

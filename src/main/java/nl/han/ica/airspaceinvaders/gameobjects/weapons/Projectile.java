@@ -7,6 +7,7 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.AnimatedSpriteObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.GameObject;
 import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
+import nl.han.ica.airspaceinvaders.gameobjects.enemies.Air;
 import nl.han.ica.airspaceinvaders.gameobjects.player.Player;
 import nl.han.ica.airspaceinvaders.interfaces.IAirspaceObject;
 
@@ -18,16 +19,23 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
     private AirspaceInvadersGame airspaceInvadersGame;
     private Logger logger = LogFactory.getLogger();
     private int counter = 0;
+    private Weapon weapon;
 
     public Projectile(Weapon weapon, AirspaceInvadersGame game, Sprite sprite, int totalFrames) {
         super(sprite, totalFrames);
         this.airspaceInvadersGame = game;
+        this.weapon = weapon;
         createProjectile(weapon);
         this.setCurrentFrameIndex(0);
     }
     @Override
     public void gameObjectCollisionOccurred(List<GameObject> collidedGameObjects) {
-        if (collidedGameObjects.get(0) instanceof IAirspaceObject) {
+        if (weapon instanceof Missile) {
+            if (!(collidedGameObjects.get(0) instanceof Player) &&
+                    !(collidedGameObjects.get(0) instanceof Projectile)) {
+                airspaceInvadersGame.deleteGameObject(this);
+            }
+        } else if (!(collidedGameObjects.get(0) instanceof Projectile)){
             airspaceInvadersGame.deleteGameObject(this);
         }
     }
@@ -46,11 +54,11 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
             Player player = (Player) weapon.getIAirspaceObject();
             float playerWidth = player.getWidth();
             if (weapon instanceof Missile) {
-                yPos = yPos - player.getHeight() / 3;
+                yPos = yPos;// - (this.getHeight() / 2.5f);
                 xPosOffset = ((Missile) weapon).leftMissilePosition ? - playerWidth / 3 : playerWidth / 3;
             }
         } else {
-            yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.5f;// + this.getHeight();
+            yPos = weapon.getIAirspaceObject().getCenterYPos() + weapon.getIAirspaceObject().getObjectHeight() / 1.4f;// + this.getHeight();
         }
 
         airspaceInvadersGame.addGameObject(this, xPos + xPosOffset, yPos);
@@ -77,5 +85,9 @@ public class Projectile extends AnimatedSpriteObject implements ICollidableWithG
 
     public int getDamage() {
         return damage;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
     }
 }
