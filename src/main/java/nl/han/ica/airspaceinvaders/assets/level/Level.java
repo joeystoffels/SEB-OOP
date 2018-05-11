@@ -7,8 +7,10 @@ import nl.han.ica.OOPDProcessingEngineHAN.Objects.Sprite;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.Tile;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.AssetLoader;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import nl.han.ica.airspaceinvaders.state.GameState;
 
 import java.io.File;
 
@@ -52,7 +54,8 @@ public class Level {
         }
     }
 
-    public TileMap loadLevel(String fileName) {
-        return new LevelMap(GameProperties.getValueAsInt("tileSize"), this.tileTypes, AssetLoader.getLevel(fileName));
+    public TileMap loadLevel(AirspaceInvadersGame game, int levelNumber) {
+        String fileName = "level"+ Integer.toString(levelNumber)+".csv";
+        return new LevelMap(game, GameProperties.getValueAsInt("tileSize"), this.tileTypes, AssetLoader.getLevel(fileName), levelNumber);
     }
 }

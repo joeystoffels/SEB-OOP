@@ -30,19 +30,20 @@ public class GameState extends View implements IState {
 
     private Player player;
     private AirspaceInvadersGame game;
+    private int level;
 
     private Logger logger = LogFactory.getLogger();
 
 
 
-    public GameState(AirspaceInvadersGame game) {
+    public GameState(AirspaceInvadersGame game, int level) {
         super(GameProperties.getValueAsInt("worldWidth"), GameProperties.getValueAsInt("worldHeight"));
         this.game = game;
+        this.level = level;
     }
 
     @Override
     public void update() {
-
         if (this.player != null && this.enemies.isEmpty()) {
             generateEnemies();
         }
@@ -60,11 +61,18 @@ public class GameState extends View implements IState {
         }
     }
 
+    /**
+     *
+     * @param levelNumber int
+     */
+    public void loadLevel(int levelNumber){
+        game.setTileMap(game.getLevel().loadLevel(this.game, levelNumber));
+    }
+
     @Override
     public void start() {
-        game.setTileMap(game.getLevel().loadLevel("level1.csv"));
+        this.loadLevel(1);
         AudioPlayer soundTrack = game.soundLibrary.loadFile("sounds/SoundTrack1.mp3");
-
         soundTrack.play();
 
         this.player = new Player(this.game);

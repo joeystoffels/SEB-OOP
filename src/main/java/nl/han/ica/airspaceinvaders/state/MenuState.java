@@ -35,7 +35,7 @@ public class MenuState extends View implements IState {
         int horizontalOffset = 450;
         int fontSize = 80;
 
-        ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game),this.game,"Start game", fontSize, 200, 100);
+        ButtonChangeView buttonStart = new ButtonChangeView(new GameState(this.game, 1),this.game,"Start game", fontSize, 200, 100);
         this.game.addGameObject(buttonStart, GameProperties.getValueAsInt("worldWidth") - horizontalOffset, 100, 2);
 
         ButtonChangeView buttonRules = new ButtonChangeView(new RulesState(this.game), this.game,"Rules", fontSize, 200, 100);

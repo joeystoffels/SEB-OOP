@@ -3,7 +3,10 @@ package nl.han.ica.airspaceinvaders.assets.level;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.Tile;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileMap;
 import nl.han.ica.OOPDProcessingEngineHAN.Tile.TileType;
+import nl.han.ica.airspaceinvaders.AirspaceInvadersGame;
 import nl.han.ica.airspaceinvaders.assets.config.GameProperties;
+import nl.han.ica.airspaceinvaders.state.EndLevelState;
+import nl.han.ica.airspaceinvaders.state.MenuState;
 import processing.core.PGraphics;
 
 public class LevelMap extends TileMap {
@@ -11,7 +14,17 @@ public class LevelMap extends TileMap {
     private int travelHeight = 0;
     private int visibleTiles;
     private int visibleTilesOffset;
+    private Boolean levelEnded = false;
+    private int levelNumber;
+    private AirspaceInvadersGame game;
 
+    /**
+     * Check if the level is ended
+     * @return Boolean
+     */
+    public Boolean getLevelEnded() {
+        return this.levelEnded;
+    }
 
     /**
      * Levelmap extends a Tilemap, and only draws the visual part of the map instead of drawing everything.
@@ -19,8 +32,10 @@ public class LevelMap extends TileMap {
      * @param tileTypes TileType[]
      * @param indexMap int[][]
      */
-    public LevelMap(int tileSize, TileType[] tileTypes, int[][] indexMap) {
+    public LevelMap(AirspaceInvadersGame game, int tileSize, TileType[] tileTypes, int[][] indexMap, int levelNumber) {
         super(tileSize, tileTypes, indexMap);
+        this.levelNumber = levelNumber;
+        this.game = game;
 
         // Set the total heigth of the level
         this.travelHeight = super.getTileMap().length * super.getTileSize();
@@ -59,6 +74,11 @@ public class LevelMap extends TileMap {
             }
             // Set the new travelheight
             this.travelHeight -= scrollSpeed;
+
+            // Check if the level is ended
+            if((this.travelHeight - GameProperties.getValueAsInt("worldHeight")) < 0){
+                this.game.changeView(new EndLevelState(this.game, this.levelNumber));
+            }
         }
     }
 }
