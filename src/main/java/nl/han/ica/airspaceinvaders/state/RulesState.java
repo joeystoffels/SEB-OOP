@@ -26,7 +26,7 @@ public class RulesState extends View implements IState {
      */
     @Override
     public void start() {
-        this.setBackground(AssetLoader.getBackgroundImage("background/a10-fade.jpg", this.game));
+        this.setBackground(AssetLoader.getBackgroundImage("background/rulesbackground.png", this.game));
 
         ButtonChangeView buttonStart = new ButtonChangeView(new MenuState(this.game), this.game, "Back", 50, 200, 100);
         this.game.addGameObject(buttonStart, 100, 100, 1);
